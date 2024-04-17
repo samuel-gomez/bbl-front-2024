@@ -1,0 +1,268 @@
+-const { files, notes } = require('./pug/slides/old/exo1/data.js')
+-const rootSrc = 'src/'
+-const rootPagePeople = `${rootSrc}pages/People/`;
+-const rootRoute = `${rootSrc}App/Routes/`;
+-const rootMenu = `${rootSrc}Layout/Menu/`;
+-const rootFeature = 'Feature/';
++Section({ name :'exo1' })
+      +Section({ name :'exo1-intro' })
+            h1 Exo 1 : page liste 
+            p 
+                  | Commençons par créer une nouvelle page
+                  br
+                  | Dans le dossier /pages, créez un nouveau dossier /People
+                  br
+                  | le but sera de récupérer les données d'une API et de les afficher dans un tableau
+      +Section({ name :'exo1-page' })            
+            h2 Création de la page
+            span.file #{rootPagePeople}index.ts
+            pre
+                  +Code({ content :files.index[0]})             
+            span.file #{rootPagePeople}People.tsx 
+            pre
+                  +Code({ content :files.people[0]})                            
+      +Section({ name :'exo1-layout' }) 
+            h2 Ajouter le layout 
+            span.file #{rootPagePeople}constants.ts
+            pre
+                  +Code({ content : files.constants[0] })         
+            span.file #{rootPagePeople}People.tsx
+            pre.code-wrapper--notes       
+                  +Notes({ notes: notes.layout })
+                  +Code({ content :files.people[1], dataLineNumbers: "1,2,4,6,7,8" })                
+      +Section({ name :'exo1-route' })            
+            h2 Ajouter la route
+            span.file #{rootRoute}constants.ts 
+            pre.code-wrapper--notes
+                  +Notes({ notes: notes.routesConstants })
+                  +Code({ content :files.constantsRoute[0], dataLineNumbers: "2,6" })            
+            span.file #{rootRoute}Routes.tsx 
+            pre.code-wrapper--notes
+                  +Notes({ notes: notes.routes })
+                  +Code({ content :files.route[0], dataLineNumbers: "2,8" })
+      +Section({ name :'exo1-link' })            
+            h2 Ajouter un lien dans le menu 
+            span.file #{rootMenu}constants.ts 
+            pre.code-wrapper--notes
+                  +Notes({ notes: notes.constantsMenu })
+                  +Code({ content :files.constantsMenu[0], dataLineNumbers: "10-13" })
+      +Section({ name :'exo1-feature' })            
+            h2 Ajouter le scénario de test
+            span.file #{rootFeature}People/People.feature
+            pre               
+                  +Code({ content :files.featurePeople[0], language: 'gherkin' }) 
+      +Section({ name :'exo1-cucumber', autoAnimate: true })            
+            h2 Ajouter le fichier de test 
+            span.file #{rootPagePeople}__tests__/People.spec.tsx 
+            pre.code-wrapper--notes(data-id="code-animation")
+                  +Notes({ notes: notes.testPeople })           
+                  +Code({ content :files.testPeople[0]})                     
+      +Section({ name :'exo1-cucumber-2', autoAnimate: true })            
+            h2 Générer le test
+            span.file Lancer la commande suivante :
+            pre                  
+                  +Code({ dataLineNumbers: false, content : 'npm t People.spec.tsx'})   
+            span.file Récupérez le code généré dans le terminal
+            br
+            +Img({img:'guerkin-test-fail.jpg', alt:"gherkin test fail"})
+            br
+            span.file #{rootPagePeople}__tests__/People.spec.tsx 
+            pre(data-id="code-animation")               
+                  +Code({ content :files.testPeople[1], dataLineNumbers: "3-5"}) 
+      +Section({ name :'exo1-cucumber-3', autoAnimate: true })           
+            h2 Modifier le test
+            span.file #{rootPagePeople}__tests__/People.spec.tsx
+            pre.code-wrapper--notes(data-id="code-animation")  
+                  +Notes({ notes: notes.testPeople2 })
+                  +Code({ modifier:"no-max-height", content :files.testPeople[2], dataLineNumbers: "2-4, 7, 10-17"})                       
+      +Section({ name :'exo1-cucumber-4', autoAnimate: true })           
+            h2 Modifier le scénario
+            span.file #{rootFeature}People/People.feature 
+            pre.code-wrapper--notes(data-id="code-animation")  
+                  +Notes({ notes: notes.featurePeople })
+                  +Code({ modifier:"no-max-height", content :files.featurePeople[1], dataLineNumbers: "2-7,10-17" , language: 'gherkin'})                       
+      +Section({ name :'exo1-cucumber-5', autoAnimate: true })            
+            h2 Modifier le fichier de test
+            pre                  
+                  +Code({ modifier:"no-max-height", dataLineNumbers: false, content : 'npm t People.spec.tsx'}) 
+            span.file #{rootPagePeople}__tests__/People.spec.tsx
+            pre(data-id="code-animation") 
+                  +Code({ modifier:"no-max-height", content :files.testPeople[3], dataLineNumbers: "1,5, 11-13" })     
+      +Section({ name :'exo1-cucumber-6', autoAnimate: true })           
+            h2 Utiliser les scénarios type
+            span.file #{rootPagePeople}People/People.spec.tsx
+            pre.code-wrapper--notes(data-id="code-animation")  
+                  +Notes({ notes: notes.testPeople3 })
+                  +Code({ modifier:"no-max-height", content :files.testPeople[4], dataLineNumbers: "4-6,9, 12-15, 17-27" })
+      +Section({ name :'exo1-api-url', autoAnimate: true })           
+            h2 Définir l'url d'API
+            span.file Avant de démarrer les développements, nous avons besoin de configurer notre url d'API
+            br
+            span.file Ajouter l'url d'API dans le fichier /public/environment.development.json
+            pre.code-wrapper--notes(data-id="code-animation")
+                  +Notes({ notes: notes.apiEnv[0] })
+                  +Code({ content: files.apiEnv,  dataLineNumbers: "4"}) 
+      +Section({ name :'exo1-table-headers', autoAnimate: true })           
+            h2 Ajouter les headers
+            span.file On créé des constantes pour les entêtes de tableau et le endpoint d'API
+            br
+            span.file #{rootPagePeople}constants.ts
+            pre.code-wrapper--notes(data-id="code-animation")  
+                  +Notes({ notes: notes.constants })
+                  +Code({ content : files.constants[1],  dataLineNumbers: "4, 5,7-12"  })  
+      +Section({ name :'exo1-donnees-typage', autoAnimate: true })            
+            h2 Typer les données
+            span.file #{rootPagePeople}People.tsx : typage 
+            pre(data-id="code-animation")  
+                  +Code({ content : files.people[6] })
+            +Alert({ modifier: 'warning'})
+                  | N'oubliez pas d'importer le type dans le fichier de test.  
+      +Section({ name :'exo1-use-people', autoAnimate: true })           
+            //+Alert({ modifier: 'success'})
+                  strong Remarque : 
+                  | useQuery retourne 
+                  strong isLoading 
+                  | pour l'état de chargement du cache ou 
+                  strong isFecthing 
+                  | pour l'état du fetch.
+                  br 
+                  | Par défaut, React Query affiche les données du cache et effectue en parallèle un appel fetch pour rafraichir les données.
+                  br 
+                  | Si on souhaite afficher le loader tant que le fetch n'est pas terminé, il faut utiliser isFetching
+                  br
+                  | On peut également limiter le rafraichissement des données avec l'option 
+                  strong staleTime 
+            h2 Récupération des données            
+            span.file #{rootPagePeople}People.tsx : 
+                  em usePeople
+            .r-stack
+                  pre.code-wrapper--notes.fragment.fade-in-then-out  
+                        +Notes({ notes: notes.usePeople[0], fragment: false })
+                        +Code({ modifier:"no-max-height", content : files.people[2],  dataLineNumbers: "1,3-5"  })                         
+                  pre.code-wrapper--notes.fragment.fade-in-then-out  
+                        +Notes({ notes: notes.usePeople[1], fragment: false })
+                        +Code({ modifier:"no-max-height", content : files.people[2],  dataLineNumbers: "7"  })                         
+                  pre.code-wrapper--notes.fragment.fade-in-then-out  
+                        +Notes({ notes: notes.usePeople[2], fragment: false })
+                        +Code({ modifier:"no-max-height", content : files.people[2],  dataLineNumbers: "8-9"  })
+                  pre.fragment.fade-in-then-out 
+                        +Notes({ notes: notes.usePeople[3], fragment: false })
+                        +Code({ modifier:"no-max-height", content : files.people[2],  dataLineNumbers: "10-13"  }) 
+                        +Notes({ notes: notes.usePeople[4], fragment: false, modifier: 'right' })
+                  pre.fragment.fade-in-then-out 
+                        +Notes({ notes: notes.usePeople[5], fragment: false })
+                        +Code({ modifier:"no-max-height", content : files.people[2],  dataLineNumbers: "11-12"  })
+                        +Notes({ notes: notes.usePeople[6], fragment: false, modifier: 'right' })
+                  pre.code-wrapper--notes.fragment.fade-in-then-out 
+                        +Notes({ notes: notes.usePeople[7], fragment: false })
+                        +Code({ modifier:"no-max-height", content : files.people[2],  dataLineNumbers: "16-22"  })
+      +Section({ name :'exo1-cucumber-9'})           
+            h2 Formatage des données 
+            span.file #{rootPagePeople}People.tsx : 
+                  em computeInfos            
+            .r-stack
+                  pre.code-wrapper--notes.fragment.fade-in-then-out  
+                        +Notes({ notes: notes.computeInfos[0], fragment: false })
+                        +Code({ content : files.people[3],  dataLineNumbers: "2-3"  })                         
+                  pre.code-wrapper--notes.fragment.fade-in-then-out  
+                        +Notes({ notes: notes.computeInfos[1], fragment: false })
+                        +Code({ content : files.people[3],  dataLineNumbers: "5"  })                         
+                  pre.code-wrapper--notes.fragment.fade-in-then-out  
+                        +Notes({ notes: notes.computeInfos[2], fragment: false })
+                        +Code({ content : files.people[3],  dataLineNumbers: "6"  })
+                  pre.code-wrapper--notes.fragment.fade-in-then-out  
+                        +Notes({ notes: notes.computeInfos[3], fragment: false })
+                        +Code({ content : files.people[3],  dataLineNumbers: "7-13"  })
+                  pre.code-wrapper--notes.fragment.fade-in-then-out  
+                        +Notes({ notes: notes.computeInfos[4], fragment: false })
+                        +Code({ content : files.people[3],  dataLineNumbers: "9-12"  })
+            +Alert({ modifier: 'success'})
+                  strong Injecter du JSX : 
+                  | il n'est pas obligatoire d'utiliser la méthode setDisplay, on peut directement mettre du contenu texte ou injecter un composant React.
+            pre
+                  +Code({ content : files.people[7],  dataLineNumbers: "4-5"  }) 
+      +Section({ name :'exo1-cucumber-10'})           
+            h2 Passage des données à la vue
+            span.file #{rootPagePeople}People.tsx : PeopleContainer
+            br
+            +Alert({ modifier: 'success'})
+                  | Dans la cadre de ce dojo, on place tout notre code dans le même fichier, libre à vous de faire du découpage.
+            .r-stack
+                  pre.code-wrapper--notes.fragment.fade-in-then-out  
+                        +Notes({ notes: notes.peopleContainer[0], fragment: false })
+                        +Code({ content : files.people[4],  dataLineNumbers: "2"  })  
+                  pre.code-wrapper--notes.fragment.fade-in-then-out  
+                        +Notes({ notes: notes.peopleContainer[1], fragment: false })
+                        +Code({ content : files.people[4],  dataLineNumbers: "4"  })  
+                  pre.code-wrapper--notes.fragment.fade-in-then-out  
+                        +Notes({ notes: notes.peopleContainer[2], fragment: false })
+                        +Code({ content : files.people[4],  dataLineNumbers: "5"  })  
+                  pre.code-wrapper--notes.fragment.fade-in-then-out  
+                        +Notes({ notes: notes.peopleContainer[3], fragment: false })
+                        +Code({ content : files.people[4],  dataLineNumbers: "6"  })  
+                  pre.code-wrapper--notes.fragment.fade-in-then-out  
+                        +Notes({ notes: notes.peopleContainer[4], fragment: false })
+                        +Code({ content : files.people[4],  dataLineNumbers: "9"  })  
+      +Section({ name :'exo1-update-vue'})           
+            h2 Modifier la vue
+            span.file #{rootPagePeople}People.tsx : People 
+            .r-stack
+                  pre.code-wrapper--notes.fragment.fade-in-then-out  
+                        +Notes({ notes: notes.people[0], fragment: false }) 
+                        +Code({ modifier:"no-max-height", content : files.people[5],  dataLineNumbers: "2-5"  }) 
+                  pre.code-wrapper--notes.fragment.fade-in-then-out  
+                        +Notes({ notes: notes.people[1], fragment: false })
+                        +Code({ modifier:"no-max-height", content : files.people[5],  dataLineNumbers: "7-11"  }) 
+                  pre.code-wrapper--notes.fragment.fade-in-then-out  
+                        +Notes({ notes: notes.people[2], fragment: false })
+                        +Code({ modifier:"no-max-height", content : files.people[5],  dataLineNumbers: "13"  }) 
+                  pre.code-wrapper--notes.fragment.fade-in-then-out 
+                        +Notes({ notes: notes.people[3], fragment: false })
+                        +Code({ modifier:"no-max-height", content : files.people[5],  dataLineNumbers: "16,20"  }) 
+                  pre.code-wrapper--notes.fragment.fade-in-then-out  
+                        +Notes({ notes: notes.people[4], fragment: false })
+                        +Code({ modifier:"no-max-height", content : files.people[5],  dataLineNumbers: "17,19"  })
+                  pre.code-wrapper--notes.fragment.fade-in-then-out  
+                        +Notes({ notes: notes.people[5], fragment: false })
+                        +Code({ modifier:"no-max-height", content : files.people[5],  dataLineNumbers: "18"  })
+      +Section({ name :'exo1-coverage', autoAnimate: true })             
+            h2 Couverture de test
+            span.file Lancer la commande suivante :
+            pre                  
+                  +Code({ dataLineNumbers: false, content : 'npm run cover'})
+            div.flex-column-center
+                  span.file Pour compléter nos tests, nous allons ajouter un peu de Tests Unitaires
+      +Section({ name :'exo1-unit-test', autoAnimate: true })            
+            h2 Ajout de tests unitaires
+            span.file #{rootPagePeople}__tests__/People.test.tsx 
+            .r-stack
+                  pre.fragment.fade-in-then-out                        
+                        +Notes({ notes: notes.unitTestPeople[0], fragment: false })
+                        +Code({ content : files.unitTestPeople[0]  }) 
+                        +Notes({ notes: notes.unitTestPeople[1], fragment: false, modifier: 'right' })
+                  pre.fragment.fade-in-then-out                          
+                        +Code({ content : files.unitTestPeople[1]  }) 
+                        +Code({ content : files.unitTestPeople[2]  }) 
+                        +Code({ content : files.unitTestPeople[3]  }) 
+                  pre.code-wrapper--notes.fragment.fade-in-then-out  
+                        +Notes({ notes: notes.unitTestPeople[2], fragment: false })
+                        +Code({ content : files.unitTestPeople[4] ,  dataLineNumbers: "2-5"  })  
+                  pre.code-wrapper--notes.fragment.fade-in-then-out  
+                        +Notes({ notes: notes.unitTestPeople[3], fragment: false })
+                        +Code({ content : files.unitTestPeople[4],  dataLineNumbers: "7-10"   })
+                  pre.code-wrapper--notes.fragment.fade-in-then-out  
+                        +Notes({ notes: notes.unitTestPeople[5], fragment: false })
+                        +Code({ content : files.unitTestPeople[5],  dataLineNumbers: "4"   }) 
+                  pre.code-wrapper--notes.fragment.fade-in-then-out  
+                        +Notes({ notes: notes.unitTestPeople[4], fragment: false })
+                        +Code({ content : files.unitTestPeople[5] ,  dataLineNumbers: "5"  })  
+                  pre.code-wrapper--notes.fragment.fade-in-then-out  
+                        +Notes({ notes: notes.unitTestPeople[6], fragment: false })
+                        +Code({ content : files.unitTestPeople[5] ,  dataLineNumbers: "9"  })  
+                  pre.fragment.fade-in-then-out  
+                        +Code({ content : files.unitTestPeople[5]  })
+      +Section({ name :'exo1-solution', autoAnimate: true })            
+            h2 Solution
+            span.file Dispo sur la branche feature/dojo sur 
+                  a(href="https://github.com/samuel-gomez/react-starter-vitejs/commit/72286e1dfe310057817db6abe7221479a3cd3f89" target="blank") Github
+      

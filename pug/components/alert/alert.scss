@@ -1,0 +1,64 @@
+$name: "alert";
+
+.#{$prefix}-#{$name} {
+  background: white;
+  font-size: 1.3rem;
+  display: flex;
+  text-align: left;
+  color: var(--r-dark-text-color);
+  border-radius: 22px;
+  gap: 2rem;
+  padding: 0.3rem 1rem 0.3rem 0.3rem;
+  margin: 2rem auto;
+  width: fit-content;
+  box-shadow: 0 15px 15px 0 rgba(0, 0, 0, 0.5);
+  border: var(--r-dark-text-color) solid 2px;
+  font-weight: 300;
+  .#{$prefix}-svg {
+    width: 30px;
+  }
+  em {
+    fill: var(--r-dark-text-color);
+    font-weight: 300;
+  }
+  &--warning {
+    border: var(--sg-warning-color) solid 2px;
+    background: var(--sg-warning-color-light);
+    .#{$prefix}-svg {
+      fill: var(--sg-warning-color);
+    }
+    em {
+      color: var(--sg-warning-color);
+    }
+  }
+  &--error {
+    border: var(--sg-error-color) solid 2px;
+    background: var(--sg-error-color-light);
+    .#{$prefix}-svg {
+      fill: var(--sg-error-color);
+    }
+    em {
+      color: var(--sg-error-color);
+    }
+  }
+  &--success {
+    border: var(--sg-success-color) solid 2px;
+    background: var(--sg-success-color-light);
+    .#{$prefix}-svg {
+      fill: var(--sg-success-color);
+    }
+    em {
+      color: var(--sg-success-color);
+    }
+  }
+  &--info {
+    border: var(--sg-info-color) solid 2px;
+    background: var(--sg-info-color-light);
+    .#{$prefix}-svg {
+      fill: var(--sg-info-color);
+    }
+    em {
+      color: var(--sg-info-color);
+    }
+  }
+}

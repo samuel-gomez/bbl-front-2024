@@ -1,0 +1,60 @@
+$prefix: "sg";
+$color-light-blue: #dce6f2;
+$color-dark-blue: #0f1d5e;
+$borderRadius: 6px;
+$menu-width: 52px;
+$white: #fff;
+$color-gray-3: #f5f5f5 !default;
+$color-action-2: #d3d3e7 !default;
+$color-dusty-gray: #999 !default;
+$color-axa: #00008f;
+$color-gray-2: #e5e5e5 !default;
+$color-marine: #232350 !default;
+$color-scorpion: #333 !default;
+$color-warning: orange;
+$color-error: red;
+$color-success: green;
+$color-info: #00b3ff;
+$color-warning-light: rgb(255, 227, 174);
+$color-error-light: rgb(255, 219, 219);
+$color-success-light: rgb(219, 255, 219);
+$color-info-light: #def5ff;
+
+:root {
+  --sg-background-card-color: #{$color-light-blue};
+  --sg-title-card-color: #{$color-dark-blue};
+  --sg-content-card-color: #{$color-dark-blue};
+  --sg-border-radius: #{$borderRadius};
+  --sg-success-color: #{$color-success};
+  --sg-error-color: #{$color-error};
+  --sg-warning-color: #{$color-warning};
+  --sg-info-color: #{$color-info};
+  --sg-success-color-light: #{$color-success-light};
+  --sg-error-color-light: #{$color-error-light};
+  --sg-warning-color-light: #{$color-warning-light};
+  --sg-info-color-light: #{$color-info-light};
+}
+
+/* .reveal .slides {
+  scale: 0.8;
+} */
+
+@import "./scss/mixins.scss";
+
+/* Components */
+@import "./components/card/card.scss";
+@import "./components/menu/menu.scss";
+@import "./components/header/header.scss";
+@import "./components/logo/logo.scss";
+@import "./components/title/title.scss";
+@import "./components/svg/svg.scss";
+@import "./components/gallery/gallery.scss";
+@import "./components/alert/alert.scss";
+@import "./components/tree/tree.scss";
+@import "./components/note/note.scss";
+@import "./components/copy/copy.scss";
+
+/* Slides */
+// @import "./slides/getstarted/getstarted.scss";
+// @import "./slides/playground/playground.scss";
+// @import "./slides/exo2/exo2.scss";

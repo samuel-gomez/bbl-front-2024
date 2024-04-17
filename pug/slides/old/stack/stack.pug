@@ -1,0 +1,105 @@
+-const { list } = require('./pug/slides/stack/data.js')  
+section(id="stack")
+      section(id="stack-technique")
+            h1 Stack technique 
+            div(class=`${prefix}-cards-3cols`)            
+                  +Card({ title: 'Open Source', content: "Sources disponiblent sur Github", img: 'github.svg', modifier: 'with-left-icon'  })
+                  +Card({ title: 'Typescript', content: "Personnalisable dans le tsconfig.js", img: 'typescript.svg', modifier: 'with-left-icon'  })
+                  +Card({ title: 'Toolkit Slash DS', content: "Implémentation de Slash Design System", img: 'slash.svg', modifier: 'with-left-icon'  })
+                  +Card({ title: 'Quality', content: "Eslint, Prettier, Husky, Sonar, Lint Staged", img: 'quality.svg', modifier: 'with-left-icon'  })
+                  +Card({ title: 'Accessibility', content: "Eslint A11y, Axe Core, Jest Axe, A11yMenu", img: 'accessibility.svg', modifier: 'with-left-icon'  })
+                  +Card({ title: 'Security', content: "Authentification avec React OIDC", img: 'security.svg', modifier: 'with-left-icon'  })
+                  +Card({ title: 'Forms', content: "Gestion des formulaires avec React Hook Form", img: 'form.svg', modifier: 'with-left-icon'  })
+                  +Card({ title: 'Routing', content: "Système de routes avec React Router", img: 'router.svg', modifier: 'with-left-icon'  })
+                  +Card({ title: 'Fetch', content: "Gestion des requêtes avec React Query", img: 'fetch.svg', modifier: 'with-left-icon'  })
+                  +Card({ title: 'Tests', content: "Vitest, Jest Cucumber, Testing Library, Jest Axe, Gherkins", img: 'tests.svg', modifier: 'with-left-icon' })
+      section(id="stack-github")
+            +GithubIcon({ modifier: 'title'})  
+            h2 Github
+            p Le projet est 
+                  a(href="https://github.com/samuel-gomez/react-starter-vitejs") Open Source, 
+                  | vous pouvez donc forker ou 
+                  a(href="/#/get-started-clone") cloner le projet
+                  br 
+                  | Si vous rencontrez des bugs, vous pouvez 
+                  a(href="https://github.com/samuel-gomez/react-starter-vitejs/issues") créer une issue sur le repository.
+                  br
+                  | Si vous souhaitez contribuer au projet, vous pouvez en faire la demande pour être ajouter à l'équipe.
+      section(id="stack-typescript")
+            +TypescriptIcon({ modifier: 'title'})  
+            h2 Typescript
+            p L'ensemble du projet a été développé avec Typescript
+                  br
+                  | Si vous souhaitez adapter sa configuration, vous pouvez modifier le fichier tsconfig.
+            +Youtube({ list:["ffCIANfx_-0?si=G_PT-XV3bX29FzIU", "R1MlRKjCOLU?si=Nq6snyZhIL1nnhLL"] })
+      section(id="stack-slash")
+            +SlashIcon({ modifier: 'title'})
+            h2 Slash Design System
+            +Gallery({ list })
+            +Alert({ modifier: 'warning'})
+                  | Le starter peut être utilisé sans le toolkit Slash. 
+                  br
+                  | Cela nécessitera un nettoyage manuel du starter (comme supprimer tous les composants basés sur les composants Slash )
+      section(id="stack-quality")
+            +QualityIcon({ modifier: 'title'})  
+            h2 Quality
+            +Alert({ modifier: 'success'})
+                  strong Eslint : 
+                  | Vous pouvez modifier la configuration depuis le fichier 
+                  em .eslintrc.cjs
+            +Alert({ modifier: 'success'})
+                  strong Prettier : 
+                  | Vous pouvez modifier la configuration depuis le fichier 
+                  em .prettierrc.cjs
+            +Alert({ modifier: 'success'})
+                  strong Husky : 
+                  | Vous pouvez modifier la configuration depuis le dossier 
+                  em .husky
+            +Alert({ modifier: 'success'})
+                  strong Lint-staged : 
+                  | Vous pouvez modifier la configuration depuis le fichier 
+                  em .lintstagedrc.cjs
+            +Alert({ modifier: 'success'})
+                  strong Commitlint : 
+                  | Vous pouvez modifier la configuration depuis le fichier 
+                  em .commitlintrc.cjs
+      section(id="stack-accessibility")
+            +AccessibilityIcon({ modifier: 'title'})  
+            h2 Accessibility
+            +Alert({ modifier: 'success'})
+                  strong Eslint A11y : 
+                  | Ajoute une couche de vérification sur le JSX pour détecter les erreurs d'accessibilité
+            +Alert({ modifier: 'success'})
+                  strong Jest Axe : 
+                  | Effectue un analyse du DOM généré pour signaler les violations lors des tests.
+      section(id="stack-test")
+            +TestIcon({ modifier: 'title'})  
+            h2 Testing
+            div(class=`${prefix}-cards-flex`)
+                  +Card({ modifier:'user', title: 'Testing Library', content: "Permet de tester le DOM et les interactions utilisateur", img: 'testing-library.svg', fragment: false  })
+                  +Card({ modifier:'user', title: 'Vitest', content: "Pour personnaliser, modifiez le fichier vite.config.ts", img: 'vitest.svg', fragment: false })
+                  +Card({ modifier:'user', title: 'Jest Cucumber', content: "Pour les tests d'intégration, un dossier /features contient les scénarios Gherkin", img: 'cucumber.svg', fragment: false   })
+                  +Card({ modifier:'user', title: 'MSW', content: "Pour modifier les réponses d'api lors des tests : src/shared/testsUtils/msw.ts", img: 'msw.svg', fragment: false   })
+      section(id="stack-fetch")
+            +ReactQueryIcon({ modifier: 'title'})  
+            h2 React Query
+            p 
+                  a(href="https://tanstack.com/query/latest/docs/react/quick-start" target="blank" ) React Query
+                  |  permet de faciliter la synchronisation entre le front et le back et offre des fonctionnalités qui facilitent la vie du développeur et améliorent l’expérience utilisateur. 
+            +Youtube({ list:["38wJmjeJNAk?si=hZqYmIzlo190iTfq", "r8Dg0KVnfMA?si=gVroT_roo18l1Qlg"] })
+      section(id="stack-form")
+            +ReactHookFormIcon({ modifier: 'title'})  
+            h2 React Hook Form
+            p 
+                  a(href="https://react-hook-form.com/get-started" target="blank" ) React Hook Form
+                  |  permet de gérer l'état et la validation des formulaires de manière performante et simple. 
+            +Youtube({ list:["Ipgf8PLRmY8?si=4Nf9XzKCPLUrYaFL"] })
+      section(id="stack-router")
+            +ReactRouterIcon({ modifier: 'title'})  
+            h2 React Router
+            p 
+                  a(href="https://reactrouter.com/en/main" target="blank" ) React Router
+                  |  est une librairie de routing basée sur la déclaration de routes 
+                  br
+                  | (contrairement à NextJS qui se base sur le file system)
+            +Youtube({ list:["Ul3y1LXxzdU?si=ha-jtXHg-ESh84iE"] })

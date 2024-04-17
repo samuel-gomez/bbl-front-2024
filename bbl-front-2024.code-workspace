@@ -1,0 +1,16 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "workbench.colorCustomizations": {
+      "activityBar.background": "#493205",
+      "titleBar.activeBackground": "#9d6401",
+      "titleBar.activeForeground": "#ffd8bf"
+    },
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "liveServer.settings.port": 5501
+  }
+}

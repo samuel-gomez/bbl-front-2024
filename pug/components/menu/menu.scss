@@ -1,0 +1,123 @@
+$headerHeight: 53px;
+
+.#{$prefix} {
+  &-menu {
+    position: relative;
+    &__nav {
+      position: absolute;
+      z-index: 10;
+      border-radius: 10px;
+      width: $menu-width;
+      height: calc(100% - #{$headerHeight} - 53px);
+      transition: transform 0.5s ease;
+      transform: translate3d(-100%, 0, 0);
+      top: 11px;
+      left: 0;
+      margin-top: #{$headerHeight};
+      line-height: 1;
+    }
+
+    &__list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+    }
+
+    &__item {
+      text-align: center;
+      z-index: 2;
+      width: 45px;
+      height: 45px;
+      &-link {
+        display: flex;
+        place-content: center;
+        text-decoration: none;
+        height: 100%;
+        font-family: var(--r-main-font);
+        background: $white;
+        border-radius: 100%;
+        color: black;
+        position: relative;
+        transition: background-color 0.5s ease;
+
+        &-text {
+          background: $white;
+          color: black;
+          position: absolute;
+          right: 0;
+          translate: 110%;
+          min-width: 100px;
+          border-radius: 15px;
+          padding: 0.2rem;
+          opacity: 0;
+          transition: opacity 0.5s ease-in, translate 0.3s ease-in;
+          translate: 90% 50%;
+          z-index: -1;
+        }
+        &:hover {
+          background: $color-action-2;
+          .#{$prefix}-menu__item-link-text {
+            opacity: 1;
+            translate: 110% 50%;
+          }
+        }
+      }
+
+      &-text {
+        color: $color-dusty-gray;
+        font-weight: 600;
+        display: block;
+        padding: 0.6rem 1rem;
+      }
+
+      &--active {
+        .#{$prefix}-menu__item-link {
+          color: $white;
+          background: $color-axa;
+        }
+      }
+      &-icon {
+        width: 30px;
+        fill: currentColor;
+      }
+    }
+
+    &__open,
+    &__close {
+      position: fixed;
+      width: 36px;
+      height: 30px;
+      left: 13px;
+      top: 13px;
+      cursor: pointer;
+      fill: $white;
+      z-index: 6;
+    }
+
+    &__close {
+      display: none;
+    }
+
+    &--opened {
+      .#{$prefix}-menu {
+        &__nav {
+          transform: translate3d(7px, 0, 0);
+          box-shadow: 0 0px 10px 2000px rgb(0, 0, 0, 0.5);
+        }
+
+        &__close {
+          display: block;
+        }
+
+        &__open {
+          display: none;
+        }
+      }
+    }
+    .#{$prefix}-svg--circle {
+      width: 30px;
+    }
+  }
+}

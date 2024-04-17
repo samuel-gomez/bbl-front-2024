@@ -1,0 +1,56 @@
+include ../components/card/card
+include ../components/card/cardCode
+include ../components/img/index
+include ../components/menu/menu
+include ../components/menu/menuitem
+include ../components/menu/submenu
+include ../components/logo/logo
+include ../components/title/title
+include ../components/section/section
+include ../components/svg/index
+include ../components/youtube/youtube
+include ../components/gallery/gallery
+include ../components/alert/alert
+include ../components/tree/tree
+include ../components/note/notes
+include ../components/note/note
+include ../components/code/code
+
+block locals
+    - const { setClass } = functions
+    - const { prefixjs, prefix, pathImg, pathFavicons, storybookBaseUrl, storybookIframeUrl, githubBaseUrl, badgeBaseUrl } = base
+    - const { title, author, geography, copyright, email, description, keywords, lang, avatar } = general
+    - const { main, getstarted, guidelines, patterns, layouts, style, components, structure, form } = menu
+
+block vars
+    - var id = "home"
+    - var menuState = undefined
+
+doctype html
+html(lang=lang id=`${prefix}-${id}-html` class=`${prefix}-html ${prefix}-html--${id}`)
+    head        
+        include ../includes/meta
+        block meta
+        include ../includes/favicon.pug
+        title
+            =metaTitle || title
+        link(rel='stylesheet' href='dist/reset.css')
+        link(rel='stylesheet' href='dist/reveal.css')
+        link(rel='stylesheet' href='plugin/highlight/vs.css')
+        link(rel='stylesheet' href='dist/theme/axa.css')
+    body(id=`${prefix}-${id}-body` class=`${prefix}-body`) 
+        block menu
+        include ../components/header/header
+        include ../components/content/content
+        script(src='dist/reveal.js')
+        script(src='plugin/notes/notes.js')
+        script(src='plugin/markdown/markdown.js')
+        script(src='plugin/highlight/highlight.js')
+        script(src='pug/index.js' type="module")
+        script.
+            Reveal.initialize({
+                hash: true,
+                pdfSeparateFragments: false,
+                plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+                width: '100%'
+            });

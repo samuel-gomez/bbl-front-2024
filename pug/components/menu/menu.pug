@@ -1,0 +1,7 @@
+mixin Menu({ modifier='', activePath='/' })
+    -const classComponent = setClass('menu', modifier, true)
+    div(class=classComponent)
+        +Img({id:'cross-gap', className:`${prefix}-menu__close`, modifier:"close", js:true, img: 'cross-gap.svg'})
+        +Img({id:'menu-button', className:`${prefix}-menu__open`, modifier:"open", js:true , img: 'menu-button.svg'})
+        nav(class=`${prefix}-menu__nav`)
+            +SubMenu({menu: main, activePath})

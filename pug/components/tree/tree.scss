@@ -1,0 +1,53 @@
+$name: "tree";
+
+.#{$prefix}-#{$name} {
+  background: white;
+  width: 60%;
+  margin: 0 auto;
+  border-radius: var(--sg-border-radius);
+  overflow: auto;
+  max-height: 50vh;
+}
+
+$nameItem: "tree-item";
+.#{$prefix}-#{$nameItem} {
+  &:first-child {
+    border-radius: var(--sg-border-radius) var(--sg-border-radius) 0 0;
+  }
+  &:last-child {
+    border-radius: 0 0 var(--sg-border-radius) var(--sg-border-radius);
+  }
+  padding: 1rem;
+  color: var(--sg-content-card-color);
+  font-weight: 300;
+  font-size: 1.5rem;
+  text-align: left;
+  border-bottom: 1px solid $color-gray-2;
+  &[open] {
+    > summary {
+      list-style-type: "📂";
+      font-weight: 400;
+    }
+  }
+
+  summary {
+    list-style-type: "📁";
+    cursor: pointer;
+    span {
+      padding-left: 1rem;
+    }
+  }
+  &__content {
+    font-size: 1.2rem;
+    color: var(--r-dark-text-color);
+    padding-left: 3rem;
+  }
+}
+
+$nameSub: "tree-sub";
+
+.#{$prefix}-#{$nameSub} {
+  .#{$prefix}-#{$nameItem} {
+    border-left: 1px solid $color-gray-2;
+  }
+}

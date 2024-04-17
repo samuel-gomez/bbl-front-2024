@@ -1,0 +1,168 @@
+/**
+ * White theme for reveal.js. This is the opposite of the 'black' theme.
+ *
+ * By Hakim El Hattab, http://hakim.se
+ */
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+// Include theme-specific fonts
+@import url(./fonts/publico/publico.css);
+@import url(./fonts/source-sans-pro/source-sans-pro.css);
+
+// Override theme settings (see ../template/settings.scss)
+
+$AxaRedcolor: #ff1721;
+$AxaBluecolor: #00008f;
+$mainColor: white;
+$headingColor: white;
+$heading2Color: #3032c1;
+$darkTextColor: #333;
+
+$backgroundColor: linear-gradient(0deg, black 0%, var(--r-axa-blue-color) 100%);
+
+$mainFontSize: 42px;
+$mainFont: "Source Sans Pro", Helvetica, sans-serif;
+$headingFont: "Publico", Helvetica, sans-serif;
+$headingTextShadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
+$heading1TextShadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
+$heading2TextShadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.5);
+$headingLetterSpacing: normal;
+$headingTextTransform: normal;
+$headingFontWeight: 900;
+$linkColor: $AxaRedcolor;
+$linkColorHover: lighten($linkColor, 15%);
+$selectionBackgroundColor: lighten($linkColor, 25%);
+
+$heading1Size: clamp(1.6em, 5vw, 2.5em);
+$heading2Size: clamp(1em, 5vw, 1.6em);
+$heading3Size: clamp(0.8em, 5vw, 1.3em);
+$heading4Size: clamp(0.5em, 5vw, 1em);
+
+// Change text colors against dark slide backgrounds
+@include dark-bg-text-color(white);
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+:root {
+  --r-heading2-color: #{$heading2Color};
+  --r-dark-text-color: #{$darkTextColor};
+  --r-heading2-text-shadow: #{$heading2TextShadow};
+  --r-heading3-text-shadow: #{$heading2TextShadow};
+  --r-axa-red-color: #{$AxaRedcolor};
+  --r-axa-blue-color: #{$AxaBluecolor};
+}
+
+.reveal {
+  h1::before {
+    content: "";
+    width: clamp(36px, 4vw, 50px);
+    height: clamp(78px, 6vw, 100px);
+    transform: skewX(-30deg);
+    background: #ff1721;
+    position: absolute;
+    z-index: -1;
+  }
+  h2 {
+    color: var(--r-heading-color);
+    text-shadow: var(--r-heading2-text-shadow);
+    &::before {
+      content: "";
+      width: 30px;
+      height: 69px;
+      transform: skewX(-30deg);
+      background: #ff1721;
+      position: absolute;
+      z-index: -1;
+    }
+  }
+  h3 {
+    text-shadow: none;
+  }
+  .code-wrapper {
+    display: flex;
+    place-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    code {
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 15px 15px 0 rgba(0, 0, 0, 0.5);
+      border: var(--r-heading2-color) solid 1px;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      position: relative;
+      &.sg-code--no-max-height {
+        max-height: inherit;
+      }
+    }
+    .sg-code-input {
+      display: none;
+    }
+
+    &--notes {
+      left: -13%;
+    }
+  }
+  .r-stack > pre {
+    margin-block: 2rem;
+  }
+  pre {
+    box-shadow: inherit;
+  }
+  pre[data-auto-animate-target] {
+    overflow: inherit;
+    code {
+      height: inherit;
+    }
+  }
+  .hljs {
+    min-height: inherit;
+  }
+  .hljs:not(:first-child).fragment {
+    width: auto;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  a {
+    text-decoration: underline;
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
+  span.file {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .flex-column-center {
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    place-items: center;
+  }
+  ul {
+    padding: 1rem;
+    font-size: 1.8rem;
+    line-height: 1.5;
+    font-size: clamp(0.1em, 5vw, 0.7em);
+    line-height: 1.2;
+    li {
+      font-weight: 200;
+      color: white;
+      &::marker {
+        color: var(--r-link-color);
+      }
+      &:not(:last-child) {
+        margin-bottom: 1px;
+      }
+    }
+  }
+  p {
+    font-size: clamp(0.5em, 5vw, 1em);
+  }
+}

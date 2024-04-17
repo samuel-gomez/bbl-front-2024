@@ -1,0 +1,24 @@
+$name: "copy";
+
+.#{$prefix}-wrapper-#{$name} {
+  max-width: 60%;
+  position: relative;
+  white-space: nowrap;
+}
+
+.#{$prefix}-#{$name} {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  translate: -50% 50%;
+  border-radius: var(--sg-border-radius);
+  font-size: 0.8rem;
+  background: var(--bg, var(--r-heading2-color));
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  border: 0;
+  color: white;
+  &--copied {
+    --bg: var(--sg-success-color);
+  }
+}

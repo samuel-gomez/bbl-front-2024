@@ -1,0 +1,47 @@
+-const { files : filesExo2, notes: noteExos2 } = require('./pug/slides/exo2/data.js')
++Section({ name :'exo2' })
+      +Section({ name :'exo2-intro' })
+            h1 Exo 2 : Détail du contrat
+            p 
+                  | Afficher le détail du contrat au clic du bouton
+            +Img({img:'prototype-detail-contrat.png', alt:"prototype détail du contrat"})
+      +Section({ name :'exo2-spec' })
+            h2 Spécifications
+            ul.af-specifications
+                  li Le but est d'ajouter une colonne avec pour libellé d'entête "Actions"
+                  li Pour chaque ligne du tableau, il faut afficher un bouton style "pastille" dans la dernière colonne
+                  li Lorsque l'utilisateur clique sur ce bouton, une modale apparait 
+                  li Le titre de la modal contient "Détail de : Prénom Nom"
+                  li La modale affiche en premier l'avatar de la personne (centré)                 
+                  li En dessous, le Nom Prénom de la personne (titre bleu centré)                 
+                  li En dessous, le nom de l'entité (centré)                 
+                  li En dessous, dans un encart de restitution, on récupère (appel asynchrone) le détail du contrat 
+                  li Le titre de l'encart contient "Détail du contrat" 
+                  li Afficher les données telles que prévues dans le prototype
+                  li En bas à droite de la modal, un bouton "Fermer" est présent, le clic ferme la modale              
+      +Section({ name :'exo2-proto' })
+            h2 Le prototype
+            a(href="https://xptiz0.axshare.com/liste_des_gens.html" target="blank") Ouvrir le prototype dans un onglet
+            iframe(class="af-prototype" src="https://xptiz0.axshare.com/liste_des_gens.html" )
+      +Section({ name :'exo2-tech-infos' })
+            h2 Infos complémentaires
+            ul
+                  li l'url d'API pour récupérer le détail utilisateur : 
+                        strong /people/:id
+                  li pour afficher la modale, on peut utiliser le composant ModalCustom du starter 
+                        a(href="https://react-starter-vitejs.netlify.app/demos/modal-custom" target="blank") Custom Modal
+                  li pour afficher les détails utiliser le composant  
+                        a(href="https://react-starter-vitejs.netlify.app/demos/restitution" target="blank") Restitution
+                  li voici le code pour le bouton icone 
+                        pre
+                              +Code({ content : `<Button id="uniqueid" className="af-btn--circle" >
+      <i role="img" aria-label="eye-open" className="glyphicon glyphicon-eye-open" />
+</Button>`  })
+      +Section({ name :'exo1-solution', autoAnimate: true })            
+            h2 Solution
+            span.file Dispo sur la branche feature/dojo sur 
+                  a(href="https://github.com/samuel-gomez/react-starter-vitejs/commit/f6a8604225bc6f7d8a437b5d4199f6ced97a8bfc" target="blank") Github
+                              
+                                    
+                  
+            

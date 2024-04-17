@@ -1,0 +1,59 @@
+$name: "note";
+
+.#{$prefix}-#{$name}s {
+  --color: orange;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  width: 30%;
+  &--right {
+    .#{$prefix}-#{$name} {
+      text-align: left;
+      margin-left: 1rem;
+
+      &::after {
+        content: "";
+        left: -10px;
+        translate: 0 -50%;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent var(--color) transparent;
+      }
+    }
+  }
+}
+
+.#{$prefix}-#{$name} {
+  background: var(--color);
+  font-size: 1rem;
+  display: flex;
+  text-align: right;
+  color: var(--r-dark-text-color);
+  padding: 0.3rem 1rem;
+  width: fit-content;
+  font-weight: 900;
+  font-family: var(--r-main-font);
+  margin-right: 1rem;
+  position: relative;
+  top: 10px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent var(--color);
+    right: -10px;
+    translate: 0 -50%;
+  }
+
+  &.fragment.fade-in-then-out:not(.current-fragment) {
+    display: none;
+  }
+  i {
+    font-style: italic;
+  }
+}

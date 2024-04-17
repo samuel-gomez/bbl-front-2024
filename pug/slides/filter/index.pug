@@ -1,0 +1,20 @@
+-const { data: filterData } = require('./pug/slides/content/data.js');
++Section({name :'filter'})
+      +Section({ name :'filter' })
+            h1 La propriété filter
+            p Cette propriété CSS permet d'incrémenter un compteur CSS. Elle est très utile pour numéroter les éléments d'une liste.
+            p Il est possible de définir plusieurs compteurs en même temps.
+            p Il faut nommer le compteur pour pouvoir l'utiliser.
+            pre                  
+                +Code({ content : filterData[0].code, langage: 'css' })
+      +Section({ name :'filter-function' })
+            h1 filter()
+            p La fonction filter permet de récupérer la valeur d'un compteur CSS. Elle est très utile pour numéroter les éléments d'une liste.
+            p Elle s'utilise comme valeur de la propriété content.
+            pre                  
+                +Code({ content : filterData[1].code, langage: 'css' })
+      +Section({ name :'filter-reset' })
+            h1 filter reset
+            p La propriété filter-reset permet de réinitialiser un compteur CSS. Elle est très utile pour numéroter les éléments d'une liste.
+            pre                  
+                +Code({ content : filterData[2].code, langage: 'css' })

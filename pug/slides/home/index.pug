@@ -1,0 +1,9 @@
++Section({name :'home'})
+      +Section({ name :'preface' })
+            h1 Nouveautés Front
+            img(src='assets/images/starter-react.svg' alt='Starter React')
+      +Section({ name :'preface-about' })
+            h2 Speaker
+            div(class=`${prefix}-cards-flex`) 
+                  +Card({ modifier:'user', title: 'Samuel Gomez', content: "Lead Front-end", img: 'sam.jpg', fragment: false, socials:  {twitter: 'gamuez', website: 'samuelgomez.fr' }  })
+      

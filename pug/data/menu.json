@@ -1,0 +1,39 @@
+{
+  "main": [
+    {
+      "href": "/#/",
+      "label": "Accueil",
+      "icon": "HomeIcon"
+    },
+    {
+      "href": "/#/besoin",
+      "label": "Besoin",
+      "icon": "NeedIcon"
+    },
+    {
+      "href": "/#/stack-technique",
+      "label": "Stack",
+      "icon": "StackIcon"
+    },
+    {
+      "href": "/#/structure",
+      "label": "Structure",
+      "icon": "TreeIcon"
+    },
+    {
+      "href": "/#/playground",
+      "label": "Playground",
+      "icon": "SlashIcon"
+    },
+    {
+      "href": "/#/get-started-intro",
+      "label": "Get Started",
+      "icon": "PlayIcon"
+    },
+    {
+      "href": "/#/exo1-intro",
+      "label": "Exo 1",
+      "icon": "WorkIcon"
+    }
+  ]
+}

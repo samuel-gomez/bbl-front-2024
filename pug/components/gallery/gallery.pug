@@ -1,0 +1,13 @@
+mixin Gallery({  modifier='', name = 'gallery', list })
+    -const classComponent = `${setClass(name, modifier, false)}`
+    main(class=`${classComponent}__main`)
+        each item in list
+            -const { titleItem, linkItem, imageItem } = item
+            article(class=`${classComponent}__item ${classComponent}__${imageItem}`)
+                div(class=`${classComponent}__item-info-wrap`)
+                    div(class=`${classComponent}__item-info`)
+                        div(class=`${classComponent}__item-info-front ${classComponent}__${imageItem}`)
+                        div(class=`${classComponent}__item-info-back`)
+                            h3(class=`${classComponent}__item-title`) #{titleItem}
+                            a(title=`Voir ${titleitem}` class=`${classComponent}__item-link` href=linkItem target='_blank' rel='noreferrer')
+                                | View on WebSite

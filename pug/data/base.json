@@ -1,0 +1,11 @@
+{
+  "prefix": "sg",
+  "prefixjs": "js",
+  "pathImg": "./assets/images/",
+  "pathFavicons": "./assets/favicons/",
+  "storybookBaseUrl": "https://axafrance.github.io/react-toolkit/latest/storybook/?path=/story/",
+  "storybookIframeUrl": "https://axafrance.github.io/react-toolkit/latest/storybook/iframe.html?id=",
+  "githubBaseUrl": "https://github.com/AxaFrance/react-toolkit/tree/master/packages/",
+  "badgeBaseUrl": "https://badge.fury.io/js/",
+  "baseUrlProd": "https://axafrance.github.io/design-system"
+}

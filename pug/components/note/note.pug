@@ -1,0 +1,6 @@
+mixin Note({ modifier = '', name='note', line= 1, isFragment= true})
+	-const classComponent = setClass(name, modifier, js)
+	-const classFragment = isFragment ? ' fragment fade-in-then-out' : ''
+	div(class=`${classComponent}${classFragment}` style=`top: ${((line - 1) * 23.5) + 10 }px`)
+		span(class=`${prefix}-${name}__content`)
+			block

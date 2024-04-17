@@ -1,0 +1,19 @@
+-const { data: containData } = require('./pug/slides/contain/data.js');
++Section({name :'contain'})
+      +Section({ name :'contain' })
+            h1 La propriété contain
+            p Un élément avec la propriété contain va créer un nouveau contexte de formatage pour ses enfants. Cela permet de limiter les effets de styles des éléments parents sur les éléments enfants.
+            pre                  
+                +Code({ contain : containData[0].code, langage: 'css' })
+      +Section({ name :'content-visibility' })
+            h1 La propriété content-visibility
+            p La propriété content-visibility permet de cacher un élément sans le retirer du flux de la page. Cela permet d'optimiser les performances en évitant de recalculer le layout de l'élément.
+            p Il est possible de cacher un élément en le rendant invisible, mais en conservant sa taille et sa position.
+            a(href="https://css-tricks.com/almanac/properties/c/contain/") CSS-Tricks
+            a(href="https://web.dev/content-visibility/") web.dev
+            a(href="https://developer.mozilla.org/fr/docs/Web/CSS/content-visibility") MDN
+            a(href="https://caniuse.com/?search=content-visibility") CanIUse
+            pre                  
+                +Code({ contain : containData[0].code, langage: 'css' })
+     
+     

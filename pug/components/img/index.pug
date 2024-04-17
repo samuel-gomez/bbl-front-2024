@@ -1,0 +1,3 @@
+mixin Img({className=``, img, alt=img, modifier = "", js=false })
+	-const classComponent = `${setClass('img', modifier, js)} ${className}`
+	img(class=classComponent src=`${basedir}${pathImg}${img}` alt=alt loading="lazy")

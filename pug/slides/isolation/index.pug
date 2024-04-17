@@ -1,0 +1,9 @@
+
+-const { data: isolationData } = require('./pug/slides/isolation/data.js');
++Section({name :'isolation'})
+	+Section({ name :'isolation' })
+		h1 Isolation
+		p La propriété isolation permet de créer un contexte d'empilement pour les éléments positionnés. Cela signifie que les éléments enfants ne seront pas affectés par les éléments parents.
+		pre                  
+			+Code({ content : isolationData[0].code, langage: 'css' })
+		a (href="https://www.youtube.com/watch?v=o1HzOJfgugE") Voir la vidéo

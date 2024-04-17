@@ -1,0 +1,6 @@
+mixin CardCode({  modifier='code', name = 'card', img= '', title, fragment= false, socials = false})
+    -const classComponent = `${setClass(name, modifier, false)}`
+    article(class=`${classComponent}${fragment ? ' fragment' : ''} fade-up`)                             
+        h3(class=`${prefix}-${name}__title`)   #{title}
+        block
+        

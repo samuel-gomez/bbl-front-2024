@@ -1,0 +1,9 @@
+mixin Section({ name, background= '', transition = "fade", iframe, interactive=false, autoAnimate= false, backgroundColor = '',backgroundImage = ''  })
+    - const backgroundIframe = iframe ? { 'data-background-iframe':iframe } : {}
+    - const backgroundInteractive = interactive ? { 'data-background-interactive':interactive } : {}
+    - const dataAutoAnimate = autoAnimate ? { 'data-auto-animate':autoAnimate } : {}
+    - const dataBackgroundColor = backgroundColor ? { 'data-background-color':backgroundColor } : {}
+    - const dataBackgroundImage = backgroundImage ? { 'data-background-image':backgroundImage } : {}
+    - const t = { 'data-background':background, 'data-background-transition':transition, ...backgroundIframe, ...backgroundInteractive, ...dataAutoAnimate, ...dataBackgroundColor, ...dataBackgroundImage }
+    section(class=`${prefix}-${name}`, id=name, )&attributes({...t})
+        block

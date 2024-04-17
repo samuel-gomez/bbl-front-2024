@@ -1,0 +1,7 @@
+include ./treeItem.pug 
+mixin Tree({  modifier='', name = 'tree', tree })
+    -const classComponent = `${setClass(name, modifier, false)}`
+    div(class=`${classComponent}`)
+        each item in tree
+            -const { title, content, children } = item
+            +TreeItem({ title, content, children }) 

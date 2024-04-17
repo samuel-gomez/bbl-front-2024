@@ -1,0 +1,20 @@
+-const { data: counterData } = require('./pug/slides/content/data.js');
++Section({name :'counter'})
+      +Section({ name :'counter-increment' })
+            h1 La propriété counter-increment
+            p Cette propriété CSS permet d'incrémenter un compteur CSS. Elle est très utile pour numéroter les éléments d'une liste.
+            p Il est possible de définir plusieurs compteurs en même temps.
+            p Il faut nommer le compteur pour pouvoir l'utiliser.
+            pre                  
+                +Code({ content : counterData[0].code, langage: 'css' })
+      +Section({ name :'counter-function' })
+            h1 Counter()
+            p La fonction counter permet de récupérer la valeur d'un compteur CSS. Elle est très utile pour numéroter les éléments d'une liste.
+            p Elle s'utilise comme valeur de la propriété content.
+            pre                  
+                +Code({ content : counterData[1].code, langage: 'css' })
+      +Section({ name :'counter-reset' })
+            h1 Counter reset
+            p La propriété counter-reset permet de réinitialiser un compteur CSS. Elle est très utile pour numéroter les éléments d'une liste.
+            pre                  
+                +Code({ content : counterData[2].code, langage: 'css' })

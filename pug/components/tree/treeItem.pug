@@ -1,0 +1,9 @@
+mixin TreeItem({ modifier='', name = 'tree-item', title, content, children })
+    -const classComponent = `${setClass(name, modifier, false)}`
+    details(class=classComponent)
+        summary 
+            span #{title}
+        div(class=`${classComponent}__content`) !{content}
+        if(children)
+            +Tree({ tree: children, name: 'tree-sub'}) 
+            

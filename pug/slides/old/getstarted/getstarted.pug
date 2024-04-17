@@ -1,0 +1,32 @@
++Section({ name :'get-started' })
+      +Section({ name :'get-started-intro' })
+            h1 Get Started 
+            p 
+                  | Nous allons maintenant passer à la pratique. 
+                  br
+                  | Veuillez utiliser la navigation vers le bas pour suivre les étapes.
+            +ArrowthinDownIcon({ className:`${prefix}-img--go-down`, id:'go-down'})
+      +Section({ name :'get-started-clone' })            
+            h2 Clone du projet
+            p Vous pouvez cloner le projet de la démo depuis l'url ci-dessous :
+            pre
+                  code(class="language-shell") https://github.com/samuel-gomez/react-starter-vitejs.git
+      +Section({ name :'get-started-clean' })
+            h2 Clean du projet
+            p Il faut ensuite nettoyer les éléments de la démo
+            pre
+                  code(class="language-shell") npm run clean
+      +Section({ name :'get-started-install' })
+            h2 Installation
+            p Vous pouvez maintenant effectuer l'installation
+            pre
+                  code(class="language-shell") npm i
+      +Section({ name :'get-started-launch' })
+            h2 Démarrer le projet
+            p 
+                  | Vous pouvez lancer le projet en saisissant la commande suivante.
+            pre
+                  code(class="language-shell") npm start
+            p     Le projet va démarrer à l'adresse : 
+                  a(href="http://localhost:3000" target='blank') http://localhost:3000
+      

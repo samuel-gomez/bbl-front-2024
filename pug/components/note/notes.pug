@@ -1,0 +1,7 @@
+mixin Notes({  modifier='', name = 'notes', notes, fragment=true })
+    -const classComponent = `${setClass(name, modifier, false)}`
+    div(class=`${classComponent}`)
+        each note in notes
+            -const { line, content, isFragment = fragment } = note
+            +Note({ line, isFragment }) !{content}
+            

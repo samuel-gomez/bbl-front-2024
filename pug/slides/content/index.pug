@@ -1,0 +1,32 @@
+-const { data: contentData } = require('./pug/slides/content/data.js');
++Section({name :'content'})
+      +Section({ name :'content' })
+            h1 La propriété content 
+            p Cette propriété CSS permet d'insérer du contenu généré avant ou après un élément. A l'aide des pseudo-éléments ::before et ::after, on peut ajouter du contenu à un élément sans modifier le HTML.
+            a(href="https://developer.mozilla.org/fr/docs/Web/CSS/content") MDN
+            a(href="https://developer.mozilla.org/fr/docs/Web/CSS/::before") MDN ::before
+            a(href="https://developer.mozilla.org/fr/docs/Web/CSS/::after") MDN ::after
+            a(href="https://developer.mozilla.org/fr/docs/Web/CSS/attr") MDN attr()
+            a(href="https://developer.mozilla.org/fr/docs/Web/CSS/counter") MDN counter()
+            a(href="https://developer.mozilla.org/fr/docs/Web/CSS/quotes") MDN quotes
+            a(href="https://developer.mozilla.org/fr/docs/Web/CSS/counter-reset") MDN counter-reset
+            a(href="https://developer.mozilla.org/fr/docs/Web/CSS/counter-increment") MDN counter-increment
+            a(href="https://developer.mozilla.org/fr/docs/Web/CSS/counter-set") MDN counter-set
+            a(href="https://developer.mozilla.org/fr/docs/Web/CSS/counter()") MDN counter()
+            pre                  
+                +Code({ content : contentData[0].code, langage: 'css' })
+      +Section({ name :'content-url' })
+            h1 Url  
+            p La propriété content est très utile pour ajouter des guillemets à un blockquote. Il existe 3 types de valeur de quote : open-quote, close-quote et no-open-quote.
+            pre                  
+                +Code({ content : contentData[1].code, langage: 'css' })
+      +Section({ name :'content-counter' })
+            h1 Counter
+            p La propriété content est très utile pour ajouter des guillemets à un blockquote. Il existe 3 types de valeur de quote : open-quote, close-quote et no-open-quote.
+            pre                  
+                +Code({ content : contentData[1].code, langage: 'css' })
+      +Section({ name :'content-blockquote' })
+            h1 Blockquote  
+            p La propriété content est très utile pour ajouter des guillemets à un blockquote. Il existe 3 types de valeur de quote : open-quote, close-quote et no-open-quote.
+            pre                  
+                +Code({ content : contentData[1].code, langage: 'css' })

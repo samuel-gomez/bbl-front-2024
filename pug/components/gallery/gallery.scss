@@ -1,0 +1,140 @@
+$name: "gallery";
+
+.reveal {
+  .#{$prefix}-#{$name} {
+    &__main {
+      display: flex;
+      gap: 4rem 2rem;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+    }
+
+    &__item {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      position: relative;
+      transition: all 0.4s ease-in-out;
+      box-shadow: 0 30px 20px 10px #00008f38, 0px 14px 20px 0px #00008fa9,
+        inset 5px 3px 20px 20px rgb(0 0 0 / 50%);
+      text-align: center;
+
+      &:hover {
+        box-shadow: 0 80px 20px 10px #00008f0f, 1px 43px 42px 16px #00008f38;
+        transform: scale(1.2);
+        & .#{$prefix}-#{$name}__item-info-wrap {
+          box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.8),
+            inset 0 0 3px rgba(115, 23, 23, 0.8);
+        }
+        & .#{$prefix}-#{$name}__item-info {
+          transform: rotate3d(0, 1, 0, -180deg);
+        }
+        & .#{$prefix}-#{$name}__item-back {
+          position: relative;
+          z-index: 4;
+        }
+      }
+
+      &-info-wrap {
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        perspective: 800px;
+        transition: all 0.4s ease-in-out;
+        top: 20px;
+        left: 20px;
+        background: white;
+        box-shadow: 0 0 0 20px rgba(1, 1, 32, 0.459),
+          inset 0 0 3px rgba(115, 114, 23, 0.8);
+      }
+
+      &-info {
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        transition: all 0.4s ease-in-out;
+        transform-style: preserve-3d;
+
+        & > div {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          background-position: center center;
+          backface-visibility: hidden;
+        }
+
+        &-front {
+          display: block;
+        }
+
+        &-back {
+          transform: rotate3d(0, 1, 0, 180deg);
+          background: #00008f;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+      }
+
+      &-title {
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        font-size: 1rem;
+        margin: 0 15px;
+        padding: 20px 5px;
+        text-shadow: 0 0 1px #fff, 0 1px 2px rgba(0, 0, 0, 0.3);
+      }
+
+      &-link {
+        border-top: 1px solid rgba(255, 255, 255, 0.5);
+        display: block;
+        color: #fff;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        padding: 20px 5px;
+        cursor: pointer;
+        &:hover {
+          cursor: pointer;
+          color: var(--r-axa-red-color);
+        }
+      }
+    }
+
+    $images: (
+      testing-library,
+      jest-cucumber,
+      react-hook-form,
+      jest,
+      typescript,
+      eslint,
+      prettier,
+      husky,
+      commitlint,
+      react,
+      vite,
+      vitest,
+      slash,
+      msw,
+      react-router,
+      openid,
+      sonarqube,
+      react-query,
+      react-axe,
+      storybook,
+      github
+    );
+
+    @each $image in $images {
+      &__#{nth($image, 1)} {
+        background: url("../assets/images/#{nth($image, 1)}.svg") no-repeat;
+        background-size: cover;
+      }
+    }
+  }
+}
