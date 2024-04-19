@@ -1,0 +1,64 @@
+-const { data: scrollData } = require('./pug/slides/scroll/data.js');
++Section({name :'scroll'})
+      +Section({ name :'scroll-intro' })
+            h1 Intro 
+            p La propriété scroll-padding permet de définir un espace autour du contenu scrollable.
+            p La propriété scroll-margin permet de définir un espace autour du conteneur scrollable.
+            p La propriété scroll-snap-align permet de définir l'alignement du scroll snap.
+            p La propriété scroll-snap-stop permet de définir si le scroll snap doit s'arrêter.
+            p La propriété scroll-snap-type permet de définir le type de scroll snap.
+            p La propriété scroll-snap-points permet de définir les points de scroll snap.
+            p La propriété scroll-snap-type-points permet de définir le type de scroll snap et les points de scroll snap.
+            p La propriété scroll-behaviour permet d'avoir un scroll fluide.
+
+      +Section({ name :'scroll-padding' })
+            h1 scroll-padding
+            p La propriété scroll-padding permet de définir un espace autour du contenu scrollable.
+            p Elle est utile pour éviter que le contenu ne soit collé aux bords du conteneur scrollable.
+            pre                  
+                +Code({ content : scrollData[0].code, langage: 'css' })
+      +Section({ name :'scroll-margin' })
+            h1 scroll-margin
+            p La propriété scroll-margin permet de définir un espace autour du conteneur scrollable.
+            p Elle est utile pour éviter que le conteneur ne soit collé aux bords du conteneur parent.
+            pre                  
+                +Code({ content : scrollData[1].code, langage: 'css' })
+      +Section({ name :'scroll-snap-align' })
+            h1 scroll-snap-align
+            p La propriété scroll-snap-align permet de définir l'alignement du scroll snap.
+            p Elle est utile pour aligner le scroll snap sur les bords du conteneur scrollable.
+            pre                  
+                +Code({ content : scrollData[2].code, langage: 'css' })
+      +Section({ name :'scroll-snap-stop' })
+            h1 scroll-snap-stop
+            p La propriété scroll-snap-stop permet de définir si le scroll snap doit s'arrêter.
+            p Elle est utile pour éviter que le scroll snap ne dépasse le conteneur scrollable.
+            pre                  
+                +Code({ content : scrollData[3].code, langage: 'css' })
+      +Section({ name :'scroll-snap-type' })
+            h1 scroll-snap-type
+            p La propriété scroll-snap-type permet de définir le type de scroll snap.
+            p Elle est utile pour définir si le scroll snap doit s'arrêter sur les bords du conteneur scrollable.
+            pre                  
+                +Code({ content : scrollData[4].code, langage: 'css' })
+      +Section({ name :'scroll-snap-points' })
+            h1 scroll-snap-points
+            p La propriété scroll-snap-points permet de définir les points de scroll snap.
+            p Elle est utile pour définir les points de scroll snap sur lesquels le scroll snap doit s'arrêter.
+            pre                  
+                +Code({ content : scrollData[5].code, langage: 'css' })
+      +Section({ name :'scroll-snap-type-points' })
+            h1 scroll-snap-type-points
+            p La propriété scroll-snap-type-points permet de définir le type de scroll snap et les points de scroll snap.
+            p Elle est utile pour définir si le scroll snap doit s'arrêter sur les points de scroll snap.
+            pre                  
+                +Code({ content : scrollData[6].code, langage: 'css' })
+      +Section({ name :'scroll-snap-type-points-demo' })
+            h1 Démo : scroll-snap-type-points
+            iframe(style="width: 100%;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="scroll-snap-type-points" src="https://codepen.io/gsam59/embed/ExXQjQv?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
+      +Section({ name :'scroll-behaviour' })
+            h1 scroll-behaviour
+            p La propriété scroll-behaviour permet d'avoir un scroll fluide.
+            p Elle est utile pour avoir un scroll fluide sur les éléments scrollables.
+            pre                  
+                +Code({ content : scrollData[7].code, langage: 'css' })

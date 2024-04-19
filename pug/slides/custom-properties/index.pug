@@ -1,0 +1,58 @@
+-const { data: customPropertiesData } = require('./pug/slides/custom-properties/data.js');
++Section({name :'custom-properties'})
+      +Section({ name :'custom-properties' })
+            h1 Custom properties (CSS Variables)
+            p Les variables CSS permettent de stocker des valeurs pour les réutiliser dans un fichier CSS.
+            p Tout comme les variables en Scss, les variables CSS permettent de simplifier le code et de le rendre plus lisible.
+            p Elles permettent également de mieux gérer les tokens dans un Design System sans avoir à utiliser de préprocesseur CSS.
+
+      +Section({ name :'custom-properties-declaration' })
+            h2 Déclaration des variables CSS
+            p Pour déclarer simplement une variable CSS, il suffit d'utiliser le préfixe -- suivi du nom de la variable.
+            pre
+                  +Code({ content : customPropertiesData[0].code, langage: 'css',  dataLineNumbers: "2"  })
+            p Elles peuvent être déclarées globalement dans le :root{} ou localement dans un sélecteur.
+            p La portée des variables CSS est limitée à l'élément parent.
+
+      +Section({ name :'custom-properties-utilisation' })
+            h2 Utilisation des variables CSS
+            p Pour utiliser une variable CSS, il suffit de l'appeler avec la fonction var() en lui passant le nom de la variable en paramètre.
+            pre
+                  +Code({ content : customPropertiesData[1].code, langage: 'css',  dataLineNumbers: "6" })
+
+      +Section({ name :'custom-properties-heritage' })
+            h2 Héritage des variables CSS
+            .r-stack
+                  .fragment.fade-in-then-out                        
+                        p Les variables CSS sont héritées par les éléments enfants.
+                        p Il est possible de redéfinir une variable CSS pour un élément enfant.
+                        p Cela permet de personnaliser les éléments enfants sans toucher aux éléments parents.
+                        pre
+                              +Code({ content : customPropertiesData[2].code, langage: 'css',  dataLineNumbers: "6" })
+
+                  .fragment.fade-in-then-out                          
+                        p On ne peut pas surcharger une variable CSS affectée à une propriété du parent depuis un élément enfant sans avoir à redéclarer la propriété.
+                        iframe(style="width: 100%;color: white; font-weight: bold;min-height: 35svh; max-height: 45svh;aspect-ratio:2;" scrolling="no" title="css variable surcharge" src="https://codepen.io/gsam59/embed/jORQrQx?default-tab=html,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
+ 
+      +Section({ name :'custom-properties-duplication' })
+            h2 Duplication des propriétés                  
+            p Une des forces des variables CSS est de pouvoir déclarer des variables CSS sur un élément de base en les appliquant à ses propriétés CSS ou à ses enfants.
+            p Et de pouvoir créer des déclinaisons sans devoir tout redéclarer.
+            .sg-cards-flex                                                      
+                  pre
+                        +Code({ content : customPropertiesData[3].code, langage: 'css',  js:false })
+                  pre
+                        +Code({ content : customPropertiesData[4].code, langage: 'css',  modifier:"dont", js:false })
+
+      +Section({ name :'custom-properties-duplication-demo' })
+            iframe(style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="has with combinator ~" src="https://codepen.io/gsam59/embed/MWRzyay?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
+      +Section({ name :'custom-properties-@property' })
+            h2 @property
+            p La règle @property permet de déclarer une variable CSS avec un type de données.
+            p Elle est très utile pour définir des variables CSS avec des types de données spécifiques.
+
+            pre
+                  +Code({ content : customPropertiesData[0].code, langage: 'css' })
+                  
+
+            a (href='https://epic-web-2024-at-property.netlify.app/08-outro/?s=09') Argyle prez

@@ -1,9 +1,75 @@
+-const { data: homeData } = require('./pug/slides/home/data.js');
 +Section({name :'home'})
       +Section({ name :'preface' })
             h1 Nouveautés Front
             img(src='assets/images/starter-react.svg' alt='Starter React')
-      +Section({ name :'preface-about' })
+
+      +Section({ name :'home-about' })
             h2 Speaker
             div(class=`${prefix}-cards-flex`) 
                   +Card({ modifier:'user', title: 'Samuel Gomez', content: "Lead Front-end", img: 'sam.jpg', fragment: false, socials:  {twitter: 'gamuez', website: 'samuelgomez.fr' }  })
+
+      +Section({ name :'home-intro' })
+            h2 Intro
+            span.files Le CSS est resté longtemps sans faire évoluer les spécifications. Depuis quelques années, les choses ont changé. Les navigateurs ont implémenté de nouvelles fonctionnalités qui permettent de repousser les limites du CSS.
+            span.files Ces nouvelles fonctionnalités permettent de simplifier le code, de le rendre plus lisible et de le rendre plus performant.
+            span.files Dans cette présentation, je vais vous présenter les nouveautés CSS qui ont été implémentées dans les navigateurs.
+
+      +Section({ name :'home-features' })
+            h2 Nouveautés
+            div(class=`${prefix}-cards-3cols`) 
+                  +Card({ modifier: 'feature', title: 'CSS Custom Properties',fragment: false })
+                  +Card({ modifier: 'feature', title: 'CSS Nesting', fragment: false })
+                  +Card({ modifier:'feature', title: 'Les Media Queries Level 5', fragment: false })
+                  +Card({ modifier:'feature', title: 'CSS Container Queries',fragment: false, link: 'https://ishadeed.com/article/css-container-style-queries' })
+                  +Card({ modifier:'feature', title: 'Table responsive', fragment: false })
+                  +Card({ modifier:'feature', title: 'Le pseudo-élément :has()', fragment: false })
+                  +Card({ modifier: 'feature', title: 'CSS contain property',  fragment: false })
+                  +Card({ modifier: 'feature', title: 'CSS :is() et :where()', fragment: false })
+                  +Card({ modifier: 'feature', title: 'CSS :focus', fragment: false })        
+                  +Card({ modifier: 'feature', title: 'CSS mask', fragment: false })
+                  +Card({ modifier: 'feature', title: 'CSS backdrop-filter', fragment: false })
+                  +Card({ modifier: 'feature', title: 'CSS aspect-ratio',fragment: false })
+                  +Card({ modifier: 'feature', title: 'CSS Anchor positionning',fragment: false })
+                  +Card({ modifier: 'feature', title: 'CSS subgrid', fragment: false })
+                  +Card({ modifier: 'feature', title: 'CSS :isolate', fragment: false })
+                  +Card({ modifier: 'feature', title: 'CSS animation-timeline', fragment: false })
+                  +Card({ modifier: 'feature', title: 'CSS Logical Properties', fragment: false })
+                  +Card({ modifier: 'feature', title: 'CSS Scroll Snap', fragment: false })
+                  +Card({ modifier: 'feature', title: 'CSS content-visibility',  fragment: false })
+                  +Card({ modifier: 'feature', title: 'CSS @layout',  fragment: false })
+                  +Card({ modifier: 'feature', title: 'CSS @scope',  fragment: false })
+                  +Card({ modifier: 'feature', title: 'CSS Format de couleur',  fragment: false })
+                  +Card({ modifier: 'feature', title: 'CSS Format de texte',  fragment: false })
+
+      +Section({ name: 'home-stateofcss' })
+            h2 State of CSS
+            p Le State of CSS est un sondage annuel qui permet de connaître les fonctionnalités CSS les plus utilisées, les plus appréciées et les plus attendues.
+            p En 2021, les fonctionnalités les plus utilisées sont : Flexbox, Grid, Responsive design, CSS Variables, BEM,
+            p Les fonctionnalités les plus appréciées sont : Grid, Flexbox, Responsive design, CSS Variables, BEM,
+            p Les fonctionnalités les plus attendues sont : Container Queries, Nesting, Custom Properties, Aspect Ratio, Logical Properties,
+            p Vous pouvez consulter le sondage sur le site : 
+                  a(href="https://stateofcss.com/" target="_blank") State of CSS
+
+      +Section({ name: 'home-w3c' })
+            h2 W3C - liste des propriétés CSS
+            p La W3C est l'organisme de standardisation du web. Elle publie des recommandations pour les technologies du web.
+            p Vous pouvez consulter la liste des propriétés CSS sur le site : 
+                  a(href="https://www.w3.org/Style/CSS/all-properties.fr.html" target="_blank") W3C - liste des propriétés CSS
+
+      +Section({ name: 'home-caniuse' })
+            h2 Caniuse
+            p Caniuse est un site qui permet de connaître la compatibilité des fonctionnalités CSS ou Javascript avec les navigateurs.
+            p Vous pouvez consulter la compatibilité des fonctionnalités sur le site : 
+                  a(href="https://caniuse.com/" target="_blank") Caniuse
       
+      +Section({ name: 'home-supports' })
+            h2 @supports
+            p La règle @supports permet de tester si un navigateur supporte une fonctionnalité CSS.
+            p Elle est très utile pour appliquer des styles en fonction des fonctionnalités supportées par le navigateur.
+            pre
+                  +Code({ content : homeData[0].code, langage: 'css' })
+            pre
+                  +Code({ content : homeData[1].code, langage: 'css' })
+
+
