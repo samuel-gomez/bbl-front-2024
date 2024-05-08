@@ -1,0 +1,8 @@
+mixin Modal({ id="", modifier = '', name='modal', js=false, embed= false, title="Title" })
+	-const classComponent = setClass(name, modifier, js)
+	dialog(class=classComponent id=id, onclick="this.close()" )
+		div(class="dialog-inner" onclick="event.stopPropagation();")
+			form
+				button(class="icon close" autofocus formmethod="dialog") ❌
+				h2 #{title}
+				block					

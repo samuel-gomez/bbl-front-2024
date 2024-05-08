@@ -1,9 +1,15 @@
-mixin Section({ name, background= '', transition = "fade", iframe, interactive=false, autoAnimate= false, backgroundColor = '',backgroundImage = ''  })
+mixin Section({ name, background= '', transition = "fade", iframe, interactive=false, autoAnimate= false, backgroundColor = '',backgroundImage = '', compatibility = ''  })
     - const backgroundIframe = iframe ? { 'data-background-iframe':iframe } : {}
     - const backgroundInteractive = interactive ? { 'data-background-interactive':interactive } : {}
     - const dataAutoAnimate = autoAnimate ? { 'data-auto-animate':autoAnimate } : {}
     - const dataBackgroundColor = backgroundColor ? { 'data-background-color':backgroundColor } : {}
     - const dataBackgroundImage = backgroundImage ? { 'data-background-image':backgroundImage } : {}
     - const t = { 'data-background':background, 'data-background-transition':transition, ...backgroundIframe, ...backgroundInteractive, ...dataAutoAnimate, ...dataBackgroundColor, ...dataBackgroundImage }
-    section(class=`${prefix}-${name}`, id=name, )&attributes({...t})
+    section(class=`${prefix}-${name}`, id=name, compatibility )&attributes({...t})
         block
+        if compatibility
+            - const modalCompatibilityId= `compatibility-${name}`;
+            button(onclick=`document.querySelector('#${modalCompatibilityId}').showModal()`) Compatibilités
+            +Modal({ id:modalCompatibilityId, modifier: modalCompatibilityId, title: 'Compatibilités'})
+                .loading
+                    iframe(src=`https://caniuse.com/${compatibility}`, title='Compatibilités', frameborder="0", allowfullscreen="true" , loading="lazy")

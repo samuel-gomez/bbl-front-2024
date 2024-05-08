@@ -104,5 +104,12 @@ module.exports = {
 }`,
       notes: [],
     },
+    {
+      code: `div:has(> ul:empty) {
+}
+form:has(> :checked){  
+}`,
+      notes: [],
+    },
   ],
 };

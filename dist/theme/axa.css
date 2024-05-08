@@ -506,4 +506,5 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
 }
 .reveal p {
   font-size: clamp(0.5em, 5vw, 1em);
+  text-wrap: balance;
 }

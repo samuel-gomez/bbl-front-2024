@@ -61,4 +61,10 @@ $name: "alert";
       color: var(--sg-info-color);
     }
   }
+  &:not(:has(svg)) {
+    font-style: italic;
+    align-items: center;
+    padding: 0.3rem;
+    margin: 0;
+  }
 }

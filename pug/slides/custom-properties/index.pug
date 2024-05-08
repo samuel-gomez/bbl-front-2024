@@ -1,10 +1,13 @@
 -const { data: customPropertiesData } = require('./pug/slides/custom-properties/data.js');
 +Section({name :'custom-properties'})
-      +Section({ name :'custom-properties' })
+      +Section({ name :'custom-properties', compatibility:"css-variables" })
             h1 Custom properties (CSS Variables)
-            p Les variables CSS permettent de stocker des valeurs pour les réutiliser dans un fichier CSS.
+            p Les 
+                  a(href="https://developer.mozilla.org/fr/docs/Web/CSS/Using_CSS_custom_properties") variables CSS 
+                  |  permettent de stocker des valeurs pour les réutiliser dans un fichier CSS.
             p Tout comme les variables en Scss, les variables CSS permettent de simplifier le code et de le rendre plus lisible.
             p Elles permettent également de mieux gérer les tokens dans un Design System sans avoir à utiliser de préprocesseur CSS.
+
 
       +Section({ name :'custom-properties-declaration' })
             h2 Déclaration des variables CSS
@@ -16,11 +19,90 @@
 
       +Section({ name :'custom-properties-utilisation' })
             h2 Utilisation des variables CSS
-            p Pour utiliser une variable CSS, il suffit de l'appeler avec la fonction var() en lui passant le nom de la variable en paramètre.
+            .r-stack
+                  .fragment.fade-in-then-out
+                        p Pour utiliser une variable CSS, il suffit de l'appeler avec la fonction var() en lui passant le nom de la variable en paramètre.
+                        pre
+                              +Code({ content : customPropertiesData[1].code, langage: 'css',  dataLineNumbers: "6" })
+                  .fragment.fade-in-then-out
+                        p Les variables CSS peuvent être utilisées à peu près partout.
+                        ul
+                              li La plupart des valeurs de propriétés CSS
+                              li Les fonctions CSS (calc(), min(), max(), clamp(), etc.)
+                              li les media queries (abordé dans le slide sur les @media)
+                              li les animations et transitions
+                  
+      +Section({ name :'custom-properties-default' })
+            h2 Valeurs par défaut et suites
+            p Lorsqu'une variable CSS n'est pas définie, elle prend la valeur par défaut.
+            p Il est aussi possible de définir une suite de valeurs pour une variable CSS.
             pre
-                  +Code({ content : customPropertiesData[1].code, langage: 'css',  dataLineNumbers: "6" })
+                  +Code({ content : customPropertiesData[9].code, langage: 'css',  dataLineNumbers: "2-3,7-8" })
 
-      +Section({ name :'custom-properties-heritage' })
+      +Section({ name :'custom-properties-type' })
+            h2 Les types de variables CSS
+            p On peut stocker différents types de données (nombres, couleurs, chaînes de caractères, url,  valeurs calculées, etc.)
+            pre
+                  +Code({ content : customPropertiesData[2].code, langage: 'css'})
+            p mais... le type est "unknown"
+      
+      +Section({ name :'custom-properties-error-type' })
+            h2 Erreur de type
+            p Les variables CSS sont 
+                  strong faiblement typées
+                  | , imaginons un système de thème basé sur une seule couleur principale.
+            pre
+                  +Code({ content : customPropertiesData[3].code, langage: 'css'})
+            p si une erreur de type survient, la variable est ignorée, et c'est la valeur initiale ou héritée de la propriété qui est utilisée.
+      
+      +Section({ name :'custom-properties-atproperty', compatibility:"mdn-css_at-rules_property" })
+            h2 @property
+            .r-stack
+                  .fragment.fade-in-then-out   
+                        p La règle 
+                              a(href="https://developer.mozilla.org/fr/docs/Web/CSS/@property" ) @property  
+                              |  permet de déclarer une variable CSS avec un type de données, ce qui permet de gérer les erreurs de type.
+                        p On peut également fournir une valeur par défaut et gérer l'héritage.
+                  
+                  .fragment.fade-in-then-out
+                        pre.code-wrapper--notes(data-id="code-animation")
+                              +Notes({ notes: customPropertiesData[7].notes[0], fragment: false })
+                              +Code({ content : customPropertiesData[7].code, langage: 'css', dataLineNumbers: "1" }) 
+                  
+                  .fragment.fade-in-then-out
+                        pre.code-wrapper--notes(data-id="code-animation")
+                              +Notes({ notes: customPropertiesData[7].notes[1], fragment: false })
+                              +Code({ content : customPropertiesData[7].code, langage: 'css', dataLineNumbers: "2" })
+                  
+                  .fragment.fade-in-then-out
+                        pre.code-wrapper--notes(data-id="code-animation")
+                              +Notes({ notes: customPropertiesData[7].notes[2], fragment: false })
+                              +Code({ content : customPropertiesData[7].code, langage: 'css', dataLineNumbers: "3" })
+                  
+                  .fragment.fade-in-then-out
+                        pre.code-wrapper--notes(data-id="code-animation")
+                              +Notes({ notes: customPropertiesData[7].notes[3], fragment: false })
+                              +Code({ content : customPropertiesData[7].code, langage: 'css', dataLineNumbers: "4" })
+                  
+                  .fragment.fade-in-then-out
+                        pre
+                              +Code({ content : customPropertiesData[10].code, langage: 'css'})
+                        p si une erreur de type survient, la variable est ignorée, et c'est la valeur initiale de la variable qui est utilisée.
+                  
+                  .fragment.fade-in-then-out
+                        p Voici une démo qui illustre l'erreur de type avec et sans la règle @property pour déclarer une variable CSS.
+                        iframe(style="width: 100%;color: white; font-weight: bold;min-height: 30svh; max-height: 40svh;aspect-ratio:2;resize: both;overflow: scroll;z-index: 10;padding: 1rem;" scrolling="no" title="CSS variables error type" src="https://codepen.io/gsam59/embed/VwgGWYW?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
+                  
+                  .fragment.fade-in-then-out
+                        h3 CSS Types
+                        -const cssTypes = ['length', 'percentage', 'length-percentage', 'color', 'image', 'url', 'integer', 'number', 'angle', 'time', 'resolution', 'transform-list', 'transform-function']
+                        .flex.mw-30.flex-wrap.flex-center
+                              each cssType in cssTypes
+                                    +Alert({ modifier: 'success', icon: '' })
+                                          | &lt;#{cssType}&gt;
+                        a(href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Types") Liste des types CSS
+
+      +Section({ name :'custom-properties-heritage' }) 
             h2 Héritage des variables CSS
             .r-stack
                   .fragment.fade-in-then-out                        
@@ -28,31 +110,50 @@
                         p Il est possible de redéfinir une variable CSS pour un élément enfant.
                         p Cela permet de personnaliser les éléments enfants sans toucher aux éléments parents.
                         pre
-                              +Code({ content : customPropertiesData[2].code, langage: 'css',  dataLineNumbers: "6" })
+                              +Code({ content : customPropertiesData[4].code, langage: 'css',  dataLineNumbers: "6" })
 
                   .fragment.fade-in-then-out                          
                         p On ne peut pas surcharger une variable CSS affectée à une propriété du parent depuis un élément enfant sans avoir à redéclarer la propriété.
                         iframe(style="width: 100%;color: white; font-weight: bold;min-height: 35svh; max-height: 45svh;aspect-ratio:2;" scrolling="no" title="css variable surcharge" src="https://codepen.io/gsam59/embed/jORQrQx?default-tab=html,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
  
       +Section({ name :'custom-properties-duplication' })
-            h2 Duplication des propriétés                  
+            h2 Gérer les déclinaisons                  
             p Une des forces des variables CSS est de pouvoir déclarer des variables CSS sur un élément de base en les appliquant à ses propriétés CSS ou à ses enfants.
             p Et de pouvoir créer des déclinaisons sans devoir tout redéclarer.
             .sg-cards-flex                                                      
                   pre
-                        +Code({ content : customPropertiesData[3].code, langage: 'css',  js:false })
+                        +Code({ content : customPropertiesData[5].code, langage: 'css',  js:false })
                   pre
-                        +Code({ content : customPropertiesData[4].code, langage: 'css',  modifier:"dont", js:false })
+                        +Code({ content : customPropertiesData[6].code, langage: 'css',  modifier:"dont", js:false })
 
       +Section({ name :'custom-properties-duplication-demo' })
-            iframe(style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="has with combinator ~" src="https://codepen.io/gsam59/embed/MWRzyay?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
-      +Section({ name :'custom-properties-@property' })
-            h2 @property
-            p La règle @property permet de déclarer une variable CSS avec un type de données.
-            p Elle est très utile pour définir des variables CSS avec des types de données spécifiques.
+            h2 Démo : Gérer les déclinaisons                  
+            iframe(style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="duplication-variable" src="https://codepen.io/gsam59/embed/MWRzyay?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
+      
+      +Section({ name :'custom-properties-loop-sass' })
+            h2 Alternative aux boucles Sass
+            p Les variables CSS permettent de créer des boucles CSS sans avoir à utiliser de préprocesseur CSS.      
+            iframe(style="width: 100vw;color: white; font-weight: bold;min-height: 45svh;" scrolling="no" title="loop sass" src="https://codepen.io/gsam59/embed/ZEZwrGg?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
 
-            pre
-                  +Code({ content : customPropertiesData[0].code, langage: 'css' })
-                  
 
-            a (href='https://epic-web-2024-at-property.netlify.app/08-outro/?s=09') Argyle prez
+      +Section({ name :'custom-properties-loop-sass-demo' })
+            h2 Version avec les CSS Variables
+            iframe(style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css variables loop" src="https://codepen.io/gsam59/embed/eYoxEdP?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
+      
+
+      +Section({ name :'custom-properties-javascript' })
+            h2 Avec Javascript                  
+            p Les variables CSS peuvent être modifiées en JavaScript.
+            p Cela permet de personnaliser le style d'un élément en fonction d'une action utilisateur ou d'effectuer des animations.
+            .flex.flex-center.mw-80                                        
+                  pre
+                        +Code({ content : customPropertiesData[11].code, langage: 'javascript' })
+                  pre
+                        +Code({ content : customPropertiesData[12].code, langage: 'javascript',  dataLineNumbers: "2, 5, 8" })
+      
+      +Section({ name :'custom-properties-javascript-demo' })
+            h2 Démo : Avec Javascript
+            iframe(style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css variables loop" src="https://codepen.io/gsam59/embed/JjpRxLN?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
+      
+      +Section({ name :'custom-properties-reading' })
+            a(href="https://www.lambdatest.com/blog/guide-to-css-variables-with-examples/") Guide to CSS Variables with Examples

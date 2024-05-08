@@ -118,11 +118,11 @@
         </div></a></header>
     <div class="reveal">
       <div class="slides">
-        <section class="sg-home" id="home" data-background="" data-background-transition="fade">
-          <section class="sg-preface" id="preface" data-background="" data-background-transition="fade">
+        <section class="sg-home" id="home" compatibility="compatibility" data-background="" data-background-transition="fade">
+          <section class="sg-preface" id="preface" compatibility="compatibility" data-background="" data-background-transition="fade">
             <h1>Nouveautés Front</h1><img src="assets/images/starter-react.svg" alt="Starter React">
           </section>
-          <section class="sg-home-about" id="home-about" data-background="" data-background-transition="fade">
+          <section class="sg-home-about" id="home-about" compatibility="compatibility" data-background="" data-background-transition="fade">
             <h2>Speaker</h2>
             <div class="sg-cards-flex"> 
               <article class="sg-card  sg-card--user fade-up"> <img class="sg-img sg-card__image" src="././assets/images/sam.jpg" alt="sam.jpg" loading="lazy"/>
@@ -139,10 +139,10 @@
               </article>
             </div>
           </section>
-          <section class="sg-home-intro" id="home-intro" data-background="" data-background-transition="fade">
+          <section class="sg-home-intro" id="home-intro" compatibility="compatibility" data-background="" data-background-transition="fade">
             <h2>Intro</h2><span class="files">Le CSS est resté longtemps sans faire évoluer les spécifications. Depuis quelques années, les choses ont changé. Les navigateurs ont implémenté de nouvelles fonctionnalités qui permettent de repousser les limites du CSS.</span><span class="files">Ces nouvelles fonctionnalités permettent de simplifier le code, de le rendre plus lisible et de le rendre plus performant.</span><span class="files">Dans cette présentation, je vais vous présenter les nouveautés CSS qui ont été implémentées dans les navigateurs.</span>
           </section>
-          <section class="sg-home-features" id="home-features" data-background="" data-background-transition="fade">
+          <section class="sg-home-features" id="home-features" compatibility="compatibility" data-background="" data-background-transition="fade">
             <h2>Nouveautés</h2>
             <div class="sg-cards-3cols"> 
               <article class="sg-card  sg-card--feature fade-up"> 
@@ -239,7 +239,7 @@
               </article>
             </div>
           </section>
-          <section class="sg-home-stateofcss" id="home-stateofcss" data-background="" data-background-transition="fade">
+          <section class="sg-home-stateofcss" id="home-stateofcss" compatibility="compatibility" data-background="" data-background-transition="fade">
             <h2>State of CSS</h2>
             <p>Le State of CSS est un sondage annuel qui permet de connaître les fonctionnalités CSS les plus utilisées, les plus appréciées et les plus attendues.</p>
             <p>En 2021, les fonctionnalités les plus utilisées sont : Flexbox, Grid, Responsive design, CSS Variables, BEM,</p>
@@ -247,17 +247,17 @@
             <p>Les fonctionnalités les plus attendues sont : Container Queries, Nesting, Custom Properties, Aspect Ratio, Logical Properties,</p>
             <p>Vous pouvez consulter le sondage sur le site : <a href="https://stateofcss.com/" target="_blank">State of CSS</a></p>
           </section>
-          <section class="sg-home-w3c" id="home-w3c" data-background="" data-background-transition="fade">
+          <section class="sg-home-w3c" id="home-w3c" compatibility="compatibility" data-background="" data-background-transition="fade">
             <h2>W3C - liste des propriétés CSS</h2>
             <p>La W3C est l'organisme de standardisation du web. Elle publie des recommandations pour les technologies du web.</p>
             <p>Vous pouvez consulter la liste des propriétés CSS sur le site : <a href="https://www.w3.org/Style/CSS/all-properties.fr.html" target="_blank">W3C - liste des propriétés CSS</a></p>
           </section>
-          <section class="sg-home-caniuse" id="home-caniuse" data-background="" data-background-transition="fade">
+          <section class="sg-home-caniuse" id="home-caniuse" compatibility="compatibility" data-background="" data-background-transition="fade">
             <h2>Caniuse</h2>
             <p>Caniuse est un site qui permet de connaître la compatibilité des fonctionnalités CSS ou Javascript avec les navigateurs.</p>
             <p>Vous pouvez consulter la compatibilité des fonctionnalités sur le site : <a href="https://caniuse.com/" target="_blank">Caniuse</a></p>
           </section>
-          <section class="sg-home-supports" id="home-supports" data-background="" data-background-transition="fade">
+          <section class="sg-home-supports" id="home-supports" compatibility="compatibility" data-background="" data-background-transition="fade">
             <h2>@supports</h2>
             <p>La règle @supports permet de tester si un navigateur supporte une fonctionnalité CSS.</p>
             <p>Elle est très utile pour appliquer des styles en fonction des fonctionnalités supportées par le navigateur.</p>
@@ -275,14 +275,26 @@
 }</textarea></pre>
           </section>
         </section>
-        <section class="sg-custom-properties" id="custom-properties" data-background="" data-background-transition="fade">
-          <section class="sg-custom-properties" id="custom-properties" data-background="" data-background-transition="fade">
+        <section class="sg-custom-properties" id="custom-properties" compatibility="compatibility" data-background="" data-background-transition="fade">
+          <section class="sg-custom-properties" id="custom-properties" compatibility="compatibility" data-background="" data-background-transition="fade">
             <h1>Custom properties (CSS Variables)</h1>
-            <p>Les variables CSS permettent de stocker des valeurs pour les réutiliser dans un fichier CSS.</p>
+            <p>Les <a href="https://developer.mozilla.org/fr/docs/Web/CSS/Using_CSS_custom_properties">variables CSS </a> permettent de stocker des valeurs pour les réutiliser dans un fichier CSS.</p>
             <p>Tout comme les variables en Scss, les variables CSS permettent de simplifier le code et de le rendre plus lisible.</p>
             <p>Elles permettent également de mieux gérer les tokens dans un Design System sans avoir à utiliser de préprocesseur CSS.</p>
+            <button onclick="document.querySelector('#compatibility-custom-properties').showModal()">Compatibilités</button>
+            <dialog class="sg-modal  sg-modal--compatibility-custom-properties" id="compatibility-custom-properties" onclick="this.close()">
+              <div class="dialog-inner" onclick="event.stopPropagation();">
+                <form>
+                  <button class="icon close" autofocus="autofocus" formmethod="dialog">❌</button>
+                  <h2>Compatibilités</h2>
+                  <div class="loading">
+                    <iframe src="https://caniuse.com/css-variables" title="Compatibilités" frameborder="0" allowfullscreen="true" loading="lazy"></iframe>
+                  </div>
+                </form>
+              </div>
+            </dialog>
           </section>
-          <section class="sg-custom-properties-declaration" id="custom-properties-declaration" data-background="" data-background-transition="fade">
+          <section class="sg-custom-properties-declaration" id="custom-properties-declaration" compatibility="compatibility" data-background="" data-background-transition="fade">
             <h2>Déclaration des variables CSS</h2>
             <p>Pour déclarer simplement une variable CSS, il suffit d'utiliser le préfixe -- suivi du nom de la variable.</p>
             <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="2" data-ln-start-from="">:root{
@@ -294,25 +306,288 @@
             <p>Elles peuvent être déclarées globalement dans le :root{} ou localement dans un sélecteur.</p>
             <p>La portée des variables CSS est limitée à l'élément parent.</p>
           </section>
-          <section class="sg-custom-properties-utilisation" id="custom-properties-utilisation" data-background="" data-background-transition="fade">
+          <section class="sg-custom-properties-utilisation" id="custom-properties-utilisation" compatibility="compatibility" data-background="" data-background-transition="fade">
             <h2>Utilisation des variables CSS</h2>
-            <p>Pour utiliser une variable CSS, il suffit de l'appeler avec la fonction var() en lui passant le nom de la variable en paramètre.</p>
-            <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="6" data-ln-start-from="">:root {
+            <div class="r-stack">
+              <div class="fragment fade-in-then-out">
+                <p>Pour utiliser une variable CSS, il suffit de l'appeler avec la fonction var() en lui passant le nom de la variable en paramètre.</p>
+                <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="6" data-ln-start-from="">:root {
   --main-bg-color: hsla(0, 100%, 50%, 0.5);
 }
 
 .box {
   background-color: var(--main-bg-color);
 }</code>
-              <textarea class="sg-code-input">:root {
+                  <textarea class="sg-code-input">:root {
   --main-bg-color: hsla(0, 100%, 50%, 0.5);
 }
 
 .box {
   background-color: var(--main-bg-color);
 }</textarea></pre>
+              </div>
+              <div class="fragment fade-in-then-out">
+                <p>Les variables CSS peuvent être utilisées à peu près partout.</p>
+                <ul>
+                  <li>La plupart des valeurs de propriétés CSS</li>
+                  <li>Les fonctions CSS (calc(), min(), max(), clamp(), etc.)</li>
+                  <li>les media queries (abordé dans le slide sur les @media)</li>
+                  <li>les animations et transitions</li>
+                </ul>
+              </div>
+            </div>
           </section>
-          <section class="sg-custom-properties-heritage" id="custom-properties-heritage" data-background="" data-background-transition="fade">
+          <section class="sg-custom-properties-default" id="custom-properties-default" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Valeurs par défaut et suites</h2>
+            <p>Lorsqu'une variable CSS n'est pas définie, elle prend la valeur par défaut.</p>
+            <p>Il est aussi possible de définir une suite de valeurs pour une variable CSS.</p>
+            <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="2-3,7-8" data-ln-start-from="">:root {
+  --main-bg-color: red;
+  --main-color: blue;
+}
+
+.box { 
+  background-color: var(--main-bg-color, blue);
+  color: var(--main-color, var(--main-bg-color, blue));
+}</code>
+              <textarea class="sg-code-input">:root {
+  --main-bg-color: red;
+  --main-color: blue;
+}
+
+.box { 
+  background-color: var(--main-bg-color, blue);
+  color: var(--main-color, var(--main-bg-color, blue));
+}</textarea></pre>
+          </section>
+          <section class="sg-custom-properties-type" id="custom-properties-type" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Les types de variables CSS</h2>
+            <p>On peut stocker différents types de données (nombres, couleurs, chaînes de caractères, url,  valeurs calculées, etc.)</p>
+            <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">:root {
+  --all-padding: 10px 20px 30px 40px;
+  --boolean: false;
+  --math: sqrt(pow(var(--all-padding), 2) + pow(var(--all-padding), 2));
+  --string: &quot;Hello, World!&quot;;
+  --url: url(&quot;https://www.example.com&quot;);
+  --color: #ff0000;
+  --length: 100px;
+  --number: 42;
+  --percentage: 50%;
+  --angle: 45deg;
+  --time: 2s;
+  --resolution: 96dpi;
+  --frequency: 1Hz;
+  --font: Arial, sans-serif;
+  --gradient: linear-gradient(45deg, black, #222);
+  --image: url(&quot;image.jpg&quot;);
+  --position: center;
+  --shape: circle;
+  --transform: rotate(45deg);
+}</code>
+              <textarea class="sg-code-input">:root {
+  --all-padding: 10px 20px 30px 40px;
+  --boolean: false;
+  --math: sqrt(pow(var(--all-padding), 2) + pow(var(--all-padding), 2));
+  --string: &quot;Hello, World!&quot;;
+  --url: url(&quot;https://www.example.com&quot;);
+  --color: #ff0000;
+  --length: 100px;
+  --number: 42;
+  --percentage: 50%;
+  --angle: 45deg;
+  --time: 2s;
+  --resolution: 96dpi;
+  --frequency: 1Hz;
+  --font: Arial, sans-serif;
+  --gradient: linear-gradient(45deg, black, #222);
+  --image: url(&quot;image.jpg&quot;);
+  --position: center;
+  --shape: circle;
+  --transform: rotate(45deg);
+}</textarea></pre>
+            <p>mais... le type est "unknown"</p>
+          </section>
+          <section class="sg-custom-properties-error-type" id="custom-properties-error-type" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Erreur de type</h2>
+            <p>Les variables CSS sont <strong>faiblement typées</strong>, imaginons un système de thème basé sur une seule couleur principale.</p>
+            <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">:root {
+  --brand: blue;
+  --brand-hightlight: color-mix(var(--brand) white 50%);
+  --brand-shadow: color-mix(var(--brand) black 50%);
+  --brand-gradient: linear-gradient(45deg, var(--brand-hightlight), var(--brand-shadow));
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand: lightblou; /* typo 😱 */
+  }
+}</code>
+              <textarea class="sg-code-input">:root {
+  --brand: blue;
+  --brand-hightlight: color-mix(var(--brand) white 50%);
+  --brand-shadow: color-mix(var(--brand) black 50%);
+  --brand-gradient: linear-gradient(45deg, var(--brand-hightlight), var(--brand-shadow));
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand: lightblou; /* typo 😱 */
+  }
+}</textarea></pre>
+            <p>si une erreur de type survient, la variable est ignorée, et c'est la valeur initiale ou héritée de la propriété qui est utilisée.</p>
+          </section>
+          <section class="sg-custom-properties-atproperty" id="custom-properties-atproperty" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>@property</h2>
+            <div class="r-stack">
+              <div class="fragment fade-in-then-out">  
+                <p>La règle <a href="https://developer.mozilla.org/fr/docs/Web/CSS/@property">@property  </a> permet de déclarer une variable CSS avec un type de données, ce qui permet de gérer les erreurs de type.</p>
+                <p>On peut également fournir une valeur par défaut et gérer l'héritage.</p>
+              </div>
+              <div class="fragment fade-in-then-out">
+                <pre class="code-wrapper--notes" data-id="code-animation">
+                  <div class="sg-notes">
+                    <div class="sg-note" style="top: -13.5px"><span class="sg-note__content">On déclare une custom property avec @property et son nom (--*)</span></div>
+                  </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="1" data-ln-start-from="">@property --brand {
+  syntax: '&lt;color&gt;';
+  inherits: false;
+  initial-value: blue;
+}</code>
+                  <textarea class="sg-code-input">@property --brand {
+  syntax: '&lt;color&gt;';
+  inherits: false;
+  initial-value: blue;
+}</textarea></pre>
+              </div>
+              <div class="fragment fade-in-then-out">
+                <pre class="code-wrapper--notes" data-id="code-animation">
+                  <div class="sg-notes">
+                    <div class="sg-note" style="top: 10px"><span class="sg-note__content">On définit le type de valeur attendue avec la propriété syntax</span></div>
+                  </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="2" data-ln-start-from="">@property --brand {
+  syntax: '&lt;color&gt;';
+  inherits: false;
+  initial-value: blue;
+}</code>
+                  <textarea class="sg-code-input">@property --brand {
+  syntax: '&lt;color&gt;';
+  inherits: false;
+  initial-value: blue;
+}</textarea></pre>
+              </div>
+              <div class="fragment fade-in-then-out">
+                <pre class="code-wrapper--notes" data-id="code-animation">
+                  <div class="sg-notes">
+                    <div class="sg-note" style="top: 33.5px"><span class="sg-note__content">On définit si la custom property hérite de la valeur de son parent avec la propriété inherits</span></div>
+                  </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="3" data-ln-start-from="">@property --brand {
+  syntax: '&lt;color&gt;';
+  inherits: false;
+  initial-value: blue;
+}</code>
+                  <textarea class="sg-code-input">@property --brand {
+  syntax: '&lt;color&gt;';
+  inherits: false;
+  initial-value: blue;
+}</textarea></pre>
+              </div>
+              <div class="fragment fade-in-then-out">
+                <pre class="code-wrapper--notes" data-id="code-animation">
+                  <div class="sg-notes">
+                    <div class="sg-note" style="top: 57px"><span class="sg-note__content">On définit la valeur initiale de la custom property avec la propriété initial-value</span></div>
+                  </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="4" data-ln-start-from="">@property --brand {
+  syntax: '&lt;color&gt;';
+  inherits: false;
+  initial-value: blue;
+}</code>
+                  <textarea class="sg-code-input">@property --brand {
+  syntax: '&lt;color&gt;';
+  inherits: false;
+  initial-value: blue;
+}</textarea></pre>
+              </div>
+              <div class="fragment fade-in-then-out">
+                <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">@property --brand {
+  syntax: '&lt;color&gt;';
+  inherits: false;
+  initial-value: blue;
+}
+:root {
+  --brand-hightlight: color-mix(var(--brand) white 50%);
+  --brand-shadow: color-mix(var(--brand) black 50%);
+  --brand-gradient: linear-gradient(45deg, var(--brand-hightlight), var(--brand-shadow));
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand: lightblou; /* typo 😱 */
+  }
+}</code>
+                  <textarea class="sg-code-input">@property --brand {
+  syntax: '&lt;color&gt;';
+  inherits: false;
+  initial-value: blue;
+}
+:root {
+  --brand-hightlight: color-mix(var(--brand) white 50%);
+  --brand-shadow: color-mix(var(--brand) black 50%);
+  --brand-gradient: linear-gradient(45deg, var(--brand-hightlight), var(--brand-shadow));
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand: lightblou; /* typo 😱 */
+  }
+}</textarea></pre>
+                <p>si une erreur de type survient, la variable est ignorée, et c'est la valeur initiale de la variable qui est utilisée.</p>
+              </div>
+              <div class="fragment fade-in-then-out">
+                <p>Voici une démo qui illustre l'erreur de type avec et sans la règle @property pour déclarer une variable CSS.</p>
+                <iframe style="width: 100%;color: white; font-weight: bold;min-height: 30svh; max-height: 40svh;aspect-ratio:2;resize: both;overflow: scroll;z-index: 10;padding: 1rem;" scrolling="no" title="CSS variables error type" src="https://codepen.io/gsam59/embed/VwgGWYW?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+              </div>
+              <div class="fragment fade-in-then-out">
+                <h3>CSS Types</h3>
+                <div class="flex mw-30 flex-wrap flex-center">
+                  <div class="sg-alert  sg-alert--success" role="alert"><span class="sg-alert__content">&lt;length&gt;</span>
+                  </div>
+                  <div class="sg-alert  sg-alert--success" role="alert"><span class="sg-alert__content">&lt;percentage&gt;</span>
+                  </div>
+                  <div class="sg-alert  sg-alert--success" role="alert"><span class="sg-alert__content">&lt;length-percentage&gt;</span>
+                  </div>
+                  <div class="sg-alert  sg-alert--success" role="alert"><span class="sg-alert__content">&lt;color&gt;</span>
+                  </div>
+                  <div class="sg-alert  sg-alert--success" role="alert"><span class="sg-alert__content">&lt;image&gt;</span>
+                  </div>
+                  <div class="sg-alert  sg-alert--success" role="alert"><span class="sg-alert__content">&lt;url&gt;</span>
+                  </div>
+                  <div class="sg-alert  sg-alert--success" role="alert"><span class="sg-alert__content">&lt;integer&gt;</span>
+                  </div>
+                  <div class="sg-alert  sg-alert--success" role="alert"><span class="sg-alert__content">&lt;number&gt;</span>
+                  </div>
+                  <div class="sg-alert  sg-alert--success" role="alert"><span class="sg-alert__content">&lt;angle&gt;</span>
+                  </div>
+                  <div class="sg-alert  sg-alert--success" role="alert"><span class="sg-alert__content">&lt;time&gt;</span>
+                  </div>
+                  <div class="sg-alert  sg-alert--success" role="alert"><span class="sg-alert__content">&lt;resolution&gt;</span>
+                  </div>
+                  <div class="sg-alert  sg-alert--success" role="alert"><span class="sg-alert__content">&lt;transform-list&gt;</span>
+                  </div>
+                  <div class="sg-alert  sg-alert--success" role="alert"><span class="sg-alert__content">&lt;transform-function&gt;</span>
+                  </div>
+                </div><a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Types">Liste des types CSS</a>
+              </div>
+            </div>
+            <button onclick="document.querySelector('#compatibility-custom-properties-atproperty').showModal()">Compatibilités</button>
+            <dialog class="sg-modal  sg-modal--compatibility-custom-properties-atproperty" id="compatibility-custom-properties-atproperty" onclick="this.close()">
+              <div class="dialog-inner" onclick="event.stopPropagation();">
+                <form>
+                  <button class="icon close" autofocus="autofocus" formmethod="dialog">❌</button>
+                  <h2>Compatibilités</h2>
+                  <div class="loading">
+                    <iframe src="https://caniuse.com/mdn-css_at-rules_property" title="Compatibilités" frameborder="0" allowfullscreen="true" loading="lazy"></iframe>
+                  </div>
+                </form>
+              </div>
+            </dialog>
+          </section>
+          <section class="sg-custom-properties-heritage" id="custom-properties-heritage" compatibility="compatibility" data-background="" data-background-transition="fade"> 
             <h2>Héritage des variables CSS</h2>
             <div class="r-stack">
               <div class="fragment fade-in-then-out">                       
@@ -342,8 +617,8 @@
               </div>
             </div>
           </section>
-          <section class="sg-custom-properties-duplication" id="custom-properties-duplication" data-background="" data-background-transition="fade">
-            <h2>Duplication des propriétés                  </h2>
+          <section class="sg-custom-properties-duplication" id="custom-properties-duplication" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Gérer les déclinaisons                  </h2>
             <p>Une des forces des variables CSS est de pouvoir déclarer des variables CSS sur un élément de base en les appliquant à ses propriétés CSS ou à ses enfants.</p>
             <p>Et de pouvoir créer des déclinaisons sans devoir tout redéclarer.</p>
             <div class="sg-cards-flex">                                                     
@@ -405,30 +680,82 @@
   }</textarea></pre>
             </div>
           </section>
-          <section class="sg-custom-properties-duplication-demo" id="custom-properties-duplication-demo" data-background="" data-background-transition="fade">
-            <iframe style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="has with combinator ~" src="https://codepen.io/gsam59/embed/MWRzyay?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+          <section class="sg-custom-properties-duplication-demo" id="custom-properties-duplication-demo" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Démo : Gérer les déclinaisons                  </h2>
+            <iframe style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="duplication-variable" src="https://codepen.io/gsam59/embed/MWRzyay?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
           </section>
-          <section class="sg-custom-properties-@property" id="custom-properties-@property" data-background="" data-background-transition="fade">
-            <h2>@property</h2>
-            <p>La règle @property permet de déclarer une variable CSS avec un type de données.</p>
-            <p>Elle est très utile pour définir des variables CSS avec des types de données spécifiques.</p>
-            <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">:root{
-  --main-bg-color: pink;
-}</code>
-              <textarea class="sg-code-input">:root{
-  --main-bg-color: pink;
-}</textarea></pre><a>(href='https://epic-web-2024-at-property.netlify.app/08-outro/?s=09') Argyle prez</a>
+          <section class="sg-custom-properties-loop-sass" id="custom-properties-loop-sass" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Alternative aux boucles Sass</h2>
+            <p>Les variables CSS permettent de créer des boucles CSS sans avoir à utiliser de préprocesseur CSS.      </p>
+            <iframe style="width: 100vw;color: white; font-weight: bold;min-height: 45svh;" scrolling="no" title="loop sass" src="https://codepen.io/gsam59/embed/ZEZwrGg?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+          </section>
+          <section class="sg-custom-properties-loop-sass-demo" id="custom-properties-loop-sass-demo" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Version avec les CSS Variables</h2>
+            <iframe style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css variables loop" src="https://codepen.io/gsam59/embed/eYoxEdP?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+          </section>
+          <section class="sg-custom-properties-javascript" id="custom-properties-javascript" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Avec Javascript                  </h2>
+            <p>Les variables CSS peuvent être modifiées en JavaScript.</p>
+            <p>Cela permet de personnaliser le style d'un élément en fonction d'une action utilisateur ou d'effectuer des animations.</p>
+            <div class="flex flex-center mw-80">                                       
+              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">window.CSS.registerProperty({
+  name: '--primary-secondary',
+  syntax: '&lt;color&gt;',
+  initialValue: 'blue',
+  inherits: false,  
+});</code>
+                <textarea class="sg-code-input">window.CSS.registerProperty({
+  name: '--primary-secondary',
+  syntax: '&lt;color&gt;',
+  initialValue: 'blue',
+  inherits: false,  
+});</textarea></pre>
+              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="2, 5, 8" data-ln-start-from="">// obtenir une variable à partir d'un style en ligne (dans un élément html)
+element.style.getPropertyValue(&quot;--ma-variable&quot;);
+
+// obtenir une variable par ailleurs
+getComputedStyle(element).getPropertyValue(&quot;--ma-variable&quot;);
+
+// définir une variable dans un style en ligne
+element.style.setProperty(&quot;--ma-variable&quot;, varJS + 4);</code>
+                <textarea class="sg-code-input">// obtenir une variable à partir d'un style en ligne (dans un élément html)
+element.style.getPropertyValue(&quot;--ma-variable&quot;);
+
+// obtenir une variable par ailleurs
+getComputedStyle(element).getPropertyValue(&quot;--ma-variable&quot;);
+
+// définir une variable dans un style en ligne
+element.style.setProperty(&quot;--ma-variable&quot;, varJS + 4);</textarea></pre>
+            </div>
+          </section>
+          <section class="sg-custom-properties-javascript-demo" id="custom-properties-javascript-demo" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Démo : Avec Javascript</h2>
+            <iframe style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css variables loop" src="https://codepen.io/gsam59/embed/JjpRxLN?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+          </section>
+          <section class="sg-custom-properties-reading" id="custom-properties-reading" compatibility="compatibility" data-background="" data-background-transition="fade"><a href="https://www.lambdatest.com/blog/guide-to-css-variables-with-examples/">Guide to CSS Variables with Examples</a>
           </section>
         </section>
-        <section class="sg-pseudo-element-has" id="pseudo-element-has" data-background="" data-background-transition="fade">
-          <section class="sg-pseudo-element-has" id="pseudo-element-has" data-background="" data-background-transition="fade">
-            <h1>Pseudo-element :has()</h1>
-            <p>Le pseudo-élément :has() est une fonction CSS qui permet de sélectionner un élément qui contient un autre élément qui correspond à un sélecteur donné.</p>
+        <section class="sg-pseudo-class-has" id="pseudo-class-has" compatibility="compatibility" data-background="" data-background-transition="fade">
+          <section class="sg-pseudo-class-has" id="pseudo-class-has" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h1>Pseudo-class :has()</h1>
+            <p>Le pseudo-class :has() est une fonction CSS qui permet de sélectionner un élément qui contient un autre élément qui correspond à un sélecteur donné.</p>
             <pre>                 <code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">selecteur:has(selecteur)</code>
               <textarea class="sg-code-input">selecteur:has(selecteur)</textarea></pre>
+            <button onclick="document.querySelector('#compatibility-pseudo-class-has').showModal()">Compatibilités</button>
+            <dialog class="sg-modal  sg-modal--compatibility-pseudo-class-has" id="compatibility-pseudo-class-has" onclick="this.close()">
+              <div class="dialog-inner" onclick="event.stopPropagation();">
+                <form>
+                  <button class="icon close" autofocus="autofocus" formmethod="dialog">❌</button>
+                  <h2>Compatibilités</h2>
+                  <div class="loading">
+                    <iframe src="https://caniuse.com/css-has" title="Compatibilités" frameborder="0" allowfullscreen="true" loading="lazy"></iframe>
+                  </div>
+                </form>
+              </div>
+            </dialog>
           </section>
-          <section class="sg-cas-basique" id="cas-basique" data-background="" data-background-transition="fade">
-            <h1>Cas basique</h1>
+          <section class="sg-cas-basique" id="cas-basique" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Cas basique</h2>
             <p>On va donc pouvoir sélectionner un élément parent en fonction de la présence d'un élément enfant.</p>
             <pre>                 <code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="4" data-ln-start-from="">.card {
   /* style de base */
@@ -443,9 +770,86 @@
   /* style de surcharge */
 }</textarea></pre>
           </section>
-          <section class="sg-cas-layout" id="cas-layout" data-background="" data-background-transition="fade">
-            <h1>Custom layout</h1>
-            <p>Si on peut déjà faire des choses intéressantes avec le cas basique, on peut aller plus loin en utilisant le pseudo-élément :has() pour créer des layouts personnalisés.</p>
+          <section class="sg-cas-basique-demo" id="cas-basique-demo" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Démo : Cas basique</h2>
+            <iframe style="width: 100%;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title=":has() cas basique" src="https://codepen.io/gsam59/embed/RwOdyqR?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+          </section>
+          <section class="sg-cas-pseudo-class" id="cas-pseudo-class" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Cas pseudo-class</h2>
+            <p>Les pseudo-classes CSS permettent de sélectionner des éléments en fonction de leur état. On va pouvoir observer depuis un élément parent les changements d'état d'un élément enfant.</p>
+            <pre>                 <code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="1,3" data-ln-start-from="">div:has(&gt; ul:empty) {
+}
+:has(&gt; :checked){  
+}</code>
+              <textarea class="sg-code-input">div:has(&gt; ul:empty) {
+}
+:has(&gt; :checked){  
+}</textarea></pre>
+          </section>
+          <section class="sg-cas-pseudo-class-demo" id="cas-pseudo-class-demo" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Démo : Cas pseudo-class</h2>
+            <iframe style="width: 100%;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title=":has() cas basique" src="https://codepen.io/gsam59/embed/GRLeGoE?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+          </section>
+          <section class="sg-ET-logique" id="ET-logique" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>ET logique</h2>
+            <p>Il est possible de chainer l'utilisation de la pseudo-class :has() afin d'avoir un ciblage plus précis.</p><span class="file">Ici, on cible une carte qui possède une image ET un titre.</span>
+            <pre>                 <code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.card:has(img):has(h2) {
+  /* style */
+}</code>
+              <textarea class="sg-code-input">.card:has(img):has(h2) {
+  /* style */
+}</textarea></pre>
+          </section>
+          <section class="sg-ET-OU-logique" id="ET-OU-logique" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>ET/OU logique</h2>
+            <p>Si on souhaite un ciblage plus souple, on peut fournir une liste de sélecteurs à la fonction :has().</p><span class="file">Ici, on cible une carte qui possède soit une image, soit un titre. ou les deux.</span>
+            <pre>                 <code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.card:has(img, h2) {
+  /* style */
+}</code>
+              <textarea class="sg-code-input">.card:has(img, h2) {
+  /* style */
+}</textarea></pre>
+          </section>
+          <section class="sg-selection-globale" id="selection-globale" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Sélection globale</h2>
+            <p>Pour finir dans les cas classiques du :has(), on peut utiliser la fonction pour sélectionner un élément parent en fonction de la présence d'un élément lointain enfant.</p><span class="file">Dans l'exemple ci-dessous, on cherche à cibler le footer si quelque part dans le DOM ma checkbox est cochée.</span>
+            <pre>                 <code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">body:has(input.myCheckBoxTheme:checked) footer {
+  /* style */
+}</code>
+              <textarea class="sg-code-input">body:has(input.myCheckBoxTheme:checked) footer {
+  /* style */
+}</textarea></pre>
+          </section>
+          <section class="sg-selection-globale-demo" id="selection-globale-demo" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Démo : Sélection globale</h2>
+            <iframe style="width: 100%;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="has with combinator ~" src="https://codepen.io/gsam59/embed/RwOeWNr?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+          </section>
+          <section class="sg-elements-adjacents-direct" id="elements-adjacents-direct" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Eléments adjacents direct</h2><span class="file">Avec les combinateurs "+", on peut cibler un élément en fonction de la présence d'un élément précédent.		</span>
+            <div class="sg-cards-flex"> 
+              <article class="sg-card  sg-card--code fade-up">                            
+                <h3 class="sg-card__title">  Combinateur &quot;+&quot;</h3><span class="file">on cible les paragraphes immédiatement précédés d'un h2.</span>
+                <pre>                    <code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">h2 + p {  
+}</code>
+                  <textarea class="sg-code-input">h2 + p {  
+}</textarea></pre>
+              </article>
+              <article class="sg-card  sg-card--code fade-up">                            
+                <h3 class="sg-card__title">  has() et combinateur &quot;+&quot;</h3><span class="file">on cible les h2 immédiatement suivis d'un paragraphe.</span>
+                <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">h2:has(+ p) {
+}</code>
+                  <textarea class="sg-code-input">h2:has(+ p) {
+}</textarea></pre>
+              </article>
+            </div>
+          </section>
+          <section class="sg-elements-adjacents-direct-demo" id="elements-adjacents-direct-demo" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Démo : Eléments adjacents direct</h2>
+            <iframe style="width: 100%;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="has with combinator +" src="https://codepen.io/gsam59/embed/ZEZMdzj?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+          </section>
+          <section class="sg-cas-layout" id="cas-layout" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Custom layout</h2>
+            <p>Si on peut déjà faire des choses intéressantes avec le cas basique, on peut aller plus loin en utilisant la pseudo-class :has() pour créer des layouts personnalisés.</p>
             <pre>                 <code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.card:has(h2 + img + p + p) {
   grid-template-areas: 
     &quot;img img&quot;
@@ -471,69 +875,12 @@
     &quot;p1 p2&quot;
 }</textarea></pre>
           </section>
-          <section class="sg-ET-logique" id="ET-logique" data-background="" data-background-transition="fade">
-            <h1>ET logique</h1>
-            <p>Il est possible de chainer l'utilisation du pseudo-élément :has() afin d'avoir un ciblage plus précis.</p><span class="file">Ici, on cible une carte qui possède une image ET un titre.</span>
-            <pre>                 <code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.card:has(img):has(h2) {
-  /* style */
-}</code>
-              <textarea class="sg-code-input">.card:has(img):has(h2) {
-  /* style */
-}</textarea></pre>
+          <section class="sg-cas-layout-demo" id="cas-layout-demo" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Démo : Custom layout</h2>
+            <iframe style="width: 100%;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="has custom layout" src="https://codepen.io/gsam59/embed/KKYEGJj?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
           </section>
-          <section class="sg-ET-OU-logique" id="ET-OU-logique" data-background="" data-background-transition="fade">
-            <h1>ET/OU logique</h1>
-            <p>Si on souhaite un ciblage plus souple, on peut fournir une liste de sélecteurs à la fonction :has().</p><span class="file">Ici, on cible une carte qui possède soit une image, soit un titre. ou les deux.</span>
-            <pre>                 <code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.card:has(img, h2) {
-  /* style */
-}</code>
-              <textarea class="sg-code-input">.card:has(img, h2) {
-  /* style */
-}</textarea></pre>
-          </section>
-          <section class="sg-ET-OU-logique-demo" id="ET-OU-logique-demo" data-background="" data-background-transition="fade">
-            <h1>Démo : ET/OU logique</h1>
-            <iframe style="width: 100%;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="has with combinator ~" src="https://codepen.io/gsam59/embed/RwOeWNr?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
-          </section>
-          <section class="sg-selection-globale" id="selection-globale" data-background="" data-background-transition="fade">
-            <h1>Sélection globale</h1>
-            <p>Pour finir dans les cas classiques du :has(), on peut utiliser la fonction pour sélectionner un élément parent en fonction de la présence d'un élément lointain enfant.</p><span class="file">Dans l'exemple ci-dessous, on cherche à cibler le footer si quelque part dans le DOM ma checkbox est cochée.</span>
-            <pre>                 <code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">body:has(input.myCheckBoxTheme:checked) footer {
-  /* style */
-}</code>
-              <textarea class="sg-code-input">body:has(input.myCheckBoxTheme:checked) footer {
-  /* style */
-}</textarea></pre>
-          </section>
-          <section class="sg-selection-globale-demo" id="selection-globale-demo" data-background="" data-background-transition="fade">
-            <h1>Démo : Sélection globale</h1>
-            <iframe style="width: 100%;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="has with combinator ~" src="https://codepen.io/gsam59/embed/RwOeWNr?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
-          </section>
-          <section class="sg-elements-adjacents-direct" id="elements-adjacents-direct" data-background="" data-background-transition="fade">
-            <h1>Eléments adjacents direct</h1><span class="file">Avec les combinateurs "+", on peut cibler un élément en fonction de la présence d'un élément précédent.		</span>
-            <div class="sg-cards-flex"> 
-              <article class="sg-card  sg-card--code fade-up">                            
-                <h3 class="sg-card__title">  Combinateur &quot;+&quot;</h3><span class="file">on cible les paragraphes immédiatement précédés d'un h2.</span>
-                <pre>                    <code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">h2 + p {  
-}</code>
-                  <textarea class="sg-code-input">h2 + p {  
-}</textarea></pre>
-              </article>
-              <article class="sg-card  sg-card--code fade-up">                            
-                <h3 class="sg-card__title">  has() et combinateur &quot;+&quot;</h3><span class="file">on cible les h2 immédiatement suivis d'un paragraphe.</span>
-                <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">h2:has(+ p) {
-}</code>
-                  <textarea class="sg-code-input">h2:has(+ p) {
-}</textarea></pre>
-              </article>
-            </div>
-          </section>
-          <section class="sg-elements-adjacents-direct-demo" id="elements-adjacents-direct-demo" data-background="" data-background-transition="fade">
-            <h1>Démo : Eléments adjacents direct</h1>
-            <iframe style="width: 100%;color: white; font-weight: bold;min-height: 80svh;" scrolling="no" title="has with combinator +" src="https://codepen.io/gsam59/embed/ZEZMdzj?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
-          </section>
-          <section class="sg-elements-adjacents-indirect" id="elements-adjacents-indirect" data-background="" data-background-transition="fade">
-            <h1>Eléments adjacents indirect</h1><span class="file">Avec les combinateurs "~", on peut cibler un élément en fonction de la présence d'un élément précédent direct ou indirect.</span>
+          <section class="sg-elements-adjacents-indirect" id="elements-adjacents-indirect" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Eléments adjacents indirect</h2><span class="file">Avec les combinateurs "~", on peut cibler un élément en fonction de la présence d'un élément précédent direct ou indirect.</span>
             <div class="sg-cards-flex"> 
               <article class="sg-card  sg-card--code fade-up">                            
                 <h3 class="sg-card__title">  Combinateur &quot;~&quot;</h3><span class="file">on cible les paragraphes précédés d'un h2 direct ou indirect</span>
@@ -551,35 +898,40 @@
               </article>
             </div>
           </section>
-          <section class="sg-elements-adjacents-indirect-demo" id="elements-adjacents-indirect-demo" data-background="" data-background-transition="fade">
-            <h1>Démo : Eléments adjacents indirect</h1>
+          <section class="sg-elements-adjacents-indirect-demo" id="elements-adjacents-indirect-demo" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Démo : Eléments adjacents indirect</h2>
             <iframe style="width: 100%;color: white; font-weight: bold;min-height: 60svh;" scrolling="no" title="has with combinator ~" src="https://codepen.io/gsam59/embed/wvZaOQN?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
           </section>
-          <section class="sg-cibler-un-scope" id="cibler-un-scope" data-background="" data-background-transition="fade">
-            <h1>Cibler un intervalle</h1>
-            <p>On peut également cibler un intervalle d'éléments adjacents</p><span class="file">Dans l'exemple ci-dessous, on cherche à cibler le footer si quelque part dans le DOM ma checkbox est cochée.</span>
+          <section class="sg-cibler-un-scope" id="cibler-un-scope" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Cibler un intervalle</h2>
+            <p>On peut également cibler un intervalle d'éléments adjacents</p>
             <pre>                 <code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.from ~ :has(~ .to) {
 }</code>
               <textarea class="sg-code-input">.from ~ :has(~ .to) {
 }</textarea></pre>
           </section>
-          <section class="sg-cibler-un-scope-demo" id="cibler-un-scope-demo" data-background="" data-background-transition="fade">
-            <h1>Démo : Cibler un intervalle</h1>
+          <section class="sg-cibler-un-scope-demo" id="cibler-un-scope-demo" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Démo : Cibler un intervalle</h2>
             <iframe style="width: 100%;color: white; font-weight: bold;min-height: 60svh;" scrolling="no" title="has and ~ : from to " src="https://codepen.io/gsam59/embed/bGJxyoe?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
           </section>
-          <section class="sg-ciblage-par-quantite" id="ciblage-par-quantite" data-background="" data-background-transition="fade">
-            <h1>Ciblage par quantité</h1>
-            <p>On peut appliquer un style en fonction de la quantité d'éléments ciblés.</p><a href="https://developer.mozilla.org/fr/docs/Web/CSS/:has">Voir la documentation</a><span class="file">Dans l'exemple ci-dessous, on cible les listes qui possèdent au moins 5 éléments.</span>
+          <section class="sg-cas-layout-onlydemo" id="cas-layout-onlydemo" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Démo : Custom layout only</h2>
+            <iframe style="width: 100%;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="has custom layout" src="https://codepen.io/gsam59/embed/xxeBwzz?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+          </section>
+          <section class="sg-ciblage-par-quantite" id="ciblage-par-quantite" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Ciblage par quantité</h2>
+            <p>On peut appliquer un style en fonction de la quantité d'éléments ciblés.</p><span class="file">Dans l'exemple ci-dessous, on cible les listes qui possèdent au moins 5 éléments.</span>
             <pre>                 <code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">ul:has(&gt; *:nth-child(5n)) {
 }</code>
               <textarea class="sg-code-input">ul:has(&gt; *:nth-child(5n)) {
 }</textarea></pre>
           </section>
-          <section class="sg-ciblage-par-quantite-demo" id="ciblage-par-quantite-demo" data-background="" data-background-transition="fade">
+          <section class="sg-ciblage-par-quantite-demo" id="ciblage-par-quantite-demo" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Démo : Ciblage par quantité</h2>
             <iframe style="width: 100%;color: white; font-weight: bold;min-height: 60svh;" scrolling="no" title="has with combinator ~" src="https://codepen.io/gsam59/embed/PogpPVr?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
           </section>
-          <section class="sg-ciblage-par-attribut" id="ciblage-par-attribut" data-background="" data-background-transition="fade">
-            <h1>Ciblage par attribut</h1>
+          <section class="sg-ciblage-par-attribut" id="ciblage-par-attribut" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Ciblage par attribut</h2>
             <p>On peut appliquer un style en fonction de la valeur d'un attribut.</p><span class="file">On peut tirer partie de la puissance du sélecteur d'attribut et ses "expressions régulières".</span>
             <pre>                 <code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">&amp;:has(a[href$=&quot;.wave&quot;]) {
   --theme-color: purple;
@@ -632,17 +984,29 @@
   --theme-file: &quot; XLSX&quot;;
 }</textarea></pre>
           </section>
-          <section class="sg-ciblage-par-attribut-demo" id="ciblage-par-attribut-demo" data-background="" data-background-transition="fade">
+          <section class="sg-ciblage-par-attribut-demo" id="ciblage-par-attribut-demo" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Démo : Ciblage par attribut</h2>
             <iframe style="width: 100%;color: white; font-weight: bold;min-height: 60svh;" scrolling="no" title="has with combinator ~" src="https://codepen.io/gsam59/embed/MWRpBgN?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
           </section>
+          <section class="sg-sources" id="sources" compatibility="compatibility" data-background="" data-background-transition="fade"><a href="https://webkit.org/blog/13096/css-has-pseudo-class/">Webkit blog</a>
+          </section>
         </section>
-        <section class="sg-exo1" id="exo1" data-background="" data-background-transition="fade">
-          <section class="sg-exo1-intro" id="exo1-intro" data-background="" data-background-transition="fade">
+        <section class="sg-nesting-css" id="nesting-css" compatibility="compatibility" data-background="" data-background-transition="fade">
+          <section class="sg-nesting-css" id="nesting-css" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h1>Nesting CSS</h1>
+            <p>La spécificité des sélecteurs CSS permet de définir des styles en fonction de l'arborescence du DOM.</p>
+            <p>Cependant, cette spécificité peut rendre le code difficile à maintenir.</p>
+            <p>Le nesting CSS permet de définir des styles en fonction de l'arborescence du DOM sans augmenter la spécificité des sélecteurs.</p>
+            <p>Cela permet de rendre le code plus lisible et plus facile à maintenir.</p><a href="https://developer.mozilla.org/fr/docs/Web/CSS/Descendant_combinateur">mdn</a><a href="https://lightningcss.dev/playground/index.html#%7B%22minify%22%3Afalse%2C%22customMedia%22%3Atrue%2C%22cssModules%22%3Afalse%2C%22analyzeDependencies%22%3Afalse%2C%22targets%22%3A%7B%22chrome%22%3A6225920%2C%22firefox%22%3A8192000%2C%22edge%22%3A8126464%7D%2C%22include%22%3A0%2C%22exclude%22%3A0%2C%22source%22%3A%22%40custom-media%20--modern%20(color)%2C%20(hover)%3B%5Cn%5Cn.foo%20%7B%5Cn%20%20background%3A%20yellow%3B%5Cn%5Cn%20%20-webkit-border-radius%3A%202px%3B%5Cn%20%20-moz-border-radius%3A%202px%3B%5Cn%20%20border-radius%3A%202px%3B%5Cn%5Cn%20%20-webkit-transition%3A%20background%20200ms%3B%5Cn%20%20-moz-transition%3A%20background%20200ms%3B%5Cn%20%20transition%3A%20background%20200ms%3B%5Cn%5Cn%20%20.be%20%7B%5Cn%20%20%20%20text-align%3A%20center%3B%5Cn%20%20%7D%5Cn%5Cn%20%20%2F*%20%E2%9D%8C%20DONT%20DO%20THIS%20%E2%9D%8C%20*%2F%5Cn%20%20%5Cn%20%20%26__small%20%7B%5Cn%20%20%20%20font-size%3A%200.5rem%3B%5Cn%20%20%7D%5Cn%20%20%5Cn%20%20%2F*%20%E2%9D%8C%20DONT%20DO%20THIS%20%E2%9D%8C%20*%2F%5Cn%5Cn%5Cn%20%20%5Cn%20%20%3E%20p%20%7B%5Cn%20%20%20%20color%3A%20hotpink%3B%5Cn%20%20%7D%5Cn%5Cn%20%20%26%3Ahover%20%7B%5Cn%20%20%20%20background%3A%20orange%3B%5Cn%20%20%7D%5Cn%5Cn%20%20%26.bar%20%7B%5Cn%20%20%20%20color%3A%20green%3B%5Cn%20%20%7D%5Cn%7D%5Cn%5Cn%40media%20(--modern)%20and%20(width%20%3E%201024px)%20%7B%5Cn%20%20.a%20%7B%5Cn%20%20%20%20color%3A%20green%3B%5Cn%20%20%7D%5Cn%7D%22%2C%22visitorEnabled%22%3Afalse%2C%22visitor%22%3A%22%7B%5Cn%20%20Color(color)%20%7B%5Cn%20%20%20%20if%20(color.type%20%3D%3D%3D%20'rgb')%20%7B%5Cn%20%20%20%20%20%20color.g%20%3D%200%3B%5Cn%20%20%20%20%20%20return%20color%3B%5Cn%20%20%20%20%7D%5Cn%20%20%7D%5Cn%7D%22%2C%22unusedSymbols%22%3A%5B%5D%2C%22version%22%3A%22local%22%7D">Playground</a>
+          </section>
+        </section>
+        <section class="sg-exo1" id="exo1" compatibility="compatibility" data-background="" data-background-transition="fade">
+          <section class="sg-exo1-intro" id="exo1-intro" compatibility="compatibility" data-background="" data-background-transition="fade">
             <h1>Exo 1 : page liste </h1>
             <p>
                Commençons par créer une nouvelle page<br>Dans le dossier /pages, créez un nouveau dossier /People<br>le but sera de récupérer les données d'une API et de les afficher dans un tableau</p>
           </section>
-          <section class="sg-exo1-page" id="exo1-page" data-background="" data-background-transition="fade">           
+          <section class="sg-exo1-page" id="exo1-page" compatibility="compatibility" data-background="" data-background-transition="fade">           
             <h2>Création de la page</h2><span class="file">src/pages/People/index.ts</span>
             <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">export { default } from './People';</code>
               <textarea class="sg-code-input">export { default } from './People';</textarea></pre><span class="file">src/pages/People/People.tsx </span>
@@ -661,7 +1025,7 @@ const People = () =&gt; (
       
 export default People;</textarea></pre>
           </section>
-          <section class="sg-exo1-layout" id="exo1-layout" data-background="" data-background-transition="fade"> 
+          <section class="sg-exo1-layout" id="exo1-layout" compatibility="compatibility" data-background="" data-background-transition="fade"> 
             <h2>Ajouter le layout </h2><span class="file">src/pages/People/constants.ts</span>
             <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">export const TITLE_BAR = 'Liste des gens';
 export const TITLE = 'Tableau des gens';
@@ -704,7 +1068,7 @@ const People = ({ titleBar = TITLE_BAR, title = TITLE }: TPeople) =&gt; (
 
 export default People;</textarea></pre>
           </section>
-          <section class="sg-exo1-route" id="exo1-route" data-background="" data-background-transition="fade">           
+          <section class="sg-exo1-route" id="exo1-route" compatibility="compatibility" data-background="" data-background-transition="fade">           
             <h2>Ajouter la route</h2><span class="file">src/App/Routes/constants.ts </span>
             <pre class="code-wrapper--notes">
               <div class="sg-notes">
@@ -755,7 +1119,7 @@ const PagePeople = lazy(() =&gt; import('pages/People'));
 ...
       </textarea></pre>
           </section>
-          <section class="sg-exo1-link" id="exo1-link" data-background="" data-background-transition="fade">           
+          <section class="sg-exo1-link" id="exo1-link" compatibility="compatibility" data-background="" data-background-transition="fade">           
             <h2>Ajouter un lien dans le menu </h2><span class="file">src/Layout/Menu/constants.ts </span>
             <pre class="code-wrapper--notes">
               <div class="sg-notes">
@@ -795,7 +1159,7 @@ const PagePeople = lazy(() =&gt; import('pages/People'));
   export default MENU_ITEMS;
   </textarea></pre>
           </section>
-          <section class="sg-exo1-feature" id="exo1-feature" data-background="" data-background-transition="fade">           
+          <section class="sg-exo1-feature" id="exo1-feature" compatibility="compatibility" data-background="" data-background-transition="fade">           
             <h2>Ajouter le scénario de test</h2><span class="file">Feature/People/People.feature</span>
             <pre>              <code class="gherkin sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">Feature: Page People
       En tant que profil autorisé, je souhaite pouvoir afficher la page People
@@ -826,7 +1190,7 @@ const PagePeople = lazy(() =&gt; import('pages/People'));
           | User   |
       </textarea></pre>
           </section>
-          <section class="sg-exo1-cucumber" id="exo1-cucumber" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">           
+          <section class="sg-exo1-cucumber" id="exo1-cucumber" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">           
             <h2>Ajouter le fichier de test </h2><span class="file">src/pages/People/__tests__/People.spec.tsx </span>
             <pre class="code-wrapper--notes" data-id="code-animation">
               <div class="sg-notes">
@@ -858,7 +1222,7 @@ defineFeature(feature, test =&gt; {
 });      
       </textarea></pre>
           </section>
-          <section class="sg-exo1-cucumber-2" id="exo1-cucumber-2" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">           
+          <section class="sg-exo1-cucumber-2" id="exo1-cucumber-2" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">           
             <h2>Générer le test</h2><span class="file">Lancer la commande suivante :</span>
             <pre>                 <code class="language-javascript sg-code js-code" data-trim="data-trim" data-ln-start-from="">npm t People.spec.tsx</code>
               <textarea class="sg-code-input">npm t People.spec.tsx</textarea></pre><span class="file">Récupérez le code généré dans le terminal</span><br><img class="sg-img " src="././assets/images/guerkin-test-fail.jpg" alt="gherkin test fail" loading="lazy"/><br><span class="file">src/pages/People/__tests__/People.spec.tsx </span>
@@ -879,7 +1243,7 @@ defineFeature(feature, test =&gt; {
 });
       </textarea></pre>
           </section>
-          <section class="sg-exo1-cucumber-3" id="exo1-cucumber-3" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">          
+          <section class="sg-exo1-cucumber-3" id="exo1-cucumber-3" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">          
             <h2>Modifier le test</h2><span class="file">src/pages/People/__tests__/People.spec.tsx</span>
             <pre class="code-wrapper--notes" data-id="code-animation"> 
               <div class="sg-notes">
@@ -929,7 +1293,7 @@ defineFeature(feature, test =&gt; {
   });
 });</textarea></pre>
           </section>
-          <section class="sg-exo1-cucumber-4" id="exo1-cucumber-4" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">          
+          <section class="sg-exo1-cucumber-4" id="exo1-cucumber-4" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">          
             <h2>Modifier le scénario</h2><span class="file">Feature/People/People.feature </span>
             <pre class="code-wrapper--notes" data-id="code-animation"> 
               <div class="sg-notes">
@@ -974,7 +1338,7 @@ And le tableau contient 4 lignes avec 4 colonnes dans l'ordre suivant :
   | Sophie    | Danneels | 20/10/1992 | TRIPSCH   |  
       </textarea></pre>
           </section>
-          <section class="sg-exo1-cucumber-5" id="exo1-cucumber-5" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">           
+          <section class="sg-exo1-cucumber-5" id="exo1-cucumber-5" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">           
             <h2>Modifier le fichier de test</h2>
             <pre>                 <code class="language-javascript sg-code  sg-code--no-max-height js-code  js-code--no-max-height" data-trim="data-trim" data-ln-start-from="">npm t People.spec.tsx</code>
               <textarea class="sg-code-input">npm t People.spec.tsx</textarea></pre><span class="file">src/pages/People/__tests__/People.spec.tsx</span>
@@ -1007,7 +1371,7 @@ And le tableau contient 4 lignes avec 4 colonnes dans l'ordre suivant :
   and(/^le tableau contient (\d+) lignes avec (\d+) colonnes dans l'ordre suivant :$/, (arg0, arg1, table) =&gt; {});
 });</textarea></pre>
           </section>
-          <section class="sg-exo1-cucumber-6" id="exo1-cucumber-6" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">          
+          <section class="sg-exo1-cucumber-6" id="exo1-cucumber-6" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">          
             <h2>Utiliser les scénarios type</h2><span class="file">src/pages/People/People/People.spec.tsx</span>
             <pre class="code-wrapper--notes" data-id="code-animation"> 
               <div class="sg-notes">
@@ -1070,7 +1434,7 @@ import People from '..';
     tableItemsType,
   );</textarea></pre>
           </section>
-          <section class="sg-exo1-api-url" id="exo1-api-url" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">          
+          <section class="sg-exo1-api-url" id="exo1-api-url" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">          
             <h2>Définir l'url d'API</h2><span class="file">Avant de démarrer les développements, nous avons besoin de configurer notre url d'API</span><br><span class="file">Ajouter l'url d'API dans le fichier /public/environment.development.json</span>
             <pre class="code-wrapper--notes" data-id="code-animation">
               <div class="sg-notes">
@@ -1088,7 +1452,7 @@ import People from '..';
   },
   &quot;baseUrl&quot;: &quot;&quot;,</textarea></pre>
           </section>
-          <section class="sg-exo1-table-headers" id="exo1-table-headers" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">          
+          <section class="sg-exo1-table-headers" id="exo1-table-headers" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">          
             <h2>Ajouter les headers</h2><span class="file">On créé des constantes pour les entêtes de tableau et le endpoint d'API</span><br><span class="file">src/pages/People/constants.ts</span>
             <pre class="code-wrapper--notes" data-id="code-animation"> 
               <div class="sg-notes">
@@ -1120,7 +1484,7 @@ export const TABLE_HEADERS_PEOPLE = [
   { label: 'Entité', id: 'entity', key: 'entity' },
 ];</textarea></pre>
           </section>
-          <section class="sg-exo1-donnees-typage" id="exo1-donnees-typage" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">           
+          <section class="sg-exo1-donnees-typage" id="exo1-donnees-typage" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">           
             <h2>Typer les données</h2><span class="file">src/pages/People/People.tsx : typage </span>
             <pre data-id="code-animation"> <code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">export type TPeopleData = Record&lt;string, string&gt;;
       
@@ -1138,7 +1502,7 @@ export type TPeopleDataResponse = {
               </svg><span class="sg-alert__content">N'oubliez pas d'importer le type dans le fichier de test.  </span>
             </div>
           </section>
-          <section class="sg-exo1-use-people" id="exo1-use-people" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">          
+          <section class="sg-exo1-use-people" id="exo1-use-people" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">          
             <!--+Alert({ modifier: 'success'})
             strong Remarque : 
             | useQuery retourne 
@@ -1470,7 +1834,7 @@ export const usePeople = () =&gt; {
 export type TReturnUsePeople = ReturnType&lt;typeof usePeople&gt;;</textarea></pre>
             </div>
           </section>
-          <section class="sg-exo1-cucumber-9" id="exo1-cucumber-9" data-background="" data-background-transition="fade">          
+          <section class="sg-exo1-cucumber-9" id="exo1-cucumber-9" compatibility="compatibility" data-background="" data-background-transition="fade">          
             <h2>Formatage des données </h2><span class="file">src/pages/People/People.tsx : <em>computeInfos            </em></span>
             <div class="r-stack">
               <pre class="code-wrapper--notes fragment fade-in-then-out"> 
@@ -1647,7 +2011,7 @@ data?.map(({ _id, firstname, lastname, birthDate, entity }) =&gt; ({
       children: &lt;Badge classModifier=&quot;info&quot;&gt;{entity}&lt;/Badge&gt;
     },</textarea></pre>
           </section>
-          <section class="sg-exo1-cucumber-10" id="exo1-cucumber-10" data-background="" data-background-transition="fade">          
+          <section class="sg-exo1-cucumber-10" id="exo1-cucumber-10" compatibility="compatibility" data-background="" data-background-transition="fade">          
             <h2>Passage des données à la vue</h2><span class="file">src/pages/People/People.tsx : PeopleContainer</span><br>
             <div class="sg-alert  sg-alert--success" role="alert">
               <svg class="sg-svg" id="info-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1762,7 +2126,7 @@ const PeopleContainer = () =&gt; {
 export default PeopleContainer;</textarea></pre>
             </div>
           </section>
-          <section class="sg-exo1-update-vue" id="exo1-update-vue" data-background="" data-background-transition="fade">          
+          <section class="sg-exo1-update-vue" id="exo1-update-vue" compatibility="compatibility" data-background="" data-background-transition="fade">          
             <h2>Modifier la vue</h2><span class="file">src/pages/People/People.tsx : People </span>
             <div class="r-stack">
               <pre class="code-wrapper--notes fragment fade-in-then-out"> 
@@ -2049,13 +2413,13 @@ const People = ({ titleBar = TITLE_BAR, title = TITLE, people, headers = TABLE_H
 );</textarea></pre>
             </div>
           </section>
-          <section class="sg-exo1-coverage" id="exo1-coverage" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">            
+          <section class="sg-exo1-coverage" id="exo1-coverage" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">            
             <h2>Couverture de test</h2><span class="file">Lancer la commande suivante :</span>
             <pre>                 <code class="language-javascript sg-code js-code" data-trim="data-trim" data-ln-start-from="">npm run cover</code>
               <textarea class="sg-code-input">npm run cover</textarea></pre>
             <div class="flex-column-center"><span class="file">Pour compléter nos tests, nous allons ajouter un peu de Tests Unitaires</span></div>
           </section>
-          <section class="sg-exo1-unit-test" id="exo1-unit-test" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">           
+          <section class="sg-exo1-unit-test" id="exo1-unit-test" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">           
             <h2>Ajout de tests unitaires</h2><span class="file">src/pages/People/__tests__/People.test.tsx </span>
             <div class="r-stack">
               <pre class="fragment fade-in-then-out">                       
@@ -2361,11 +2725,10 @@ import { computeInfos, usePeople } from '../People';</textarea>
 });</textarea></pre>
             </div>
           </section>
-          <section class="sg-exo1-solution" id="exo1-solution" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">           
+          <section class="sg-exo1-solution" id="exo1-solution" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">           
             <h2>Solution</h2><span class="file">Dispo sur la branche feature/dojo sur <a href="https://github.com/samuel-gomez/react-starter-vitejs/commit/72286e1dfe310057817db6abe7221479a3cd3f89" target="blank">Github</a></span>
           </section>
         </section>
-        <!-- include ./slides/nesting/index.pug-->
         <!-- include ./slides/has/index.pug-->
         <!-- include ./slides/animation-timeline/index.pug-->
         <!-- include ./slides/anchor/index.pug-->

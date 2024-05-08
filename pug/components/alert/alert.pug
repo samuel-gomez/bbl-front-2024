@@ -1,6 +1,7 @@
 mixin Alert({ modifier = '', icon= 'InfoIcon', name='alert'})
 	-const classComponent = setClass(name, modifier, js)	
 	div(class=classComponent role="alert")
-		+#{icon}({})
+		if icon
+			+#{icon}({})
 		span(class=`${prefix}-${name}__content`)
 			block

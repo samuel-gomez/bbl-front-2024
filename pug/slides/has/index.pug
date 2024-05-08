@@ -1,55 +1,59 @@
 
 -const { data: hasData } = require('./pug/slides/has/data.js');
-+Section({name :'pseudo-element-has'})
-	+Section({ name :'pseudo-element-has' })
-		h1 Pseudo-element :has()
-		p Le pseudo-élément :has() est une fonction CSS qui permet de sélectionner un élément qui contient un autre élément qui correspond à un sélecteur donné.
++Section({name :'pseudo-class-has'})
+	+Section({ name :'pseudo-class-has' , compatibility:'css-has' })
+		h1 Pseudo-class :has()
+		p Le pseudo-class :has() est une fonction CSS qui permet de sélectionner un élément qui contient un autre élément qui correspond à un sélecteur donné.
 		pre                  
 			+Code({ content : hasData[0].code, langage: 'css' })
 
 	+Section({ name :'cas-basique' })
-		h1 Cas basique
+		h2 Cas basique
 		p On va donc pouvoir sélectionner un élément parent en fonction de la présence d'un élément enfant.
 		pre                  
 			+Code({ content : hasData[1].code, langage: 'css',  dataLineNumbers: "4" })
 
-	+Section({ name :'cas-layout' })
-		h1 Custom layout
-		p Si on peut déjà faire des choses intéressantes avec le cas basique, on peut aller plus loin en utilisant le pseudo-élément :has() pour créer des layouts personnalisés.
+	+Section({ name :'cas-basique-demo' })
+		h2 Démo : Cas basique
+		iframe(style="width: 100%;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title=":has() cas basique" src="https://codepen.io/gsam59/embed/RwOdyqR?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
+	
+	+Section({ name :'cas-pseudo-class' })
+		h2 Cas pseudo-class
+		p Les pseudo-classes CSS permettent de sélectionner des éléments en fonction de leur état. On va pouvoir observer depuis un élément parent les changements d'état d'un élément enfant.
 		pre                  
-			+Code({ content : hasData[2].code, langage: 'css' }) 
+			+Code({ content : hasData[13].code, langage: 'css',  dataLineNumbers: "1,3" })
+
+	+Section({ name :'cas-pseudo-class-demo' })
+		h2 Démo : Cas pseudo-class
+		iframe(style="width: 100%;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title=":has() cas basique" src="https://codepen.io/gsam59/embed/GRLeGoE?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
 
 	+Section({ name :'ET-logique' })
-		h1 ET logique
-		p Il est possible de chainer l'utilisation du pseudo-élément :has() afin d'avoir un ciblage plus précis.
+		h2 ET logique
+		p Il est possible de chainer l'utilisation de la pseudo-class :has() afin d'avoir un ciblage plus précis.
 		span.file Ici, on cible une carte qui possède une image ET un titre.
 		pre                  
 			+Code({ content : hasData[3].code, langage: 'css' })
   
 	+Section({ name :'ET-OU-logique' })
-		h1 ET/OU logique
+		h2 ET/OU logique
 		p Si on souhaite un ciblage plus souple, on peut fournir une liste de sélecteurs à la fonction :has().
 		span.file Ici, on cible une carte qui possède soit une image, soit un titre. ou les deux.
 		pre                  
 			+Code({ content : hasData[4].code, langage: 'css' })
-
-	+Section({ name :'ET-OU-logique-demo' })
-		h1 Démo : ET/OU logique
-		iframe(style="width: 100%;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="has with combinator ~" src="https://codepen.io/gsam59/embed/RwOeWNr?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
-	
+		
 	+Section({ name :'selection-globale' })
-		h1 Sélection globale
+		h2 Sélection globale
 		p Pour finir dans les cas classiques du :has(), on peut utiliser la fonction pour sélectionner un élément parent en fonction de la présence d'un élément lointain enfant.
 		span.file Dans l'exemple ci-dessous, on cherche à cibler le footer si quelque part dans le DOM ma checkbox est cochée.
 		pre                  
 			+Code({ content : hasData[5].code, langage: 'css' })
 
 	+Section({ name :'selection-globale-demo' })
-		h1 Démo : Sélection globale
+		h2 Démo : Sélection globale
 		iframe(style="width: 100%;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="has with combinator ~" src="https://codepen.io/gsam59/embed/RwOeWNr?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
 	
 	+Section({ name :'elements-adjacents-direct' })
-		h1 Eléments adjacents direct
+		h2 Eléments adjacents direct
 		span.file Avec les combinateurs "+", on peut cibler un élément en fonction de la présence d'un élément précédent.		
 		div(class=`${prefix}-cards-flex`) 
 			+CardCode({ title: 'Combinateur "+"'})
@@ -62,11 +66,21 @@
 					+Code({ content : hasData[7].code  })
 
 	+Section({ name :'elements-adjacents-direct-demo' })
-		h1 Démo : Eléments adjacents direct
-		iframe(style="width: 100%;color: white; font-weight: bold;min-height: 80svh;" scrolling="no" title="has with combinator +" src="https://codepen.io/gsam59/embed/ZEZMdzj?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
+		h2 Démo : Eléments adjacents direct
+		iframe(style="width: 100%;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="has with combinator +" src="https://codepen.io/gsam59/embed/ZEZMdzj?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
+	
+	+Section({ name :'cas-layout' })
+		h2 Custom layout
+		p Si on peut déjà faire des choses intéressantes avec le cas basique, on peut aller plus loin en utilisant la pseudo-class :has() pour créer des layouts personnalisés.
+		pre                  
+			+Code({ content : hasData[2].code, langage: 'css' }) 
+
+	+Section({ name :'cas-layout-demo' })
+		h2 Démo : Custom layout
+		iframe(style="width: 100%;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="has custom layout" src="https://codepen.io/gsam59/embed/KKYEGJj?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
 	
 	+Section({ name :'elements-adjacents-indirect' })
-		h1 Eléments adjacents indirect
+		h2 Eléments adjacents indirect
 		span.file Avec les combinateurs "~", on peut cibler un élément en fonction de la présence d'un élément précédent direct ou indirect.
 		div(class=`${prefix}-cards-flex`) 
 			+CardCode({ title: 'Combinateur "~"'})
@@ -79,38 +93,46 @@
 					+Code({ content : hasData[9].code  })
 	
 	+Section({ name :'elements-adjacents-indirect-demo' })
-		h1 Démo : Eléments adjacents indirect
+		h2 Démo : Eléments adjacents indirect
 		iframe(style="width: 100%;color: white; font-weight: bold;min-height: 60svh;" scrolling="no" title="has with combinator ~" src="https://codepen.io/gsam59/embed/wvZaOQN?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
 	
 	+Section({ name :'cibler-un-scope' })
-		h1 Cibler un intervalle
+		h2 Cibler un intervalle
 		p On peut également cibler un intervalle d'éléments adjacents
-		span.file Dans l'exemple ci-dessous, on cherche à cibler le footer si quelque part dans le DOM ma checkbox est cochée.
 		pre                  
 			+Code({ content : hasData[10].code, langage: 'css' }) 
 	
 	+Section({ name :'cibler-un-scope-demo' })
-		h1 Démo : Cibler un intervalle
+		h2 Démo : Cibler un intervalle
 		iframe(style="width: 100%;color: white; font-weight: bold;min-height: 60svh;" scrolling="no" title="has and ~ : from to " src="https://codepen.io/gsam59/embed/bGJxyoe?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
 	
+	+Section({ name :'cas-layout-onlydemo' })
+		h2 Démo : Custom layout only
+		iframe(style="width: 100%;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="has custom layout" src="https://codepen.io/gsam59/embed/xxeBwzz?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
+
 	+Section({ name :'ciblage-par-quantite' })
-		h1 Ciblage par quantité
+		h2 Ciblage par quantité
 		p On peut appliquer un style en fonction de la quantité d'éléments ciblés.
-		a(href="https://developer.mozilla.org/fr/docs/Web/CSS/:has") Voir la documentation
 		span.file Dans l'exemple ci-dessous, on cible les listes qui possèdent au moins 5 éléments.
 		pre                  
 			+Code({ content : hasData[11].code, langage: 'css' }) 
 
 	+Section({ name :'ciblage-par-quantite-demo' })
+		h2 Démo : Ciblage par quantité
 		iframe(style="width: 100%;color: white; font-weight: bold;min-height: 60svh;" scrolling="no" title="has with combinator ~" src="https://codepen.io/gsam59/embed/PogpPVr?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
 	
 	+Section({ name :'ciblage-par-attribut' })
-		h1 Ciblage par attribut
+		h2 Ciblage par attribut
 		p On peut appliquer un style en fonction de la valeur d'un attribut.
 		span.file On peut tirer partie de la puissance du sélecteur d'attribut et ses "expressions régulières".
 		pre                  
 			+Code({ content : hasData[12].code, langage: 'css' })
 	
-	+Section({ name :'ciblage-par-attribut-demo' })
+	+Section({ name :'ciblage-par-attribut-demo'})
+		h2 Démo : Ciblage par attribut
 		iframe(style="width: 100%;color: white; font-weight: bold;min-height: 60svh;" scrolling="no" title="has with combinator ~" src="https://codepen.io/gsam59/embed/MWRpBgN?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
 	
+	
+
+	+Section({ name :'sources'})
+		a(href="https://webkit.org/blog/13096/css-has-pseudo-class/") Webkit blog

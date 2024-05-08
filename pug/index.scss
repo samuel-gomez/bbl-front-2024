@@ -33,6 +33,209 @@ $color-info-light: #def5ff;
   --sg-error-color-light: #{$color-error-light};
   --sg-warning-color-light: #{$color-warning-light};
   --sg-info-color-light: #{$color-info-light};
+  --a: transparent;
+  --w: hsl(0deg 0% 100%);
+  --w-h: 0 0% 100%;
+  --bk: hsl(0deg 0% 0%);
+  --bk-h: 0 0% 0%;
+  --g-h0: 0 0% 95%;
+  --g-h1: 0 0% 90%;
+  --g-h2: 0 0% 80%;
+  --g-h3: 0 0% 70%;
+  --g-h4: 0 0% 60%;
+  --g-h5: 0 0% 50%;
+  --g-h6: 0 0% 40%;
+  --g-h7: 0 0% 30%;
+  --g-h8: 0 0% 20%;
+  --g-h9: 0 0% 10%;
+  --g-h10: 0 0% 5%;
+  --g0: hsl(0deg 0% 95%);
+  --g1: hsl(0deg 0% 90%);
+  --g2: hsl(0deg 0% 80%);
+  --g3: hsl(0deg 0% 70%);
+  --g4: hsl(0deg 0% 60%);
+  --g5: hsl(0deg 0% 50%);
+  --g6: hsl(0deg 0% 40%);
+  --g7: hsl(0deg 0% 30%);
+  --g8: hsl(0deg 0% 20%);
+  --g9: hsl(0deg 0% 10%);
+  --g10: hsl(0deg 0% 5%);
+  --rd-h0: 0 100% 95%;
+  --rd-h1: 0 100% 90%;
+  --rd-h2: 0 100% 80%;
+  --rd-h3: 0 100% 70%;
+  --rd-h4: 0 100% 60%;
+  --rd-h5: 0 100% 50%;
+  --rd-h6: 0 100% 40%;
+  --rd-h7: 0 100% 30%;
+  --rd-h8: 0 100% 20%;
+  --rd-h9: 0 100% 10%;
+  --rd-h10: 0 100% 5%;
+  --rd0: hsl(0deg 100% 95%);
+  --rd1: hsl(0deg 100% 90%);
+  --rd2: hsl(0deg 100% 80%);
+  --rd3: hsl(0deg 100% 70%);
+  --rd4: hsl(0deg 100% 60%);
+  --rd5: hsl(0deg 100% 50%);
+  --rd6: hsl(0deg 100% 40%);
+  --rd7: hsl(0deg 100% 30%);
+  --rd8: hsl(0deg 100% 20%);
+  --rd9: hsl(0deg 100% 10%);
+  --rd10: hsl(0deg 100% 5%);
+  --bl-h0: 217 100% 95%;
+  --bl-h1: 217 100% 90%;
+  --bl-h2: 217 100% 80%;
+  --bl-h3: 217 100% 70%;
+  --bl-h4: 217 100% 60%;
+  --bl-h5: 217 100% 50%;
+  --bl-h6: 217 100% 40%;
+  --bl-h7: 217 100% 30%;
+  --bl-h8: 217 100% 20%;
+  --bl-h9: 217 100% 10%;
+  --bl-h10: 217 100% 5%;
+  --bl0: hsl(217deg 100% 95%);
+  --bl1: hsl(217deg 100% 90%);
+  --bl2: hsl(217deg 100% 80%);
+  --bl3: hsl(217deg 100% 70%);
+  --bl4: hsl(217deg 100% 60%);
+  --bl5: hsl(217deg 100% 50%);
+  --bl6: hsl(217deg 100% 40%);
+  --bl7: hsl(217deg 100% 30%);
+  --bl8: hsl(217deg 100% 20%);
+  --bl9: hsl(217deg 100% 10%);
+  --bl10: hsl(217deg 100% 5%);
+  --tk-h0: 152 100% 95%;
+  --tk-h1: 152 100% 90%;
+  --tk-h2: 152 100% 80%;
+  --tk-h3: 152 100% 70%;
+  --tk-h4: 152 100% 60%;
+  --tk-h5: 152 100% 50%;
+  --tk-h6: 152 100% 40%;
+  --tk-h7: 152 100% 30%;
+  --tk-h8: 152 100% 20%;
+  --tk-h9: 152 100% 10%;
+  --tk-h10: 152 100% 5%;
+  --tk0: hsl(152deg 100% 95%);
+  --tk1: hsl(152deg 100% 90%);
+  --tk2: hsl(152deg 100% 80%);
+  --tk3: hsl(152deg 100% 70%);
+  --tk4: hsl(152deg 100% 60%);
+  --tk5: hsl(152deg 100% 50%);
+  --tk6: hsl(152deg 100% 40%);
+  --tk7: hsl(152deg 100% 30%);
+  --tk8: hsl(152deg 100% 20%);
+  --tk9: hsl(152deg 100% 10%);
+  --tk10: hsl(152deg 100% 5%);
+  --pp-h0: 250 100% 95%;
+  --pp-h1: 250 100% 90%;
+  --pp-h2: 250 100% 80%;
+  --pp-h3: 250 100% 70%;
+  --pp-h4: 250 100% 60%;
+  --pp-h5: 250 100% 50%;
+  --pp-h6: 250 100% 40%;
+  --pp-h7: 250 100% 30%;
+  --pp-h8: 250 100% 20%;
+  --pp-h9: 250 100% 10%;
+  --pp-h10: 250 100% 5%;
+  --pp0: hsl(250deg 100% 95%);
+  --pp1: hsl(250deg 100% 90%);
+  --pp2: hsl(250deg 100% 80%);
+  --pp3: hsl(250deg 100% 70%);
+  --pp4: hsl(250deg 100% 60%);
+  --pp5: hsl(250deg 100% 50%);
+  --pp6: hsl(250deg 100% 40%);
+  --pp7: hsl(250deg 100% 30%);
+  --pp8: hsl(250deg 100% 20%);
+  --pp9: hsl(250deg 100% 10%);
+  --pp10: hsl(250deg 100% 5%);
+  --gn-h0: 98 100% 95%;
+  --gn-h1: 98 100% 90%;
+  --gn-h2: 98 100% 80%;
+  --gn-h3: 98 100% 70%;
+  --gn-h4: 98 100% 60%;
+  --gn-h5: 98 100% 50%;
+  --gn-h6: 98 100% 40%;
+  --gn-h7: 98 100% 30%;
+  --gn-h8: 98 100% 20%;
+  --gn-h9: 98 100% 10%;
+  --gn-h10: 98 100% 5%;
+  --gn0: hsl(98deg 100% 95%);
+  --gn1: hsl(98deg 100% 90%);
+  --gn2: hsl(98deg 100% 80%);
+  --gn3: hsl(98deg 100% 70%);
+  --gn4: hsl(98deg 100% 60%);
+  --gn5: hsl(98deg 100% 50%);
+  --gn6: hsl(98deg 100% 40%);
+  --gn7: hsl(98deg 100% 30%);
+  --gn8: hsl(98deg 100% 20%);
+  --gn9: hsl(98deg 100% 10%);
+  --gn10: hsl(98deg 100% 5%);
+  --og-h0: 45 100% 95%;
+  --og-h1: 45 100% 90%;
+  --og-h2: 45 100% 80%;
+  --og-h3: 45 100% 70%;
+  --og-h4: 45 100% 60%;
+  --og-h5: 45 100% 50%;
+  --og-h6: 45 100% 40%;
+  --og-h7: 45 100% 30%;
+  --og-h8: 45 100% 20%;
+  --og-h9: 45 100% 10%;
+  --og-h10: 45 100% 5%;
+  --og0: hsl(45deg 100% 95%);
+  --og1: hsl(45deg 100% 90%);
+  --og2: hsl(45deg 100% 80%);
+  --og3: hsl(45deg 100% 70%);
+  --og4: hsl(45deg 100% 60%);
+  --og5: hsl(45deg 100% 50%);
+  --og6: hsl(45deg 100% 40%);
+  --og7: hsl(45deg 100% 30%);
+  --og8: hsl(45deg 100% 20%);
+  --og9: hsl(45deg 100% 10%);
+  --og10: hsl(45deg 100% 5%);
+  --max-width: var(--xl);
+  --p-8: calc(var(--p) / 8);
+  --p-4: calc(var(--p) / 4);
+  --p-2: calc(var(--p) / 2);
+  --p: 1rem;
+  --p2: calc(var(--p) * 2);
+  --p3: calc(var(--p) * 3);
+  --p4: calc(var(--p) * 4);
+  --p5: calc(var(--p) * 5);
+  --p6: calc(var(--p) * 6);
+  --r: 5px;
+  --r2: 10px;
+  --r3: 20px;
+  --r4: 30px;
+  --rounded: 100vmax;
+}
+.flex {
+  display: flex;
+  gap: 1rem;
+  height: fit-content;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-center {
+  place-content: center;
+  place-items: center;
+}
+
+.mw-80 {
+  max-width: 80%;
+  margin-inline: auto;
+}
+
+.mw-50 {
+  max-width: 50%;
+  margin-inline: auto;
+}
+
+.mw-30 {
+  max-width: 30%;
+  margin-inline: auto;
 }
 
 /* .reveal .slides {
@@ -53,6 +256,8 @@ $color-info-light: #def5ff;
 @import "./components/tree/tree.scss";
 @import "./components/note/note.scss";
 @import "./components/copy/copy.scss";
+@import "./components/modal/modal.scss";
+@import "./components/button/button.scss";
 
 /* Slides */
 // @import "./slides/getstarted/getstarted.scss";
