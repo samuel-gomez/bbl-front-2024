@@ -779,11 +779,11 @@ element.style.setProperty(&quot;--ma-variable&quot;, varJS + 4);</textarea></pre
             <p>Les pseudo-classes CSS permettent de sélectionner des éléments en fonction de leur état. On va pouvoir observer depuis un élément parent les changements d'état d'un élément enfant.</p>
             <pre>                 <code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="1,3" data-ln-start-from="">div:has(&gt; ul:empty) {
 }
-:has(&gt; :checked){  
+form:has(&gt; :checked){  
 }</code>
               <textarea class="sg-code-input">div:has(&gt; ul:empty) {
 }
-:has(&gt; :checked){  
+form:has(&gt; :checked){  
 }</textarea></pre>
           </section>
           <section class="sg-cas-pseudo-class-demo" id="cas-pseudo-class-demo" compatibility="compatibility" data-background="" data-background-transition="fade">
@@ -994,1750 +994,611 @@ element.style.setProperty(&quot;--ma-variable&quot;, varJS + 4);</textarea></pre
         <section class="sg-nesting-css" id="nesting-css" compatibility="compatibility" data-background="" data-background-transition="fade">
           <section class="sg-nesting-css" id="nesting-css" compatibility="compatibility" data-background="" data-background-transition="fade">
             <h1>Nesting CSS</h1>
-            <p>La spécificité des sélecteurs CSS permet de définir des styles en fonction de l'arborescence du DOM.</p>
-            <p>Cependant, cette spécificité peut rendre le code difficile à maintenir.</p>
-            <p>Le nesting CSS permet de définir des styles en fonction de l'arborescence du DOM sans augmenter la spécificité des sélecteurs.</p>
-            <p>Cela permet de rendre le code plus lisible et plus facile à maintenir.</p><a href="https://developer.mozilla.org/fr/docs/Web/CSS/Descendant_combinateur">mdn</a><a href="https://lightningcss.dev/playground/index.html#%7B%22minify%22%3Afalse%2C%22customMedia%22%3Atrue%2C%22cssModules%22%3Afalse%2C%22analyzeDependencies%22%3Afalse%2C%22targets%22%3A%7B%22chrome%22%3A6225920%2C%22firefox%22%3A8192000%2C%22edge%22%3A8126464%7D%2C%22include%22%3A0%2C%22exclude%22%3A0%2C%22source%22%3A%22%40custom-media%20--modern%20(color)%2C%20(hover)%3B%5Cn%5Cn.foo%20%7B%5Cn%20%20background%3A%20yellow%3B%5Cn%5Cn%20%20-webkit-border-radius%3A%202px%3B%5Cn%20%20-moz-border-radius%3A%202px%3B%5Cn%20%20border-radius%3A%202px%3B%5Cn%5Cn%20%20-webkit-transition%3A%20background%20200ms%3B%5Cn%20%20-moz-transition%3A%20background%20200ms%3B%5Cn%20%20transition%3A%20background%20200ms%3B%5Cn%5Cn%20%20.be%20%7B%5Cn%20%20%20%20text-align%3A%20center%3B%5Cn%20%20%7D%5Cn%5Cn%20%20%2F*%20%E2%9D%8C%20DONT%20DO%20THIS%20%E2%9D%8C%20*%2F%5Cn%20%20%5Cn%20%20%26__small%20%7B%5Cn%20%20%20%20font-size%3A%200.5rem%3B%5Cn%20%20%7D%5Cn%20%20%5Cn%20%20%2F*%20%E2%9D%8C%20DONT%20DO%20THIS%20%E2%9D%8C%20*%2F%5Cn%5Cn%5Cn%20%20%5Cn%20%20%3E%20p%20%7B%5Cn%20%20%20%20color%3A%20hotpink%3B%5Cn%20%20%7D%5Cn%5Cn%20%20%26%3Ahover%20%7B%5Cn%20%20%20%20background%3A%20orange%3B%5Cn%20%20%7D%5Cn%5Cn%20%20%26.bar%20%7B%5Cn%20%20%20%20color%3A%20green%3B%5Cn%20%20%7D%5Cn%7D%5Cn%5Cn%40media%20(--modern)%20and%20(width%20%3E%201024px)%20%7B%5Cn%20%20.a%20%7B%5Cn%20%20%20%20color%3A%20green%3B%5Cn%20%20%7D%5Cn%7D%22%2C%22visitorEnabled%22%3Afalse%2C%22visitor%22%3A%22%7B%5Cn%20%20Color(color)%20%7B%5Cn%20%20%20%20if%20(color.type%20%3D%3D%3D%20'rgb')%20%7B%5Cn%20%20%20%20%20%20color.g%20%3D%200%3B%5Cn%20%20%20%20%20%20return%20color%3B%5Cn%20%20%20%20%7D%5Cn%20%20%7D%5Cn%7D%22%2C%22unusedSymbols%22%3A%5B%5D%2C%22version%22%3A%22local%22%7D">Playground</a>
+            <p>Le nesting CSS est technique d'imbrication des sélecteurs CSS pour éviter la répétition de code.</p>
+            <p>Elle était déjà disponible avec les préprocesseurs CSS comme Sass, Less ou Stylus.</p>
+            <button onclick="document.querySelector('#compatibility-nesting-css').showModal()">Compatibilités</button>
+            <dialog class="sg-modal  sg-modal--compatibility-nesting-css" id="compatibility-nesting-css" onclick="this.close()">
+              <div class="dialog-inner" onclick="event.stopPropagation();">
+                <form>
+                  <button class="icon close" autofocus="autofocus" formmethod="dialog">❌</button>
+                  <h2>Compatibilités</h2>
+                  <div class="loading">
+                    <iframe src="https://caniuse.com/css-nesting" title="Compatibilités" frameborder="0" allowfullscreen="true" loading="lazy"></iframe>
+                  </div>
+                </form>
+              </div>
+            </dialog>
+          </section>
+          <section class="sg-nesting-css-syntaxe" id="nesting-css-syntaxe" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Nesting parent - enfant</h2>
+            <p>Pour imbriquer des sélecteurs CSS, on peut utiliser le sélecteur d'imbrication <strong> '&' </strong></p>
+            <div class="flex flex-center mw-80">                                       
+              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.parent {
+  /* parent styles */
+  &amp; .child1 {
+    /* child1 styles */
+  }
+  .child2 {
+    /* child2 styles */
+  }
+  &amp;.second-class {
+    /* second-class styles */
+  }
+}</code>
+                <textarea class="sg-code-input">.parent {
+  /* parent styles */
+  &amp; .child1 {
+    /* child1 styles */
+  }
+  .child2 {
+    /* child2 styles */
+  }
+  &amp;.second-class {
+    /* second-class styles */
+  }
+}</textarea></pre>
+              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">
+.parent .child1{
+  /* child1 styles */
+}
+.parent .child2 {
+  /* child2 styles */
+}
+.parent.second-class {
+  /* second-class styles */
+}
+</code>
+                <textarea class="sg-code-input">
+.parent .child1{
+  /* child1 styles */
+}
+.parent .child2 {
+  /* child2 styles */
+}
+.parent.second-class {
+  /* second-class styles */
+}
+</textarea></pre>
+            </div>
+            <div class="sg-alert  sg-alert--info" role="alert">
+              <svg class="sg-svg" id="info-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Zm-10 5.75c.41 0 .75-.34.75-.75v-6a.75.75 0 0 0-1.5 0v6c0 .41.34.75.75.75ZM12 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z" clip-rule="evenodd"></path>
+              </svg><span class="sg-alert__content"> Si l'imbrication ne concerne pas une pseudo-classe ou un pseudo-élément, le sélecteur d'imbrication  <strong>&               </strong>n'est pas obligatoire.</span>
+            </div>
+          </section>
+          <section class="sg-nesting-css-combinateur" id="nesting-css-combinateur" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Nesting et combinateurs</h2>
+            <p>On peut imbriquer des sélecteurs CSS avec des combinateurs : <br><strong> '+' </strong> ou le sélecteur enfant direct<strong> '>'</strong>ou autre combinateur</p>
+            <div class="flex flex-center mw-80">                                       
+              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.parent {
+  /* parent styles */
+  &gt; .directchild {
+    /* directchild styles */
+  }
+  + .sibling {
+    /* sibling styles */
+  }
+}</code>
+                <textarea class="sg-code-input">.parent {
+  /* parent styles */
+  &gt; .directchild {
+    /* directchild styles */
+  }
+  + .sibling {
+    /* sibling styles */
+  }
+}</textarea></pre>
+              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">
+.parent &gt; .directchild {
+  /* directchild styles */
+}
+.parent + .sibling {
+  /* sibling styles */
+}
+</code>
+                <textarea class="sg-code-input">
+.parent &gt; .directchild {
+  /* directchild styles */
+}
+.parent + .sibling {
+  /* sibling styles */
+}
+</textarea></pre>
+            </div>
+          </section>
+          <section class="sg-nesting-css-pseudo" id="nesting-css-pseudo" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Pseudo-class ou pseudo-element</h2>
+            <div class="flex flex-center mw-80">                                       
+              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.parent-pseudo {
+  background: red;  
+  &amp;:hover, &amp;:focus {
+    background: blue;
+  }  
+  &amp;:is(p, em, i) {
+    background: blue;
+  }
+  &amp;::after, &amp;::before {
+    content: &quot;✅️&quot;;
+  }
+  ::after { 
+    content: &quot;❌️&quot;;
+  }  
+}</code>
+                <textarea class="sg-code-input">.parent-pseudo {
+  background: red;  
+  &amp;:hover, &amp;:focus {
+    background: blue;
+  }  
+  &amp;:is(p, em, i) {
+    background: blue;
+  }
+  &amp;::after, &amp;::before {
+    content: &quot;✅️&quot;;
+  }
+  ::after { 
+    content: &quot;❌️&quot;;
+  }  
+}</textarea></pre>
+              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.parent-pseudo {
+  background: red;
+}
+.parent-pseudo:hover, .parent-pseudo:focus, .parent-pseudo:is(p, em, i) {
+  background: #00f;
+}
+.parent-pseudo:after, .parent-pseudo:before {
+  content: &quot;✅️&quot;;
+}
+.parent-pseudo :after {
+  content: &quot;❌️&quot;;
+}</code>
+                <textarea class="sg-code-input">.parent-pseudo {
+  background: red;
+}
+.parent-pseudo:hover, .parent-pseudo:focus, .parent-pseudo:is(p, em, i) {
+  background: #00f;
+}
+.parent-pseudo:after, .parent-pseudo:before {
+  content: &quot;✅️&quot;;
+}
+.parent-pseudo :after {
+  content: &quot;❌️&quot;;
+}</textarea></pre>
+            </div>
+            <div class="sg-alert  sg-alert--info" role="alert">
+              <svg class="sg-svg" id="info-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Zm-10 5.75c.41 0 .75-.34.75-.75v-6a.75.75 0 0 0-1.5 0v6c0 .41.34.75.75.75ZM12 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z" clip-rule="evenodd"></path>
+              </svg><span class="sg-alert__content"> Pour les pseudo-classes ou pseudo-elements le sélecteur d'imbrication  <strong>&               </strong>est obligatoire.</span>
+            </div>
+          </section>
+          <section class="sg-nesting-css-ancestor" id="nesting-css-ancestor" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Scoper sur un ancêtre</h2>
+            <div class="flex flex-center mw-80">                                       
+              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.component {
+  background: red;
+  .ancestor &amp; {
+    background: orange;
+  }
+}</code>
+                <textarea class="sg-code-input">.component {
+  background: red;
+  .ancestor &amp; {
+    background: orange;
+  }
+}</textarea></pre>
+              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.component {
+  background: red;
+}
+
+.ancestor .component {
+  background: orange;
+}</code>
+                <textarea class="sg-code-input">.component {
+  background: red;
+}
+
+.ancestor .component {
+  background: orange;
+}</textarea></pre>
+            </div>
+          </section>
+          <section class="sg-nesting-css-vs-sass" id="nesting-css-vs-sass" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h1>Nesting CSS vs Sass</h1>
+            <p>Le fonctionnement du nesting CSS est similaire à celui de Sass mais la <strong>concaténation </strong>de nom n'est pas possible.</p>
+            <div class="flex flex-center mw-80">                                       
+              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">/* ❌️ */
+.block{
+  background: green;
+  &amp;__element {
+    background: blue;
+      &amp;--modifier{
+        background: red;
+      }
+  }
+}
+
+/* ✅️ eventuellement */
+
+.block {
+  background: green;
+  &amp;.__element {
+    background: blue;
+    &amp;.--modifier {
+      background: red;
+    }
+  }
+}</code>
+                <textarea class="sg-code-input">/* ❌️ */
+.block{
+  background: green;
+  &amp;__element {
+    background: blue;
+      &amp;--modifier{
+        background: red;
+      }
+  }
+}
+
+/* ✅️ eventuellement */
+
+.block {
+  background: green;
+  &amp;.__element {
+    background: blue;
+    &amp;.--modifier {
+      background: red;
+    }
+  }
+}</textarea></pre>
+              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">
+/* ❌️ */
+.block {
+  background: green;
+}
+
+__element.block {
+  background: #00f;
+}
+
+--modifier:is(__element.block) {
+  background: red;
+}
+
+/* ✅️ eventuellement */
+.block {
+  background: green;
+}
+
+.block.__element {
+  background: #00f;
+}
+
+.block.__element.--modifier {
+  background: red;
+}</code>
+                <textarea class="sg-code-input">
+/* ❌️ */
+.block {
+  background: green;
+}
+
+__element.block {
+  background: #00f;
+}
+
+--modifier:is(__element.block) {
+  background: red;
+}
+
+/* ✅️ eventuellement */
+.block {
+  background: green;
+}
+
+.block.__element {
+  background: #00f;
+}
+
+.block.__element.--modifier {
+  background: red;
+}</textarea></pre>
+            </div>
+          </section>
+          <section class="sg-nesting-css-playground" id="nesting-css-playground" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Playground</h2>
+            <iframe style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css nesting playground" src="https://lightningcss.dev/playground/#%7B%22minify%22%3Afalse%2C%22customMedia%22%3Atrue%2C%22cssModules%22%3Afalse%2C%22analyzeDependencies%22%3Afalse%2C%22targets%22%3A%7B%22chrome%22%3A6225920%7D%2C%22include%22%3A0%2C%22exclude%22%3A0%2C%22source%22%3A%22.parent%20%7B%5Cn%20%20background%3A%20red%3B%5Cn%20%20%5Cn%20%20%26%20.child1%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%7D%5Cn%20%20%5Cn%20%20.child2%20%7B%5Cn%20%20%20%20background%3A%20green%3B%5Cn%20%20%7D%5Cn%20%20%5Cn%20%20%3E%20.directchild%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%7D%5Cn%20%20%5Cn%20%20%2B%20.sibling%20%7B%5Cn%20%20%20%20background%3A%20green%3B%5Cn%20%20%7D%5Cn%20%20%5Cn%7D%5Cn%5Cn%5Cn.parent-pseudo%20%7B%5Cn%20%20background%3A%20red%3B%5Cn%20%20%26%3Ahover%2C%5Cn%20%20%26%3Afocus%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%7D%5Cn%20%20%26%3Ais(p%2C%20em%2C%20i)%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%7D%5Cn%20%20%26%3A%3Aafter%2C%5Cn%20%20%26%3A%3Abefore%20%7B%5Cn%20%20%20%20content%3A%20%5C%22%E2%9C%85%EF%B8%8F%5C%22%3B%5Cn%20%20%7D%5Cn%20%20%3A%3Aafter%20%7B%5Cn%20%20%20%20content%3A%20%5C%22%E2%9D%8C%EF%B8%8F%5C%22%3B%5Cn%20%20%7D%5Cn%7D%5Cn%5Cn.component%20%7B%5Cn%20%20background%3A%20red%3B%5Cn%20%20.ancestor%20%26%20%7B%5Cn%20%20%20%20background%3A%20orange%3B%5Cn%20%20%7D%5Cn%7D%5Cn%5Cn%2F*%20%E2%9D%8C%EF%B8%8F%20*%2F%5Cn.block%7B%5Cn%20%20background%3A%20green%3B%5Cn%20%20%26__element%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%20%20%20%26--modifier%7B%5Cn%20%20%20%20%20%20%20background%3A%20red%3B%5Cn%20%20%20%20%20%7D%5Cn%20%20%7D%5Cn%7D%5Cn%5Cn%2F*%20%E2%9C%85%EF%B8%8F%20eventuellement%20*%2F%5Cn%5Cn.block%20%7B%5Cn%20%20background%3A%20green%3B%5Cn%20%20%26.__element%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%20%20%26.--modifier%20%7B%5Cn%20%20%20%20%20%20background%3A%20red%3B%5Cn%20%20%20%20%7D%5Cn%20%20%7D%5Cn%7D%5Cn%22%2C%22visitorEnabled%22%3Afalse%2C%22visitor%22%3A%22%7B%5Cn%20%20Color(color)%20%7B%5Cn%20%20%20%20if%20(color.type%20%3D%3D%3D%20'rgb')%20%7B%5Cn%20%20%20%20%20%20color.g%20%3D%200%3B%5Cn%20%20%20%20%20%20return%20color%3B%5Cn%20%20%20%20%7D%5Cn%20%20%7D%5Cn%7D%22%2C%22unusedSymbols%22%3A%5B%5D%2C%22version%22%3A%22local%22%7D" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
           </section>
         </section>
-        <section class="sg-exo1" id="exo1" compatibility="compatibility" data-background="" data-background-transition="fade">
-          <section class="sg-exo1-intro" id="exo1-intro" compatibility="compatibility" data-background="" data-background-transition="fade">
-            <h1>Exo 1 : page liste </h1>
-            <p>
-               Commençons par créer une nouvelle page<br>Dans le dossier /pages, créez un nouveau dossier /People<br>le but sera de récupérer les données d'une API et de les afficher dans un tableau</p>
+        <section class="sg-clamp" id="clamp" compatibility="compatibility" data-background="" data-background-transition="fade">
+          <section class="sg-clamp" id="clamp" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h1>Clamp</h1>
+            <p>Clamp fait partie des <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions/Using_CSS_math_functions">fonctions mathématiques CSS,</a>elle permet de définir une valeur comprise entre deux bornes avec une valeur préférée.</p>
+            <p>On peut l'utiliser pour rendre une taille de police responsive ou pour définir des bornes pour d'autres propriétés CSS.</p>
+            <button onclick="document.querySelector('#compatibility-clamp').showModal()">Compatibilités</button>
+            <dialog class="sg-modal  sg-modal--compatibility-clamp" id="compatibility-clamp" onclick="this.close()">
+              <div class="dialog-inner" onclick="event.stopPropagation();">
+                <form>
+                  <button class="icon close" autofocus="autofocus" formmethod="dialog">❌</button>
+                  <h2>Compatibilités</h2>
+                  <div class="loading">
+                    <iframe src="https://caniuse.com/css-math-functions" title="Compatibilités" frameborder="0" allowfullscreen="true" loading="lazy"></iframe>
+                  </div>
+                </form>
+              </div>
+            </dialog>
           </section>
-          <section class="sg-exo1-page" id="exo1-page" compatibility="compatibility" data-background="" data-background-transition="fade">           
-            <h2>Création de la page</h2><span class="file">src/pages/People/index.ts</span>
-            <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">export { default } from './People';</code>
-              <textarea class="sg-code-input">export { default } from './People';</textarea></pre><span class="file">src/pages/People/People.tsx </span>
-            <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">import { TITLE_BAR, TITLE } from './constants';
-      
-const People = () =&gt; (
-  &lt;p&gt;Ma page people&lt;/p&gt;
-);
-      
-export default People;</code>
-              <textarea class="sg-code-input">import { TITLE_BAR, TITLE } from './constants';
-      
-const People = () =&gt; (
-  &lt;p&gt;Ma page people&lt;/p&gt;
-);
-      
-export default People;</textarea></pre>
+          <section class="sg-clamp-syntaxe" id="clamp-syntaxe" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Syntaxe</h2>
+            <p>La fonction clamp() prend trois paramètres :  <strong>une valeur minimale, </strong><strong>une valeur préférée </strong><strong>et une valeur maximale.</strong></p>
+            <p>La valeur préférée est la valeur qui sera utilisée si elle est comprise entre les deux bornes.</p>
+            <p>La fonction <a href="https://developer.mozilla.org/fr/docs/Web/CSS/clamp?trk=public_post_comment-text">clamp() </a> est une fonction CSS native qui est supportée par tous les navigateurs modernes.</p>
           </section>
-          <section class="sg-exo1-layout" id="exo1-layout" compatibility="compatibility" data-background="" data-background-transition="fade"> 
-            <h2>Ajouter le layout </h2><span class="file">src/pages/People/constants.ts</span>
-            <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">export const TITLE_BAR = 'Liste des gens';
-export const TITLE = 'Tableau des gens';
-export const ROUTE_URL_PEOPLE = 'people';</code>
-              <textarea class="sg-code-input">export const TITLE_BAR = 'Liste des gens';
-export const TITLE = 'Tableau des gens';
-export const ROUTE_URL_PEOPLE = 'people';</textarea></pre><span class="file">src/pages/People/People.tsx</span>
-            <pre class="code-wrapper--notes">      
+          <section class="sg-clamp-typography" id="clamp-typography" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Typographie responsive</h2>
+            <p>Un cas d'usage très courant de la fonction clamp() est la définition de tailles de police responsive.</p>
+            <p>Auparavant, on utilisait les media queries pour définir des tailles de police en fonction de la taille de l'écran.</p>
+            <pre>                 <code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">h1 {
+  font-size: clamp(1rem, 5vw, 2rem);
+}</code>
+              <textarea class="sg-code-input">h1 {
+  font-size: clamp(1rem, 5vw, 2rem);
+}</textarea></pre>
+          </section>
+          <section class="sg-clamp-simulateur" id="clamp-simulateur" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Simulateur</h2>
+            <p>Pour mieux comprendre le fonctionnement de la fonction clamp(), vous pouvez utiliser le <a href="https://modern-fluid-typography.vercel.app/" target="blank">simulateur </a> ci-dessous.</p>
+            <iframe style="width: 100%;color: white; font-weight: bold;min-height: 55svh;" title="clamp() simulator" src="https://modern-fluid-typography.vercel.app/" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+          </section>
+          <section class="sg-clamp-typography-demo" id="clamp-typography-demo" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Démo : Typographie responsive  </h2>
+            <iframe style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css clamp typography" src="https://codepen.io/gsam59/embed/MWdoEwx?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+          </section>
+          <section class="sg-clamp-container-demo" id="clamp-container-demo" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Démo : Container responsive</h2>
+            <p>Un autre cas d'usage de la fonction clamp() est la définition de largeurs de conteneurs responsives.</p>
+            <iframe style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css clamp container" src="https://codepen.io/gsam59/embed/WNBOemV?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+          </section>
+        </section>
+        <section class="sg-display" id="display" compatibility="compatibility" data-background="" data-background-transition="fade">
+          <section class="sg-display" id="display" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h1>Display</h1>
+            <p>La propriété display permet de contrôler la manière dont un élément est affiché sur la page.</p>
+            <p>Des ajouts récents ont permis de nouvelles valeurs pour cette propriété.</p>
+          </section>
+          <section class="sg-display-contents-problem" id="display-contents-problem" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <p>Il arrive parfois que l'on ait besoin d'appliquer un style sur les enfants indirects.</p>
+            <p>Plutot que "aplatir notre arbre" en utilisant des sélecteurs plus spécifiques, il est possible d'utiliser la valeur display: contents; pour ignorer l'élément parent.</p>
+            <p>Prenons un exemple avec un élément de type flex.</p>
+            <pre><code><header>
+      <img src="logo.svg" alt="Logo" />
+      <form>
+            <label for="search">Search</label>
+            <input type="search" placeholder="Search" />
+      </form>
+</header></code></pre>
+            <pre>
               <div class="sg-notes">
-                <div class="sg-note fragment fade-in-then-out" style="top: 10px"><span class="sg-note__content">on importe le Composant Layout</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 33.5px"><span class="sg-note__content">on importe les constantes</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 80.5px"><span class="sg-note__content">On définit le type du Composant People</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 127.5px"><span class="sg-note__content">On met à jour les props du Composant People</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 151px"><span class="sg-note__content">Composant Layout avec les propriétés propsTitle</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 174.5px"><span class="sg-note__content">On ajoute un titre </span></div>
-              </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="1,2,4,6,7,8" data-ln-start-from="">import Layout, { type TLayoutPage } from 'Layout';
-import { TITLE_BAR, TITLE } from './constants';
-
-export type TPeople = TLayoutPage;
-
-const People = ({ titleBar = TITLE_BAR, title = TITLE }: TPeople) =&gt; (
-  &lt;Layout propsTitle={{ title: titleBar, backHome: true }}&gt;
-    &lt;h2 className=&quot;af-title--content&quot;&gt;{title}&lt;/h2&gt;
-    &lt;p&gt;Ma page people&lt;/p&gt;
-  &lt;/Layout&gt;
-);
-
-export default People;</code>
-              <textarea class="sg-code-input">import Layout, { type TLayoutPage } from 'Layout';
-import { TITLE_BAR, TITLE } from './constants';
-
-export type TPeople = TLayoutPage;
-
-const People = ({ titleBar = TITLE_BAR, title = TITLE }: TPeople) =&gt; (
-  &lt;Layout propsTitle={{ title: titleBar, backHome: true }}&gt;
-    &lt;h2 className=&quot;af-title--content&quot;&gt;{title}&lt;/h2&gt;
-    &lt;p&gt;Ma page people&lt;/p&gt;
-  &lt;/Layout&gt;
-);
-
-export default People;</textarea></pre>
+                <div class="sg-note" style="top: -13.5px"><span class="sg-note__content">Ce code ne peut pas fonctionner car input n'est pas un enfant direct de header</span></div>
+              </div><code> header {
+      display: flex;
+}
+input {
+      flex-grow: 1;
+}</code></pre>
           </section>
-          <section class="sg-exo1-route" id="exo1-route" compatibility="compatibility" data-background="" data-background-transition="fade">           
-            <h2>Ajouter la route</h2><span class="file">src/App/Routes/constants.ts </span>
-            <pre class="code-wrapper--notes">
-              <div class="sg-notes">
-                <div class="sg-note fragment fade-in-then-out" style="top: 33.5px"><span class="sg-note__content">on importe la route depuis le Composant People</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 127.5px"><span class="sg-note__content">On réexporte pour centraliser les routes</span></div>
-              </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="2,6" data-ln-start-from="">import { ROUTE_URL_UNAUTHORIZE as UNAUTHORIZE } from 'pages/Unauthorize/constants';
-import { ROUTE_URL_PEOPLE as PEOPLE } from 'pages/People/constants';
-
-const ROUTE_URLS = {
-  HOME,
-  PEOPLE,
-  ...
-};
-
-export default ROUTE_URLS;</code>
-              <textarea class="sg-code-input">import { ROUTE_URL_UNAUTHORIZE as UNAUTHORIZE } from 'pages/Unauthorize/constants';
-import { ROUTE_URL_PEOPLE as PEOPLE } from 'pages/People/constants';
-
-const ROUTE_URLS = {
-  HOME,
-  PEOPLE,
-  ...
-};
-
-export default ROUTE_URLS;</textarea></pre><span class="file">src/App/Routes/Routes.tsx </span>
-            <pre class="code-wrapper--notes">
-              <div class="sg-notes">
-                <div class="sg-note fragment fade-in-then-out" style="top: 33.5px"><span class="sg-note__content">on importe le Composant People</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 174.5px"><span class="sg-note__content">On ajoute la route dans le Router</span></div>
-              </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="2,8" data-ln-start-from="">const PageNotFound = lazy(() =&gt; import('pages/NotFound'));
-const PagePeople = lazy(() =&gt; import('pages/People'));
-...
-    &lt;Routes&gt;
-      &lt;Route element={&lt;RouteSecureCmpt /&gt;}&gt;
-        &lt;Route index path={ROUTE_URLS.HOME} element={&lt;Home /&gt;} /&gt;
-      &lt;/Route&gt;
-      &lt;Route index path={ROUTE_URLS.PEOPLE} element={&lt;PagePeople /&gt;} /&gt;
-...
-      </code>
-              <textarea class="sg-code-input">const PageNotFound = lazy(() =&gt; import('pages/NotFound'));
-const PagePeople = lazy(() =&gt; import('pages/People'));
-...
-    &lt;Routes&gt;
-      &lt;Route element={&lt;RouteSecureCmpt /&gt;}&gt;
-        &lt;Route index path={ROUTE_URLS.HOME} element={&lt;Home /&gt;} /&gt;
-      &lt;/Route&gt;
-      &lt;Route index path={ROUTE_URLS.PEOPLE} element={&lt;PagePeople /&gt;} /&gt;
-...
-      </textarea></pre>
+          <section class="sg-display-contents-demo" id="display-contents-demo" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Démo : display: contents</h2>
+            <iframe style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css :focus-visible" src="https://codepen.io/gsam59/embed/pomNEzB?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
           </section>
-          <section class="sg-exo1-link" id="exo1-link" compatibility="compatibility" data-background="" data-background-transition="fade">           
-            <h2>Ajouter un lien dans le menu </h2><span class="file">src/Layout/Menu/constants.ts </span>
-            <pre class="code-wrapper--notes">
-              <div class="sg-notes">
-                <div class="sg-note" style="top: 268.5px"><span class="sg-note__content">On ajoute le lien dans le menu</span></div>
-              </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="10-13" data-ln-start-from="">import ROUTE_URL from 'App/Routes/constants';
-
-  export const CLASS_BODY_MENU_OPEN = 'af-menu-open';
-  
-  const MENU_ITEMS = [
-    {
-      label: 'Accueil',
-      url: ROUTE_URL.HOME,
-    },
-    {
-      label: 'People',
-      url: `/${ROUTE_URL.PEOPLE}`,
-    },
-  ];
-  
-  export default MENU_ITEMS;
-  </code>
-              <textarea class="sg-code-input">import ROUTE_URL from 'App/Routes/constants';
-
-  export const CLASS_BODY_MENU_OPEN = 'af-menu-open';
-  
-  const MENU_ITEMS = [
-    {
-      label: 'Accueil',
-      url: ROUTE_URL.HOME,
-    },
-    {
-      label: 'People',
-      url: `/${ROUTE_URL.PEOPLE}`,
-    },
-  ];
-  
-  export default MENU_ITEMS;
-  </textarea></pre>
+          <section class="sg-display-contents-links" id="display-contents-links" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Quelques ressources</h2>
+            <ul>
+              <li> <a href="https://adrianroselli.com/2018/05/display-contents-is-not-a-css-reset.html">Adrian Roselli</a></li>
+              <li> <a href="https://hidde.blog/more-accessible-markup-with-display-contents/">Hidde de Vries</a></li>
+              <li> <a href="https://bitsofco.de/how-display-contents-works/">bitsofco.de</a></li>
+              <li><a href="https://www.mayank.co/blog/use-cases-for-display-contents/">Mayank Patel</a></li>
+            </ul>
           </section>
-          <section class="sg-exo1-feature" id="exo1-feature" compatibility="compatibility" data-background="" data-background-transition="fade">           
-            <h2>Ajouter le scénario de test</h2><span class="file">Feature/People/People.feature</span>
-            <pre>              <code class="gherkin sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">Feature: Page People
-      En tant que profil autorisé, je souhaite pouvoir afficher la page People
-    
-      @RG1
-      Scenario Outline: Affichage de la page People
-        Given Je suis un utilisateur connu et connecté avec le profil &quot;&lt;profil&gt;&quot;
-        When J'accède à la page People
-        Then un titre &quot;Tableau des gens&quot; est visible
-    
-        Examples:
-          | profil |
-          | Admin  |
-          | User   |
-      </code>
-              <textarea class="sg-code-input">Feature: Page People
-      En tant que profil autorisé, je souhaite pouvoir afficher la page People
-    
-      @RG1
-      Scenario Outline: Affichage de la page People
-        Given Je suis un utilisateur connu et connecté avec le profil &quot;&lt;profil&gt;&quot;
-        When J'accède à la page People
-        Then un titre &quot;Tableau des gens&quot; est visible
-    
-        Examples:
-          | profil |
-          | Admin  |
-          | User   |
-      </textarea></pre>
-          </section>
-          <section class="sg-exo1-cucumber" id="exo1-cucumber" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">           
-            <h2>Ajouter le fichier de test </h2><span class="file">src/pages/People/__tests__/People.spec.tsx </span>
-            <pre class="code-wrapper--notes" data-id="code-animation">
-              <div class="sg-notes">
-                <div class="sg-note fragment fade-in-then-out" style="top: 10px"><span class="sg-note__content">On importe Jest Cucumber</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 33.5px"><span class="sg-note__content">On importe "configure" de Testing Library via le customRender</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 57px"><span class="sg-note__content">On inclut les éléments cachés pour l'accessibilité (<a target="blank" href="https://testing-library.com/docs/queries/byrole#hidden" >doc</a>)</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 127.5px"><span class="sg-note__content">On importe le fichier People.feature</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 174.5px"><span class="sg-note__content">On pose le test à vide</span></div>
-              </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">import { defineFeature, loadFeature } from 'jest-cucumber';
-import { configure } from 'shared/testsUtils/customRender';
-
-configure({ defaultHidden: true });
-
-const feature = loadFeature('features/People/People.feature');
-
-defineFeature(feature, test =&gt; {
-  test('Affichage de la page People', ({ given, and, when, then }) =&gt; {});
-});      
-      </code>
-              <textarea class="sg-code-input">import { defineFeature, loadFeature } from 'jest-cucumber';
-import { configure } from 'shared/testsUtils/customRender';
-
-configure({ defaultHidden: true });
-
-const feature = loadFeature('features/People/People.feature');
-
-defineFeature(feature, test =&gt; {
-  test('Affichage de la page People', ({ given, and, when, then }) =&gt; {});
-});      
-      </textarea></pre>
-          </section>
-          <section class="sg-exo1-cucumber-2" id="exo1-cucumber-2" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">           
-            <h2>Générer le test</h2><span class="file">Lancer la commande suivante :</span>
-            <pre>                 <code class="language-javascript sg-code js-code" data-trim="data-trim" data-ln-start-from="">npm t People.spec.tsx</code>
-              <textarea class="sg-code-input">npm t People.spec.tsx</textarea></pre><span class="file">Récupérez le code généré dans le terminal</span><br><img class="sg-img " src="././assets/images/guerkin-test-fail.jpg" alt="gherkin test fail" loading="lazy"/><br><span class="file">src/pages/People/__tests__/People.spec.tsx </span>
-            <pre data-id="code-animation">              <code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="3-5" data-ln-start-from="">defineFeature(feature, test =&gt; {
-  test('Affichage de la page People', ({ given, when, then }) =&gt; {
-    given(/^Je suis un utilisateur connu et connecté avec le profil (.*)$/, arg0 =&gt; {});
-    when(&quot;J'accède à la page People&quot;, () =&gt; {});
-    then(/^un titre &quot;(.*)&quot; est visible$/, arg0 =&gt; {});
-  });
-});
-      </code>
-              <textarea class="sg-code-input">defineFeature(feature, test =&gt; {
-  test('Affichage de la page People', ({ given, when, then }) =&gt; {
-    given(/^Je suis un utilisateur connu et connecté avec le profil (.*)$/, arg0 =&gt; {});
-    when(&quot;J'accède à la page People&quot;, () =&gt; {});
-    then(/^un titre &quot;(.*)&quot; est visible$/, arg0 =&gt; {});
-  });
-});
-      </textarea></pre>
-          </section>
-          <section class="sg-exo1-cucumber-3" id="exo1-cucumber-3" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">          
-            <h2>Modifier le test</h2><span class="file">src/pages/People/__tests__/People.spec.tsx</span>
-            <pre class="code-wrapper--notes" data-id="code-animation"> 
-              <div class="sg-notes">
-                <div class="sg-note fragment fade-in-then-out" style="top: 33.5px"><span class="sg-note__content">On importe "render" et "screen" de Testing Library</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 57px"><span class="sg-note__content">On importe les scénarios type</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 80.5px"><span class="sg-note__content">On importe notre composant de page</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 221.5px"><span class="sg-note__content">On mocke le role depuis les valeurs du scénario</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 315.5px"><span class="sg-note__content">On rend la page avec le rôle défini</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 339px"><span class="sg-note__content">On vérifie le nom de l'utilisateur</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 386px"><span class="sg-note__content">On vérifie la présence du titre de niveau 2</span></div>
-              </div><code class="language-javascript sg-code  sg-code--no-max-height js-code  js-code--no-max-height" data-trim="data-trim" data-line-numbers="2-4, 7, 10-17" data-ln-start-from="">...
-import { configure, render, screen } from 'shared/testsUtils/customRender';
-import { JeSuisUnUtilisateurConnuEtConnecteAvecleProfil, UnTitreEstVisible } from 'shared/testsUtils/sharedScenarios';
-import People from '..';
-...
-defineFeature(feature, test =&gt; {
-  let role: string;
-
-  test('Affichage de la page People', ({ given, when, then }) =&gt; {
-    JeSuisUnUtilisateurConnuEtConnecteAvecleProfil(given, (roleMock: string) =&gt; {
-      role = roleMock;
-    });
-    when(&quot;J'accède à la page People&quot;, async () =&gt; {
-      render(&lt;People /&gt;, {}, { role });
-      expect(await screen.findByText('Samuel Gomez')).toBeInTheDocument();
-    });
-    UnTitreEstVisible(then,2);
-  });
-});</code>
-              <textarea class="sg-code-input">...
-import { configure, render, screen } from 'shared/testsUtils/customRender';
-import { JeSuisUnUtilisateurConnuEtConnecteAvecleProfil, UnTitreEstVisible } from 'shared/testsUtils/sharedScenarios';
-import People from '..';
-...
-defineFeature(feature, test =&gt; {
-  let role: string;
-
-  test('Affichage de la page People', ({ given, when, then }) =&gt; {
-    JeSuisUnUtilisateurConnuEtConnecteAvecleProfil(given, (roleMock: string) =&gt; {
-      role = roleMock;
-    });
-    when(&quot;J'accède à la page People&quot;, async () =&gt; {
-      render(&lt;People /&gt;, {}, { role });
-      expect(await screen.findByText('Samuel Gomez')).toBeInTheDocument();
-    });
-    UnTitreEstVisible(then,2);
-  });
-});</textarea></pre>
-          </section>
-          <section class="sg-exo1-cucumber-4" id="exo1-cucumber-4" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">          
-            <h2>Modifier le scénario</h2><span class="file">Feature/People/People.feature </span>
-            <pre class="code-wrapper--notes" data-id="code-animation"> 
-              <div class="sg-notes">
-                <div class="sg-note fragment fade-in-then-out" style="top: 33.5px"><span class="sg-note__content">On définie les données reçues via l'api que l'on va fournir à MSW</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 221.5px"><span class="sg-note__content">On vérifie la présence du tableau</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 245px"><span class="sg-note__content">On vérifie les entêtes du tableau</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 268.5px"><span class="sg-note__content">On vérifie le contenu du tableau</span></div>
-              </div><code class="gherkin sg-code  sg-code--no-max-height js-code  js-code--no-max-height" data-trim="data-trim" data-line-numbers="2-7,10-17" data-ln-start-from="">Given Je suis un utilisateur connu et connecté avec le profil &quot;&lt;profil&gt;&quot;
-And la page reçoit les données suivantes
-  | _id | firstname | lastname | birthDate           | photo                                        | entity    | manager | managerId |
-  | 1   | Samuel    | Gomez    | 1983-10-20T00:00:00 | https://randomuser.me/portraits/men/34.jpg   | BIOSPAN   | Sophie  | 4         |
-  | 2   | John      | Doe      | 1978-10-20T00:00:00 | https://randomuser.me/portraits/men/34.jpg   | PEARLESSA | Sophie  | 4         |
-  | 3   | Guillaume | Chervet  | 1985-10-20T00:00:00 | https://randomuser.me/portraits/men/34.jpg   | CIRCUM    | Sophie  | 4         |
-  | 4   | Sophie    | Danneels | 1992-10-20T00:00:00 | https://randomuser.me/portraits/women/85.jpg | TRIPSCH   |         |           |
-When J'accède à la page People
-Then un titre &quot;Tableau des gens&quot; est visible
-And la page contient un tableau répertoriant la liste des gens
-And le tableau présente des entêtes de colonnes dans l’ordre suivant : &quot;Prénom&quot;, &quot;Nom&quot;, &quot;Date de naissance&quot;, &quot;Entité&quot;
-And le tableau contient 4 lignes avec 4 colonnes dans l'ordre suivant :
-  | firstname | lastname | birthdate  | entity    |
-  | Samuel    | Gomez    | 20/10/1983 | BIOSPAN   |
-  | John      | Doe      | 20/10/1978 | PEARLESSA |
-  | Guillaume | Chervet  | 20/10/1985 | CIRCUM    |
-  | Sophie    | Danneels | 20/10/1992 | TRIPSCH   |  
-      </code>
-              <textarea class="sg-code-input">Given Je suis un utilisateur connu et connecté avec le profil &quot;&lt;profil&gt;&quot;
-And la page reçoit les données suivantes
-  | _id | firstname | lastname | birthDate           | photo                                        | entity    | manager | managerId |
-  | 1   | Samuel    | Gomez    | 1983-10-20T00:00:00 | https://randomuser.me/portraits/men/34.jpg   | BIOSPAN   | Sophie  | 4         |
-  | 2   | John      | Doe      | 1978-10-20T00:00:00 | https://randomuser.me/portraits/men/34.jpg   | PEARLESSA | Sophie  | 4         |
-  | 3   | Guillaume | Chervet  | 1985-10-20T00:00:00 | https://randomuser.me/portraits/men/34.jpg   | CIRCUM    | Sophie  | 4         |
-  | 4   | Sophie    | Danneels | 1992-10-20T00:00:00 | https://randomuser.me/portraits/women/85.jpg | TRIPSCH   |         |           |
-When J'accède à la page People
-Then un titre &quot;Tableau des gens&quot; est visible
-And la page contient un tableau répertoriant la liste des gens
-And le tableau présente des entêtes de colonnes dans l’ordre suivant : &quot;Prénom&quot;, &quot;Nom&quot;, &quot;Date de naissance&quot;, &quot;Entité&quot;
-And le tableau contient 4 lignes avec 4 colonnes dans l'ordre suivant :
-  | firstname | lastname | birthdate  | entity    |
-  | Samuel    | Gomez    | 20/10/1983 | BIOSPAN   |
-  | John      | Doe      | 20/10/1978 | PEARLESSA |
-  | Guillaume | Chervet  | 20/10/1985 | CIRCUM    |
-  | Sophie    | Danneels | 20/10/1992 | TRIPSCH   |  
-      </textarea></pre>
-          </section>
-          <section class="sg-exo1-cucumber-5" id="exo1-cucumber-5" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">           
-            <h2>Modifier le fichier de test</h2>
-            <pre>                 <code class="language-javascript sg-code  sg-code--no-max-height js-code  js-code--no-max-height" data-trim="data-trim" data-ln-start-from="">npm t People.spec.tsx</code>
-              <textarea class="sg-code-input">npm t People.spec.tsx</textarea></pre><span class="file">src/pages/People/__tests__/People.spec.tsx</span>
-            <pre data-id="code-animation"> <code class="language-javascript sg-code  sg-code--no-max-height js-code  js-code--no-max-height" data-trim="data-trim" data-line-numbers="1,5, 11-13" data-ln-start-from="">test('Affichage de la page People', ({ given, when, then, and }) =&gt; {
-  JeSuisUnUtilisateurConnuEtConnecteAvecleProfil(given, (roleMock: string) =&gt; {
-    role = roleMock;
-  });
-  and('la page reçoit les données suivantes', table =&gt; {});
-  when(&quot;J'accède à la page People&quot;, async () =&gt; {
-    render(&lt;People /&gt;, {}, { role });
-    expect(await screen.findByText('Samuel Gomez')).toBeInTheDocument();
-  });
-  UnTitreEstVisible(then,2);
-  and('la page contient un tableau répertoriant la liste des gens', () =&gt; {});
-  and(/^le tableau présente des entêtes de colonnes dans l’ordre suivant : &quot;(.*)&quot;, &quot;(.*)&quot;, &quot;(.*)&quot;, &quot;(.*)&quot;$/, (arg0, arg1, arg2, arg3) =&gt; {});
-  and(/^le tableau contient (\d+) lignes avec (\d+) colonnes dans l'ordre suivant :$/, (arg0, arg1, table) =&gt; {});
-});</code>
-              <textarea class="sg-code-input">test('Affichage de la page People', ({ given, when, then, and }) =&gt; {
-  JeSuisUnUtilisateurConnuEtConnecteAvecleProfil(given, (roleMock: string) =&gt; {
-    role = roleMock;
-  });
-  and('la page reçoit les données suivantes', table =&gt; {});
-  when(&quot;J'accède à la page People&quot;, async () =&gt; {
-    render(&lt;People /&gt;, {}, { role });
-    expect(await screen.findByText('Samuel Gomez')).toBeInTheDocument();
-  });
-  UnTitreEstVisible(then,2);
-  and('la page contient un tableau répertoriant la liste des gens', () =&gt; {});
-  and(/^le tableau présente des entêtes de colonnes dans l’ordre suivant : &quot;(.*)&quot;, &quot;(.*)&quot;, &quot;(.*)&quot;, &quot;(.*)&quot;$/, (arg0, arg1, arg2, arg3) =&gt; {});
-  and(/^le tableau contient (\d+) lignes avec (\d+) colonnes dans l'ordre suivant :$/, (arg0, arg1, table) =&gt; {});
-});</textarea></pre>
-          </section>
-          <section class="sg-exo1-cucumber-6" id="exo1-cucumber-6" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">          
-            <h2>Utiliser les scénarios type</h2><span class="file">src/pages/People/People/People.spec.tsx</span>
-            <pre class="code-wrapper--notes" data-id="code-animation"> 
-              <div class="sg-notes">
-                <div class="sg-note fragment fade-in-then-out" style="top: 80.5px"><span class="sg-note__content">On importe les scénarios type</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 198px"><span class="sg-note__content">On importe <i>serverUseGet</i> qui permet de mocker les appels réseaux en GET via MSW</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 315.5px"><span class="sg-note__content">On passe les données du gherkin à la méthode <i>serverUseGet</i> (le typage sera fait après)</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 386px"><span class="sg-note__content">Ensuite, on remplace les scénarios générés par les scénarios type</span></div>
-              </div><code class="language-javascript sg-code  sg-code--no-max-height js-code  js-code--no-max-height" data-trim="data-trim" data-line-numbers="4-6,9, 12-15, 17-27" data-ln-start-from="">...
-import {
-  JeSuisUnUtilisateurConnuEtConnecteAvecleProfil,
-  LaPageContientUnTableau,
-  LeTableauContientLesLignesCorrespondantAuxDonneesRecues,
-  LeTableauPresenteDesEntetesDeColonnesDansLOrdreSuivant,
-  UnTitreEstVisible,
-} from 'shared/testsUtils/sharedScenarios';
-import { serverUseGet } from 'shared/testsUtils/msw';
-import People from '..';
-  ...
-  const tableItemsType = 'membres';
-  and('la page reçoit les données suivantes', responseBody =&gt; {
-    serverUseGet&lt;TPeopleData[]&gt;({ route: 'people', responseBody }); // le typage sera fait juste après
-  });
-  ...
-  LaPageContientUnTableau(and, 'la page contient un tableau répertoriant la liste des gens', tableItemsType);
-  LeTableauPresenteDesEntetesDeColonnesDansLOrdreSuivant(
-    and,
-    /^le tableau présente des entêtes de colonnes dans l’ordre suivant : &quot;(.*)&quot;, &quot;(.*)&quot;, &quot;(.*)&quot;, &quot;(.*)&quot;$/,
-    tableItemsType,
-  );
-  LeTableauContientLesLignesCorrespondantAuxDonneesRecues(
-    and,
-    /^le tableau contient (\d+) lignes avec (\d+) colonnes dans l'ordre suivant :$/,
-    tableItemsType,
-  );</code>
-              <textarea class="sg-code-input">...
-import {
-  JeSuisUnUtilisateurConnuEtConnecteAvecleProfil,
-  LaPageContientUnTableau,
-  LeTableauContientLesLignesCorrespondantAuxDonneesRecues,
-  LeTableauPresenteDesEntetesDeColonnesDansLOrdreSuivant,
-  UnTitreEstVisible,
-} from 'shared/testsUtils/sharedScenarios';
-import { serverUseGet } from 'shared/testsUtils/msw';
-import People from '..';
-  ...
-  const tableItemsType = 'membres';
-  and('la page reçoit les données suivantes', responseBody =&gt; {
-    serverUseGet&lt;TPeopleData[]&gt;({ route: 'people', responseBody }); // le typage sera fait juste après
-  });
-  ...
-  LaPageContientUnTableau(and, 'la page contient un tableau répertoriant la liste des gens', tableItemsType);
-  LeTableauPresenteDesEntetesDeColonnesDansLOrdreSuivant(
-    and,
-    /^le tableau présente des entêtes de colonnes dans l’ordre suivant : &quot;(.*)&quot;, &quot;(.*)&quot;, &quot;(.*)&quot;, &quot;(.*)&quot;$/,
-    tableItemsType,
-  );
-  LeTableauContientLesLignesCorrespondantAuxDonneesRecues(
-    and,
-    /^le tableau contient (\d+) lignes avec (\d+) colonnes dans l'ordre suivant :$/,
-    tableItemsType,
-  );</textarea></pre>
-          </section>
-          <section class="sg-exo1-api-url" id="exo1-api-url" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">          
-            <h2>Définir l'url d'API</h2><span class="file">Avant de démarrer les développements, nous avons besoin de configurer notre url d'API</span><br><span class="file">Ajouter l'url d'API dans le fichier /public/environment.development.json</span>
-            <pre class="code-wrapper--notes" data-id="code-animation">
-              <div class="sg-notes">
-                <div class="sg-note fragment fade-in-then-out" style="top: 80.5px"><span class="sg-note__content">apiUrl est sous forme d'objet pour permettre d'avoir plusieurs sources d'API</span></div>
-              </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="4" data-ln-start-from="">...
-{
-  &quot;apiUrl&quot;: {
-    &quot;base&quot;: &quot;https://react-starter-api.vercel.app/api/&quot;
-  },
-  &quot;baseUrl&quot;: &quot;&quot;,</code>
-              <textarea class="sg-code-input">...
-{
-  &quot;apiUrl&quot;: {
-    &quot;base&quot;: &quot;https://react-starter-api.vercel.app/api/&quot;
-  },
-  &quot;baseUrl&quot;: &quot;&quot;,</textarea></pre>
-          </section>
-          <section class="sg-exo1-table-headers" id="exo1-table-headers" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">          
-            <h2>Ajouter les headers</h2><span class="file">On créé des constantes pour les entêtes de tableau et le endpoint d'API</span><br><span class="file">src/pages/People/constants.ts</span>
-            <pre class="code-wrapper--notes" data-id="code-animation"> 
-              <div class="sg-notes">
-                <div class="sg-note fragment fade-in-then-out" style="top: 80.5px"><span class="sg-note__content">on créé une constante pour le nom du service</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 104px"><span class="sg-note__content">on créé une constante pour le endpoint</span></div>
-                <div class="sg-note fragment fade-in-then-out" style="top: 151px"><span class="sg-note__content">on créé une constante qui contiendra les infos du header pour le tableau</span></div>
-              </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="4, 5,7-12" data-ln-start-from="">export const TITLE_BAR = 'Liste des gens';
-export const TITLE = 'Tableau des gens';
-export const ROUTE_URL_PEOPLE = 'people';
-export const SERVICE_NAME = 'people';
-export const ENDPOINT = 'people';
-
-export const TABLE_HEADERS_PEOPLE = [
-  { label: 'Prénom', id: 'firstname', key: 'firstname' },
-  { label: 'Nom', id: 'lastname', key: 'lastname' },
-  { label: 'Date de naissance', id: 'birthDate', key: 'birthDate' },
-  { label: 'Entité', id: 'entity', key: 'entity' },
-];</code>
-              <textarea class="sg-code-input">export const TITLE_BAR = 'Liste des gens';
-export const TITLE = 'Tableau des gens';
-export const ROUTE_URL_PEOPLE = 'people';
-export const SERVICE_NAME = 'people';
-export const ENDPOINT = 'people';
-
-export const TABLE_HEADERS_PEOPLE = [
-  { label: 'Prénom', id: 'firstname', key: 'firstname' },
-  { label: 'Nom', id: 'lastname', key: 'lastname' },
-  { label: 'Date de naissance', id: 'birthDate', key: 'birthDate' },
-  { label: 'Entité', id: 'entity', key: 'entity' },
-];</textarea></pre>
-          </section>
-          <section class="sg-exo1-donnees-typage" id="exo1-donnees-typage" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">           
-            <h2>Typer les données</h2><span class="file">src/pages/People/People.tsx : typage </span>
-            <pre data-id="code-animation"> <code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">export type TPeopleData = Record&lt;string, string&gt;;
-      
-export type TPeopleDataResponse = {
-  responseBody: TPeopleData[];
-};</code>
-              <textarea class="sg-code-input">export type TPeopleData = Record&lt;string, string&gt;;
-      
-export type TPeopleDataResponse = {
-  responseBody: TPeopleData[];
-};</textarea></pre>
+          <section class="sg-display-contents-solution" id="display-contents-solution" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Display: contents</h2>
+            <p>Si on applique un display: contents; sur le form, celui-ci ne créé plus de boite (il est en quelque sorte ignoré)</p>
+            <p>Les enfants directs du form vont donc être affichés comme s'ils étaient des enfants directs du header</p>
+            <pre>  <code class="language-css" data-line-numbers="4-6" data-trim data-line-start="4">header {
+      display: flex;
+}
+form {
+      display: contents;
+}
+input {
+      flex-grow: 1;
+}</code></pre>
             <div class="sg-alert  sg-alert--warning" role="alert">
               <svg class="sg-svg" id="info-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Zm-10 5.75c.41 0 .75-.34.75-.75v-6a.75.75 0 0 0-1.5 0v6c0 .41.34.75.75.75ZM12 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z" clip-rule="evenodd"></path>
-              </svg><span class="sg-alert__content">N'oubliez pas d'importer le type dans le fichier de test.  </span>
+              </svg><span class="sg-alert__content">
+                Attention, à l'heure actuelle, l'élément est supprimé de l'arbre d'accessibilité et donc non visible par les lecteurs d'écran.
+                il faut donc éviter de l'utiliser pour des éléments dont la sémantique est importante.</span>
             </div>
           </section>
-          <section class="sg-exo1-use-people" id="exo1-use-people" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">          
-            <!--+Alert({ modifier: 'success'})
-            strong Remarque : 
-            | useQuery retourne 
-            strong isLoading 
-            | pour l'état de chargement du cache ou 
-            strong isFecthing 
-            | pour l'état du fetch.
-            br 
-            | Par défaut, React Query affiche les données du cache et effectue en parallèle un appel fetch pour rafraichir les données.
-            br 
-            | Si on souhaite afficher le loader tant que le fetch n'est pas terminé, il faut utiliser isFetching
-            br
-            | On peut également limiter le rafraichissement des données avec l'option 
-            strong staleTime 
-            -->
-            <h2>Récupération des données            </h2><span class="file">src/pages/People/People.tsx : <em>usePeople</em></span>
-            <div class="r-stack">
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 10px"><span class="sg-note__content">On importe useQuery de React Query, setAnomalyEmptyItems, Tanomaly et nos constantes</span></div>
-                </div><code class="language-javascript sg-code  sg-code--no-max-height js-code  js-code--no-max-height" data-trim="data-trim" data-line-numbers="1,3-5" data-ln-start-from="">import { useQuery } from '@tanstack/react-query';
-import Layout, { type TLayoutPage } from 'Layout';
-import { setAnomalyEmptyItems } from 'shared/helpers';
-import { type Tanomaly } from 'shared/types';
-import { ENDPOINT, SERVICE_NAME, TITLE, TITLE_BAR } from './constants';
-
-export const usePeople = () =&gt; {
-  const { data, isLoading, error, refetch } = useQuery({
-    queryKey: [ENDPOINT],
-    select: ({ responseBody }: TPeopleDataResponse) =&gt; ({
-      anomaly: setAnomalyEmptyItems(responseBody),
-      [SERVICE_NAME]: computeInfos(responseBody),
-    }),
-  });
-
-  return {
-    ...data,
-    anomaly: (error || data?.anomaly) as Tanomaly | null,
-    isLoading,
-    refetch,
-  };
-};
-
-export type TReturnUsePeople = ReturnType&lt;typeof usePeople&gt;;</code>
-                <textarea class="sg-code-input">import { useQuery } from '@tanstack/react-query';
-import Layout, { type TLayoutPage } from 'Layout';
-import { setAnomalyEmptyItems } from 'shared/helpers';
-import { type Tanomaly } from 'shared/types';
-import { ENDPOINT, SERVICE_NAME, TITLE, TITLE_BAR } from './constants';
-
-export const usePeople = () =&gt; {
-  const { data, isLoading, error, refetch } = useQuery({
-    queryKey: [ENDPOINT],
-    select: ({ responseBody }: TPeopleDataResponse) =&gt; ({
-      anomaly: setAnomalyEmptyItems(responseBody),
-      [SERVICE_NAME]: computeInfos(responseBody),
-    }),
-  });
-
-  return {
-    ...data,
-    anomaly: (error || data?.anomaly) as Tanomaly | null,
-    isLoading,
-    refetch,
-  };
-};
-
-export type TReturnUsePeople = ReturnType&lt;typeof usePeople&gt;;</textarea></pre>
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 151px"><span class="sg-note__content">On créé un hook custom pour effectuer l'appel avec React Query</span></div>
-                </div><code class="language-javascript sg-code  sg-code--no-max-height js-code  js-code--no-max-height" data-trim="data-trim" data-line-numbers="7" data-ln-start-from="">import { useQuery } from '@tanstack/react-query';
-import Layout, { type TLayoutPage } from 'Layout';
-import { setAnomalyEmptyItems } from 'shared/helpers';
-import { type Tanomaly } from 'shared/types';
-import { ENDPOINT, SERVICE_NAME, TITLE, TITLE_BAR } from './constants';
-
-export const usePeople = () =&gt; {
-  const { data, isLoading, error, refetch } = useQuery({
-    queryKey: [ENDPOINT],
-    select: ({ responseBody }: TPeopleDataResponse) =&gt; ({
-      anomaly: setAnomalyEmptyItems(responseBody),
-      [SERVICE_NAME]: computeInfos(responseBody),
-    }),
-  });
-
-  return {
-    ...data,
-    anomaly: (error || data?.anomaly) as Tanomaly | null,
-    isLoading,
-    refetch,
-  };
-};
-
-export type TReturnUsePeople = ReturnType&lt;typeof usePeople&gt;;</code>
-                <textarea class="sg-code-input">import { useQuery } from '@tanstack/react-query';
-import Layout, { type TLayoutPage } from 'Layout';
-import { setAnomalyEmptyItems } from 'shared/helpers';
-import { type Tanomaly } from 'shared/types';
-import { ENDPOINT, SERVICE_NAME, TITLE, TITLE_BAR } from './constants';
-
-export const usePeople = () =&gt; {
-  const { data, isLoading, error, refetch } = useQuery({
-    queryKey: [ENDPOINT],
-    select: ({ responseBody }: TPeopleDataResponse) =&gt; ({
-      anomaly: setAnomalyEmptyItems(responseBody),
-      [SERVICE_NAME]: computeInfos(responseBody),
-    }),
-  });
-
-  return {
-    ...data,
-    anomaly: (error || data?.anomaly) as Tanomaly | null,
-    isLoading,
-    refetch,
-  };
-};
-
-export type TReturnUsePeople = ReturnType&lt;typeof usePeople&gt;;</textarea></pre>
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 174.5px"><span class="sg-note__content">On passe la route au useQuery, il nous retourne les données, l'état du fetch, l'état de l'erreur, et une méthode refetch</span></div>
-                </div><code class="language-javascript sg-code  sg-code--no-max-height js-code  js-code--no-max-height" data-trim="data-trim" data-line-numbers="8-9" data-ln-start-from="">import { useQuery } from '@tanstack/react-query';
-import Layout, { type TLayoutPage } from 'Layout';
-import { setAnomalyEmptyItems } from 'shared/helpers';
-import { type Tanomaly } from 'shared/types';
-import { ENDPOINT, SERVICE_NAME, TITLE, TITLE_BAR } from './constants';
-
-export const usePeople = () =&gt; {
-  const { data, isLoading, error, refetch } = useQuery({
-    queryKey: [ENDPOINT],
-    select: ({ responseBody }: TPeopleDataResponse) =&gt; ({
-      anomaly: setAnomalyEmptyItems(responseBody),
-      [SERVICE_NAME]: computeInfos(responseBody),
-    }),
-  });
-
-  return {
-    ...data,
-    anomaly: (error || data?.anomaly) as Tanomaly | null,
-    isLoading,
-    refetch,
-  };
-};
-
-export type TReturnUsePeople = ReturnType&lt;typeof usePeople&gt;;</code>
-                <textarea class="sg-code-input">import { useQuery } from '@tanstack/react-query';
-import Layout, { type TLayoutPage } from 'Layout';
-import { setAnomalyEmptyItems } from 'shared/helpers';
-import { type Tanomaly } from 'shared/types';
-import { ENDPOINT, SERVICE_NAME, TITLE, TITLE_BAR } from './constants';
-
-export const usePeople = () =&gt; {
-  const { data, isLoading, error, refetch } = useQuery({
-    queryKey: [ENDPOINT],
-    select: ({ responseBody }: TPeopleDataResponse) =&gt; ({
-      anomaly: setAnomalyEmptyItems(responseBody),
-      [SERVICE_NAME]: computeInfos(responseBody),
-    }),
-  });
-
-  return {
-    ...data,
-    anomaly: (error || data?.anomaly) as Tanomaly | null,
-    isLoading,
-    refetch,
-  };
-};
-
-export type TReturnUsePeople = ReturnType&lt;typeof usePeople&gt;;</textarea></pre>
-              <pre class="fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 221.5px"><span class="sg-note__content">En second paramètre, sur la propriété select, on peut passer une fonction qui s'exécutera après avoir reçu les données pour effectuer des traitements</span></div>
-                </div><code class="language-javascript sg-code  sg-code--no-max-height js-code  js-code--no-max-height" data-trim="data-trim" data-line-numbers="10-13" data-ln-start-from="">import { useQuery } from '@tanstack/react-query';
-import Layout, { type TLayoutPage } from 'Layout';
-import { setAnomalyEmptyItems } from 'shared/helpers';
-import { type Tanomaly } from 'shared/types';
-import { ENDPOINT, SERVICE_NAME, TITLE, TITLE_BAR } from './constants';
-
-export const usePeople = () =&gt; {
-  const { data, isLoading, error, refetch } = useQuery({
-    queryKey: [ENDPOINT],
-    select: ({ responseBody }: TPeopleDataResponse) =&gt; ({
-      anomaly: setAnomalyEmptyItems(responseBody),
-      [SERVICE_NAME]: computeInfos(responseBody),
-    }),
-  });
-
-  return {
-    ...data,
-    anomaly: (error || data?.anomaly) as Tanomaly | null,
-    isLoading,
-    refetch,
-  };
-};
-
-export type TReturnUsePeople = ReturnType&lt;typeof usePeople&gt;;</code>
-                <textarea class="sg-code-input">import { useQuery } from '@tanstack/react-query';
-import Layout, { type TLayoutPage } from 'Layout';
-import { setAnomalyEmptyItems } from 'shared/helpers';
-import { type Tanomaly } from 'shared/types';
-import { ENDPOINT, SERVICE_NAME, TITLE, TITLE_BAR } from './constants';
-
-export const usePeople = () =&gt; {
-  const { data, isLoading, error, refetch } = useQuery({
-    queryKey: [ENDPOINT],
-    select: ({ responseBody }: TPeopleDataResponse) =&gt; ({
-      anomaly: setAnomalyEmptyItems(responseBody),
-      [SERVICE_NAME]: computeInfos(responseBody),
-    }),
-  });
-
-  return {
-    ...data,
-    anomaly: (error || data?.anomaly) as Tanomaly | null,
-    isLoading,
-    refetch,
-  };
-};
-
-export type TReturnUsePeople = ReturnType&lt;typeof usePeople&gt;;</textarea>
-                <div class="sg-notes  sg-notes--right">
-                  <div class="sg-note" style="top: 221.5px"><span class="sg-note__content">ici, on renvoie un objet contenant l'anomalie en cas de réponse à vide et les données formatées en cas de données non vides</span></div>
-                </div></pre>
-              <pre class="fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 221.5px"><span class="sg-note__content"><i>setAnomalyEmptyItems</i> est une fonction utilitaire qui va renvoyer un objet dans l'anomalie qui affichera une alert</span></div>
-                </div><code class="language-javascript sg-code  sg-code--no-max-height js-code  js-code--no-max-height" data-trim="data-trim" data-line-numbers="11-12" data-ln-start-from="">import { useQuery } from '@tanstack/react-query';
-import Layout, { type TLayoutPage } from 'Layout';
-import { setAnomalyEmptyItems } from 'shared/helpers';
-import { type Tanomaly } from 'shared/types';
-import { ENDPOINT, SERVICE_NAME, TITLE, TITLE_BAR } from './constants';
-
-export const usePeople = () =&gt; {
-  const { data, isLoading, error, refetch } = useQuery({
-    queryKey: [ENDPOINT],
-    select: ({ responseBody }: TPeopleDataResponse) =&gt; ({
-      anomaly: setAnomalyEmptyItems(responseBody),
-      [SERVICE_NAME]: computeInfos(responseBody),
-    }),
-  });
-
-  return {
-    ...data,
-    anomaly: (error || data?.anomaly) as Tanomaly | null,
-    isLoading,
-    refetch,
-  };
-};
-
-export type TReturnUsePeople = ReturnType&lt;typeof usePeople&gt;;</code>
-                <textarea class="sg-code-input">import { useQuery } from '@tanstack/react-query';
-import Layout, { type TLayoutPage } from 'Layout';
-import { setAnomalyEmptyItems } from 'shared/helpers';
-import { type Tanomaly } from 'shared/types';
-import { ENDPOINT, SERVICE_NAME, TITLE, TITLE_BAR } from './constants';
-
-export const usePeople = () =&gt; {
-  const { data, isLoading, error, refetch } = useQuery({
-    queryKey: [ENDPOINT],
-    select: ({ responseBody }: TPeopleDataResponse) =&gt; ({
-      anomaly: setAnomalyEmptyItems(responseBody),
-      [SERVICE_NAME]: computeInfos(responseBody),
-    }),
-  });
-
-  return {
-    ...data,
-    anomaly: (error || data?.anomaly) as Tanomaly | null,
-    isLoading,
-    refetch,
-  };
-};
-
-export type TReturnUsePeople = ReturnType&lt;typeof usePeople&gt;;</textarea>
-                <div class="sg-notes  sg-notes--right">
-                  <div class="sg-note" style="top: 245px"><span class="sg-note__content"><i>computeInfos</i> est une fonction que l'on va créer pour respecter le format de données attendu par le tableau</span></div>
-                </div></pre>
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 386px"><span class="sg-note__content">Enfin, on retourne les valeurs utiles à la vue</span></div>
-                </div><code class="language-javascript sg-code  sg-code--no-max-height js-code  js-code--no-max-height" data-trim="data-trim" data-line-numbers="16-22" data-ln-start-from="">import { useQuery } from '@tanstack/react-query';
-import Layout, { type TLayoutPage } from 'Layout';
-import { setAnomalyEmptyItems } from 'shared/helpers';
-import { type Tanomaly } from 'shared/types';
-import { ENDPOINT, SERVICE_NAME, TITLE, TITLE_BAR } from './constants';
-
-export const usePeople = () =&gt; {
-  const { data, isLoading, error, refetch } = useQuery({
-    queryKey: [ENDPOINT],
-    select: ({ responseBody }: TPeopleDataResponse) =&gt; ({
-      anomaly: setAnomalyEmptyItems(responseBody),
-      [SERVICE_NAME]: computeInfos(responseBody),
-    }),
-  });
-
-  return {
-    ...data,
-    anomaly: (error || data?.anomaly) as Tanomaly | null,
-    isLoading,
-    refetch,
-  };
-};
-
-export type TReturnUsePeople = ReturnType&lt;typeof usePeople&gt;;</code>
-                <textarea class="sg-code-input">import { useQuery } from '@tanstack/react-query';
-import Layout, { type TLayoutPage } from 'Layout';
-import { setAnomalyEmptyItems } from 'shared/helpers';
-import { type Tanomaly } from 'shared/types';
-import { ENDPOINT, SERVICE_NAME, TITLE, TITLE_BAR } from './constants';
-
-export const usePeople = () =&gt; {
-  const { data, isLoading, error, refetch } = useQuery({
-    queryKey: [ENDPOINT],
-    select: ({ responseBody }: TPeopleDataResponse) =&gt; ({
-      anomaly: setAnomalyEmptyItems(responseBody),
-      [SERVICE_NAME]: computeInfos(responseBody),
-    }),
-  });
-
-  return {
-    ...data,
-    anomaly: (error || data?.anomaly) as Tanomaly | null,
-    isLoading,
-    refetch,
-  };
-};
-
-export type TReturnUsePeople = ReturnType&lt;typeof usePeople&gt;;</textarea></pre>
-            </div>
-          </section>
-          <section class="sg-exo1-cucumber-9" id="exo1-cucumber-9" compatibility="compatibility" data-background="" data-background-transition="fade">          
-            <h2>Formatage des données </h2><span class="file">src/pages/People/People.tsx : <em>computeInfos            </em></span>
-            <div class="r-stack">
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 33.5px"><span class="sg-note__content">On modifie les imports</span></div>
-                </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="2-3" data-ln-start-from="">...
-import { setAnomalyEmptyItems, setDate } from 'shared/helpers';
-import { setDisplay } from 'shared/components/Table';
-...
-export const computeInfos = (data: TPeopleData[]) =&gt;
-data?.map(({ _id, firstname, lastname, birthDate, entity }) =&gt; ({
-  key: _id,
-  cols: {
-    ...setDisplay({ firstname }),
-    ...setDisplay({ lastname }),
-    ...setDisplay({ birthDate: setDate({ date: birthDate }) }),
-    ...setDisplay({ entity }),
-  },
-}));</code>
-                <textarea class="sg-code-input">...
-import { setAnomalyEmptyItems, setDate } from 'shared/helpers';
-import { setDisplay } from 'shared/components/Table';
-...
-export const computeInfos = (data: TPeopleData[]) =&gt;
-data?.map(({ _id, firstname, lastname, birthDate, entity }) =&gt; ({
-  key: _id,
-  cols: {
-    ...setDisplay({ firstname }),
-    ...setDisplay({ lastname }),
-    ...setDisplay({ birthDate: setDate({ date: birthDate }) }),
-    ...setDisplay({ entity }),
-  },
-}));</textarea></pre>
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 104px"><span class="sg-note__content">La fonction reçoit les données brutes</span></div>
-                </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="5" data-ln-start-from="">...
-import { setAnomalyEmptyItems, setDate } from 'shared/helpers';
-import { setDisplay } from 'shared/components/Table';
-...
-export const computeInfos = (data: TPeopleData[]) =&gt;
-data?.map(({ _id, firstname, lastname, birthDate, entity }) =&gt; ({
-  key: _id,
-  cols: {
-    ...setDisplay({ firstname }),
-    ...setDisplay({ lastname }),
-    ...setDisplay({ birthDate: setDate({ date: birthDate }) }),
-    ...setDisplay({ entity }),
-  },
-}));</code>
-                <textarea class="sg-code-input">...
-import { setAnomalyEmptyItems, setDate } from 'shared/helpers';
-import { setDisplay } from 'shared/components/Table';
-...
-export const computeInfos = (data: TPeopleData[]) =&gt;
-data?.map(({ _id, firstname, lastname, birthDate, entity }) =&gt; ({
-  key: _id,
-  cols: {
-    ...setDisplay({ firstname }),
-    ...setDisplay({ lastname }),
-    ...setDisplay({ birthDate: setDate({ date: birthDate }) }),
-    ...setDisplay({ entity }),
-  },
-}));</textarea></pre>
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 127.5px"><span class="sg-note__content">On boucle sur les données</span></div>
-                </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="6" data-ln-start-from="">...
-import { setAnomalyEmptyItems, setDate } from 'shared/helpers';
-import { setDisplay } from 'shared/components/Table';
-...
-export const computeInfos = (data: TPeopleData[]) =&gt;
-data?.map(({ _id, firstname, lastname, birthDate, entity }) =&gt; ({
-  key: _id,
-  cols: {
-    ...setDisplay({ firstname }),
-    ...setDisplay({ lastname }),
-    ...setDisplay({ birthDate: setDate({ date: birthDate }) }),
-    ...setDisplay({ entity }),
-  },
-}));</code>
-                <textarea class="sg-code-input">...
-import { setAnomalyEmptyItems, setDate } from 'shared/helpers';
-import { setDisplay } from 'shared/components/Table';
-...
-export const computeInfos = (data: TPeopleData[]) =&gt;
-data?.map(({ _id, firstname, lastname, birthDate, entity }) =&gt; ({
-  key: _id,
-  cols: {
-    ...setDisplay({ firstname }),
-    ...setDisplay({ lastname }),
-    ...setDisplay({ birthDate: setDate({ date: birthDate }) }),
-    ...setDisplay({ entity }),
-  },
-}));</textarea></pre>
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 151px"><span class="sg-note__content">Pour chaque item, on renvoie les données formatées</span></div>
-                </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="7-13" data-ln-start-from="">...
-import { setAnomalyEmptyItems, setDate } from 'shared/helpers';
-import { setDisplay } from 'shared/components/Table';
-...
-export const computeInfos = (data: TPeopleData[]) =&gt;
-data?.map(({ _id, firstname, lastname, birthDate, entity }) =&gt; ({
-  key: _id,
-  cols: {
-    ...setDisplay({ firstname }),
-    ...setDisplay({ lastname }),
-    ...setDisplay({ birthDate: setDate({ date: birthDate }) }),
-    ...setDisplay({ entity }),
-  },
-}));</code>
-                <textarea class="sg-code-input">...
-import { setAnomalyEmptyItems, setDate } from 'shared/helpers';
-import { setDisplay } from 'shared/components/Table';
-...
-export const computeInfos = (data: TPeopleData[]) =&gt;
-data?.map(({ _id, firstname, lastname, birthDate, entity }) =&gt; ({
-  key: _id,
-  cols: {
-    ...setDisplay({ firstname }),
-    ...setDisplay({ lastname }),
-    ...setDisplay({ birthDate: setDate({ date: birthDate }) }),
-    ...setDisplay({ entity }),
-  },
-}));</textarea></pre>
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 198px"><span class="sg-note__content">La méthode <em>setDisplay</em> formate les données pour chaque cellule du tableau</span></div>
-                </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="9-12" data-ln-start-from="">...
-import { setAnomalyEmptyItems, setDate } from 'shared/helpers';
-import { setDisplay } from 'shared/components/Table';
-...
-export const computeInfos = (data: TPeopleData[]) =&gt;
-data?.map(({ _id, firstname, lastname, birthDate, entity }) =&gt; ({
-  key: _id,
-  cols: {
-    ...setDisplay({ firstname }),
-    ...setDisplay({ lastname }),
-    ...setDisplay({ birthDate: setDate({ date: birthDate }) }),
-    ...setDisplay({ entity }),
-  },
-}));</code>
-                <textarea class="sg-code-input">...
-import { setAnomalyEmptyItems, setDate } from 'shared/helpers';
-import { setDisplay } from 'shared/components/Table';
-...
-export const computeInfos = (data: TPeopleData[]) =&gt;
-data?.map(({ _id, firstname, lastname, birthDate, entity }) =&gt; ({
-  key: _id,
-  cols: {
-    ...setDisplay({ firstname }),
-    ...setDisplay({ lastname }),
-    ...setDisplay({ birthDate: setDate({ date: birthDate }) }),
-    ...setDisplay({ entity }),
-  },
-}));</textarea></pre>
-            </div>
-            <div class="sg-alert  sg-alert--success" role="alert">
-              <svg class="sg-svg" id="info-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Zm-10 5.75c.41 0 .75-.34.75-.75v-6a.75.75 0 0 0-1.5 0v6c0 .41.34.75.75.75ZM12 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z" clip-rule="evenodd"></path>
-              </svg><span class="sg-alert__content"><strong>Injecter du JSX : </strong>il n'est pas obligatoire d'utiliser la méthode setDisplay, on peut directement mettre du contenu texte ou injecter un composant React.</span>
-            </div>
-            <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="4-5" data-ln-start-from="">cols: {
-    ...
-    entity: {
-      classModifier: 'actions',
-      children: &lt;Badge classModifier=&quot;info&quot;&gt;{entity}&lt;/Badge&gt;
-    },</code>
-              <textarea class="sg-code-input">cols: {
-    ...
-    entity: {
-      classModifier: 'actions',
-      children: &lt;Badge classModifier=&quot;info&quot;&gt;{entity}&lt;/Badge&gt;
-    },</textarea></pre>
-          </section>
-          <section class="sg-exo1-cucumber-10" id="exo1-cucumber-10" compatibility="compatibility" data-background="" data-background-transition="fade">          
-            <h2>Passage des données à la vue</h2><span class="file">src/pages/People/People.tsx : PeopleContainer</span><br>
-            <div class="sg-alert  sg-alert--success" role="alert">
-              <svg class="sg-svg" id="info-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Zm-10 5.75c.41 0 .75-.34.75-.75v-6a.75.75 0 0 0-1.5 0v6c0 .41.34.75.75.75ZM12 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z" clip-rule="evenodd"></path>
-              </svg><span class="sg-alert__content">Dans la cadre de ce dojo, on place tout notre code dans le même fichier, libre à vous de faire du découpage.</span>
-            </div>
-            <div class="r-stack">
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 33.5px"><span class="sg-note__content">On importe la fonction setLoaderMode</span></div>
-                </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="2" data-ln-start-from="">...
-import { setLoaderMode } from 'shared/components/Loader';
-...
-const PeopleContainer = () =&gt; {
-  const { anomaly, isLoading, people, refetch } = usePeople();
-  return &lt;People people={people} loaderMode={setLoaderMode({ isLoading })} refetch={refetch} anomaly={anomaly} /&gt;;
-};
-
-export default PeopleContainer;</code>
-                <textarea class="sg-code-input">...
-import { setLoaderMode } from 'shared/components/Loader';
-...
-const PeopleContainer = () =&gt; {
-  const { anomaly, isLoading, people, refetch } = usePeople();
-  return &lt;People people={people} loaderMode={setLoaderMode({ isLoading })} refetch={refetch} anomaly={anomaly} /&gt;;
-};
-
-export default PeopleContainer;</textarea></pre>
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 80.5px"><span class="sg-note__content">On déclare un nouveau composant</span></div>
-                </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="4" data-ln-start-from="">...
-import { setLoaderMode } from 'shared/components/Loader';
-...
-const PeopleContainer = () =&gt; {
-  const { anomaly, isLoading, people, refetch } = usePeople();
-  return &lt;People people={people} loaderMode={setLoaderMode({ isLoading })} refetch={refetch} anomaly={anomaly} /&gt;;
-};
-
-export default PeopleContainer;</code>
-                <textarea class="sg-code-input">...
-import { setLoaderMode } from 'shared/components/Loader';
-...
-const PeopleContainer = () =&gt; {
-  const { anomaly, isLoading, people, refetch } = usePeople();
-  return &lt;People people={people} loaderMode={setLoaderMode({ isLoading })} refetch={refetch} anomaly={anomaly} /&gt;;
-};
-
-export default PeopleContainer;</textarea></pre>
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 104px"><span class="sg-note__content">On récupère les données via notre hook custom</span></div>
-                </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="5" data-ln-start-from="">...
-import { setLoaderMode } from 'shared/components/Loader';
-...
-const PeopleContainer = () =&gt; {
-  const { anomaly, isLoading, people, refetch } = usePeople();
-  return &lt;People people={people} loaderMode={setLoaderMode({ isLoading })} refetch={refetch} anomaly={anomaly} /&gt;;
-};
-
-export default PeopleContainer;</code>
-                <textarea class="sg-code-input">...
-import { setLoaderMode } from 'shared/components/Loader';
-...
-const PeopleContainer = () =&gt; {
-  const { anomaly, isLoading, people, refetch } = usePeople();
-  return &lt;People people={people} loaderMode={setLoaderMode({ isLoading })} refetch={refetch} anomaly={anomaly} /&gt;;
-};
-
-export default PeopleContainer;</textarea></pre>
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 127.5px"><span class="sg-note__content">On les passe à la vue</span></div>
-                </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="6" data-ln-start-from="">...
-import { setLoaderMode } from 'shared/components/Loader';
-...
-const PeopleContainer = () =&gt; {
-  const { anomaly, isLoading, people, refetch } = usePeople();
-  return &lt;People people={people} loaderMode={setLoaderMode({ isLoading })} refetch={refetch} anomaly={anomaly} /&gt;;
-};
-
-export default PeopleContainer;</code>
-                <textarea class="sg-code-input">...
-import { setLoaderMode } from 'shared/components/Loader';
-...
-const PeopleContainer = () =&gt; {
-  const { anomaly, isLoading, people, refetch } = usePeople();
-  return &lt;People people={people} loaderMode={setLoaderMode({ isLoading })} refetch={refetch} anomaly={anomaly} /&gt;;
-};
-
-export default PeopleContainer;</textarea></pre>
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 198px"><span class="sg-note__content">On modifie l'export par défaut</span></div>
-                </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="9" data-ln-start-from="">...
-import { setLoaderMode } from 'shared/components/Loader';
-...
-const PeopleContainer = () =&gt; {
-  const { anomaly, isLoading, people, refetch } = usePeople();
-  return &lt;People people={people} loaderMode={setLoaderMode({ isLoading })} refetch={refetch} anomaly={anomaly} /&gt;;
-};
-
-export default PeopleContainer;</code>
-                <textarea class="sg-code-input">...
-import { setLoaderMode } from 'shared/components/Loader';
-...
-const PeopleContainer = () =&gt; {
-  const { anomaly, isLoading, people, refetch } = usePeople();
-  return &lt;People people={people} loaderMode={setLoaderMode({ isLoading })} refetch={refetch} anomaly={anomaly} /&gt;;
-};
-
-export default PeopleContainer;</textarea></pre>
-            </div>
-          </section>
-          <section class="sg-exo1-update-vue" id="exo1-update-vue" compatibility="compatibility" data-background="" data-background-transition="fade">          
-            <h2>Modifier la vue</h2><span class="file">src/pages/People/People.tsx : People </span>
-            <div class="r-stack">
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 33.5px"><span class="sg-note__content">On ajoute les imports nécessaires</span></div>
-                </div><code class="language-javascript sg-code  sg-code--no-max-height js-code  js-code--no-max-height" data-trim="data-trim" data-line-numbers="2-5" data-ln-start-from="">...
-import Loader, { TLoader, setLoaderMode } from 'shared/components/Loader';
-import Resilience from 'shared/components/Resilience';
-import Table, { setDisplay } from 'shared/components/Table';
-import { ENDPOINT, SERVICE_NAME, TABLE_HEADERS_PEOPLE, TITLE, TITLE_BAR } from './constants';
-...
-export type TPeople = TLayoutPage &amp;
-  Pick&lt;TReturnUsePeople, 'people' | 'anomaly' | 'refetch'&gt; &amp; {
-    loaderMode: TLoader['mode'];
-    headers?: typeof TABLE_HEADERS_PEOPLE;
-  };
-
-const People = ({ titleBar = TITLE_BAR, title = TITLE, people, headers = TABLE_HEADERS_PEOPLE, refetch, loaderMode, anomaly }: TPeople) =&gt; (
-  &lt;Layout propsTitle={{ title: titleBar, backHome: true }}&gt;
-    &lt;h2 className=&quot;af-title--content&quot;&gt;{title}&lt;/h2&gt;
-    &lt;Loader mode={loaderMode}&gt;
-      &lt;Resilience anomaly={anomaly} refetch={refetch as React.MouseEventHandler&lt;HTMLButtonElement&gt;}&gt;
-        &lt;Table title=&quot;Titre de mon tableau&quot; items={people} headers={headers} itemsType=&quot;membres&quot; /&gt;
-      &lt;/Resilience&gt;
-    &lt;/Loader&gt;
-  &lt;/Layout&gt;
-);</code>
-                <textarea class="sg-code-input">...
-import Loader, { TLoader, setLoaderMode } from 'shared/components/Loader';
-import Resilience from 'shared/components/Resilience';
-import Table, { setDisplay } from 'shared/components/Table';
-import { ENDPOINT, SERVICE_NAME, TABLE_HEADERS_PEOPLE, TITLE, TITLE_BAR } from './constants';
-...
-export type TPeople = TLayoutPage &amp;
-  Pick&lt;TReturnUsePeople, 'people' | 'anomaly' | 'refetch'&gt; &amp; {
-    loaderMode: TLoader['mode'];
-    headers?: typeof TABLE_HEADERS_PEOPLE;
-  };
-
-const People = ({ titleBar = TITLE_BAR, title = TITLE, people, headers = TABLE_HEADERS_PEOPLE, refetch, loaderMode, anomaly }: TPeople) =&gt; (
-  &lt;Layout propsTitle={{ title: titleBar, backHome: true }}&gt;
-    &lt;h2 className=&quot;af-title--content&quot;&gt;{title}&lt;/h2&gt;
-    &lt;Loader mode={loaderMode}&gt;
-      &lt;Resilience anomaly={anomaly} refetch={refetch as React.MouseEventHandler&lt;HTMLButtonElement&gt;}&gt;
-        &lt;Table title=&quot;Titre de mon tableau&quot; items={people} headers={headers} itemsType=&quot;membres&quot; /&gt;
-      &lt;/Resilience&gt;
-    &lt;/Loader&gt;
-  &lt;/Layout&gt;
-);</textarea></pre>
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 151px"><span class="sg-note__content">On modifie le type de People</span></div>
-                </div><code class="language-javascript sg-code  sg-code--no-max-height js-code  js-code--no-max-height" data-trim="data-trim" data-line-numbers="7-11" data-ln-start-from="">...
-import Loader, { TLoader, setLoaderMode } from 'shared/components/Loader';
-import Resilience from 'shared/components/Resilience';
-import Table, { setDisplay } from 'shared/components/Table';
-import { ENDPOINT, SERVICE_NAME, TABLE_HEADERS_PEOPLE, TITLE, TITLE_BAR } from './constants';
-...
-export type TPeople = TLayoutPage &amp;
-  Pick&lt;TReturnUsePeople, 'people' | 'anomaly' | 'refetch'&gt; &amp; {
-    loaderMode: TLoader['mode'];
-    headers?: typeof TABLE_HEADERS_PEOPLE;
-  };
-
-const People = ({ titleBar = TITLE_BAR, title = TITLE, people, headers = TABLE_HEADERS_PEOPLE, refetch, loaderMode, anomaly }: TPeople) =&gt; (
-  &lt;Layout propsTitle={{ title: titleBar, backHome: true }}&gt;
-    &lt;h2 className=&quot;af-title--content&quot;&gt;{title}&lt;/h2&gt;
-    &lt;Loader mode={loaderMode}&gt;
-      &lt;Resilience anomaly={anomaly} refetch={refetch as React.MouseEventHandler&lt;HTMLButtonElement&gt;}&gt;
-        &lt;Table title=&quot;Titre de mon tableau&quot; items={people} headers={headers} itemsType=&quot;membres&quot; /&gt;
-      &lt;/Resilience&gt;
-    &lt;/Loader&gt;
-  &lt;/Layout&gt;
-);</code>
-                <textarea class="sg-code-input">...
-import Loader, { TLoader, setLoaderMode } from 'shared/components/Loader';
-import Resilience from 'shared/components/Resilience';
-import Table, { setDisplay } from 'shared/components/Table';
-import { ENDPOINT, SERVICE_NAME, TABLE_HEADERS_PEOPLE, TITLE, TITLE_BAR } from './constants';
-...
-export type TPeople = TLayoutPage &amp;
-  Pick&lt;TReturnUsePeople, 'people' | 'anomaly' | 'refetch'&gt; &amp; {
-    loaderMode: TLoader['mode'];
-    headers?: typeof TABLE_HEADERS_PEOPLE;
-  };
-
-const People = ({ titleBar = TITLE_BAR, title = TITLE, people, headers = TABLE_HEADERS_PEOPLE, refetch, loaderMode, anomaly }: TPeople) =&gt; (
-  &lt;Layout propsTitle={{ title: titleBar, backHome: true }}&gt;
-    &lt;h2 className=&quot;af-title--content&quot;&gt;{title}&lt;/h2&gt;
-    &lt;Loader mode={loaderMode}&gt;
-      &lt;Resilience anomaly={anomaly} refetch={refetch as React.MouseEventHandler&lt;HTMLButtonElement&gt;}&gt;
-        &lt;Table title=&quot;Titre de mon tableau&quot; items={people} headers={headers} itemsType=&quot;membres&quot; /&gt;
-      &lt;/Resilience&gt;
-    &lt;/Loader&gt;
-  &lt;/Layout&gt;
-);</textarea></pre>
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 292px"><span class="sg-note__content">On modifie les props d'entrée</span></div>
-                </div><code class="language-javascript sg-code  sg-code--no-max-height js-code  js-code--no-max-height" data-trim="data-trim" data-line-numbers="13" data-ln-start-from="">...
-import Loader, { TLoader, setLoaderMode } from 'shared/components/Loader';
-import Resilience from 'shared/components/Resilience';
-import Table, { setDisplay } from 'shared/components/Table';
-import { ENDPOINT, SERVICE_NAME, TABLE_HEADERS_PEOPLE, TITLE, TITLE_BAR } from './constants';
-...
-export type TPeople = TLayoutPage &amp;
-  Pick&lt;TReturnUsePeople, 'people' | 'anomaly' | 'refetch'&gt; &amp; {
-    loaderMode: TLoader['mode'];
-    headers?: typeof TABLE_HEADERS_PEOPLE;
-  };
-
-const People = ({ titleBar = TITLE_BAR, title = TITLE, people, headers = TABLE_HEADERS_PEOPLE, refetch, loaderMode, anomaly }: TPeople) =&gt; (
-  &lt;Layout propsTitle={{ title: titleBar, backHome: true }}&gt;
-    &lt;h2 className=&quot;af-title--content&quot;&gt;{title}&lt;/h2&gt;
-    &lt;Loader mode={loaderMode}&gt;
-      &lt;Resilience anomaly={anomaly} refetch={refetch as React.MouseEventHandler&lt;HTMLButtonElement&gt;}&gt;
-        &lt;Table title=&quot;Titre de mon tableau&quot; items={people} headers={headers} itemsType=&quot;membres&quot; /&gt;
-      &lt;/Resilience&gt;
-    &lt;/Loader&gt;
-  &lt;/Layout&gt;
-);</code>
-                <textarea class="sg-code-input">...
-import Loader, { TLoader, setLoaderMode } from 'shared/components/Loader';
-import Resilience from 'shared/components/Resilience';
-import Table, { setDisplay } from 'shared/components/Table';
-import { ENDPOINT, SERVICE_NAME, TABLE_HEADERS_PEOPLE, TITLE, TITLE_BAR } from './constants';
-...
-export type TPeople = TLayoutPage &amp;
-  Pick&lt;TReturnUsePeople, 'people' | 'anomaly' | 'refetch'&gt; &amp; {
-    loaderMode: TLoader['mode'];
-    headers?: typeof TABLE_HEADERS_PEOPLE;
-  };
-
-const People = ({ titleBar = TITLE_BAR, title = TITLE, people, headers = TABLE_HEADERS_PEOPLE, refetch, loaderMode, anomaly }: TPeople) =&gt; (
-  &lt;Layout propsTitle={{ title: titleBar, backHome: true }}&gt;
-    &lt;h2 className=&quot;af-title--content&quot;&gt;{title}&lt;/h2&gt;
-    &lt;Loader mode={loaderMode}&gt;
-      &lt;Resilience anomaly={anomaly} refetch={refetch as React.MouseEventHandler&lt;HTMLButtonElement&gt;}&gt;
-        &lt;Table title=&quot;Titre de mon tableau&quot; items={people} headers={headers} itemsType=&quot;membres&quot; /&gt;
-      &lt;/Resilience&gt;
-    &lt;/Loader&gt;
-  &lt;/Layout&gt;
-);</textarea></pre>
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 362.5px"><span class="sg-note__content">On ajoute le Loader qui affichera un <br/>loader en fonction de l'état de chargement</span></div>
-                </div><code class="language-javascript sg-code  sg-code--no-max-height js-code  js-code--no-max-height" data-trim="data-trim" data-line-numbers="16,20" data-ln-start-from="">...
-import Loader, { TLoader, setLoaderMode } from 'shared/components/Loader';
-import Resilience from 'shared/components/Resilience';
-import Table, { setDisplay } from 'shared/components/Table';
-import { ENDPOINT, SERVICE_NAME, TABLE_HEADERS_PEOPLE, TITLE, TITLE_BAR } from './constants';
-...
-export type TPeople = TLayoutPage &amp;
-  Pick&lt;TReturnUsePeople, 'people' | 'anomaly' | 'refetch'&gt; &amp; {
-    loaderMode: TLoader['mode'];
-    headers?: typeof TABLE_HEADERS_PEOPLE;
-  };
-
-const People = ({ titleBar = TITLE_BAR, title = TITLE, people, headers = TABLE_HEADERS_PEOPLE, refetch, loaderMode, anomaly }: TPeople) =&gt; (
-  &lt;Layout propsTitle={{ title: titleBar, backHome: true }}&gt;
-    &lt;h2 className=&quot;af-title--content&quot;&gt;{title}&lt;/h2&gt;
-    &lt;Loader mode={loaderMode}&gt;
-      &lt;Resilience anomaly={anomaly} refetch={refetch as React.MouseEventHandler&lt;HTMLButtonElement&gt;}&gt;
-        &lt;Table title=&quot;Titre de mon tableau&quot; items={people} headers={headers} itemsType=&quot;membres&quot; /&gt;
-      &lt;/Resilience&gt;
-    &lt;/Loader&gt;
-  &lt;/Layout&gt;
-);</code>
-                <textarea class="sg-code-input">...
-import Loader, { TLoader, setLoaderMode } from 'shared/components/Loader';
-import Resilience from 'shared/components/Resilience';
-import Table, { setDisplay } from 'shared/components/Table';
-import { ENDPOINT, SERVICE_NAME, TABLE_HEADERS_PEOPLE, TITLE, TITLE_BAR } from './constants';
-...
-export type TPeople = TLayoutPage &amp;
-  Pick&lt;TReturnUsePeople, 'people' | 'anomaly' | 'refetch'&gt; &amp; {
-    loaderMode: TLoader['mode'];
-    headers?: typeof TABLE_HEADERS_PEOPLE;
-  };
-
-const People = ({ titleBar = TITLE_BAR, title = TITLE, people, headers = TABLE_HEADERS_PEOPLE, refetch, loaderMode, anomaly }: TPeople) =&gt; (
-  &lt;Layout propsTitle={{ title: titleBar, backHome: true }}&gt;
-    &lt;h2 className=&quot;af-title--content&quot;&gt;{title}&lt;/h2&gt;
-    &lt;Loader mode={loaderMode}&gt;
-      &lt;Resilience anomaly={anomaly} refetch={refetch as React.MouseEventHandler&lt;HTMLButtonElement&gt;}&gt;
-        &lt;Table title=&quot;Titre de mon tableau&quot; items={people} headers={headers} itemsType=&quot;membres&quot; /&gt;
-      &lt;/Resilience&gt;
-    &lt;/Loader&gt;
-  &lt;/Layout&gt;
-);</textarea></pre>
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 386px"><span class="sg-note__content">On ajoute le composant Resilience <br/>qui affichera un fallback en cas d'anomalie</span></div>
-                </div><code class="language-javascript sg-code  sg-code--no-max-height js-code  js-code--no-max-height" data-trim="data-trim" data-line-numbers="17,19" data-ln-start-from="">...
-import Loader, { TLoader, setLoaderMode } from 'shared/components/Loader';
-import Resilience from 'shared/components/Resilience';
-import Table, { setDisplay } from 'shared/components/Table';
-import { ENDPOINT, SERVICE_NAME, TABLE_HEADERS_PEOPLE, TITLE, TITLE_BAR } from './constants';
-...
-export type TPeople = TLayoutPage &amp;
-  Pick&lt;TReturnUsePeople, 'people' | 'anomaly' | 'refetch'&gt; &amp; {
-    loaderMode: TLoader['mode'];
-    headers?: typeof TABLE_HEADERS_PEOPLE;
-  };
-
-const People = ({ titleBar = TITLE_BAR, title = TITLE, people, headers = TABLE_HEADERS_PEOPLE, refetch, loaderMode, anomaly }: TPeople) =&gt; (
-  &lt;Layout propsTitle={{ title: titleBar, backHome: true }}&gt;
-    &lt;h2 className=&quot;af-title--content&quot;&gt;{title}&lt;/h2&gt;
-    &lt;Loader mode={loaderMode}&gt;
-      &lt;Resilience anomaly={anomaly} refetch={refetch as React.MouseEventHandler&lt;HTMLButtonElement&gt;}&gt;
-        &lt;Table title=&quot;Titre de mon tableau&quot; items={people} headers={headers} itemsType=&quot;membres&quot; /&gt;
-      &lt;/Resilience&gt;
-    &lt;/Loader&gt;
-  &lt;/Layout&gt;
-);</code>
-                <textarea class="sg-code-input">...
-import Loader, { TLoader, setLoaderMode } from 'shared/components/Loader';
-import Resilience from 'shared/components/Resilience';
-import Table, { setDisplay } from 'shared/components/Table';
-import { ENDPOINT, SERVICE_NAME, TABLE_HEADERS_PEOPLE, TITLE, TITLE_BAR } from './constants';
-...
-export type TPeople = TLayoutPage &amp;
-  Pick&lt;TReturnUsePeople, 'people' | 'anomaly' | 'refetch'&gt; &amp; {
-    loaderMode: TLoader['mode'];
-    headers?: typeof TABLE_HEADERS_PEOPLE;
-  };
-
-const People = ({ titleBar = TITLE_BAR, title = TITLE, people, headers = TABLE_HEADERS_PEOPLE, refetch, loaderMode, anomaly }: TPeople) =&gt; (
-  &lt;Layout propsTitle={{ title: titleBar, backHome: true }}&gt;
-    &lt;h2 className=&quot;af-title--content&quot;&gt;{title}&lt;/h2&gt;
-    &lt;Loader mode={loaderMode}&gt;
-      &lt;Resilience anomaly={anomaly} refetch={refetch as React.MouseEventHandler&lt;HTMLButtonElement&gt;}&gt;
-        &lt;Table title=&quot;Titre de mon tableau&quot; items={people} headers={headers} itemsType=&quot;membres&quot; /&gt;
-      &lt;/Resilience&gt;
-    &lt;/Loader&gt;
-  &lt;/Layout&gt;
-);</textarea></pre>
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 386px"><span class="sg-note__content">On ajoute le composant Table <br/>qui affichera le tableau si tout est ok</span></div>
-                </div><code class="language-javascript sg-code  sg-code--no-max-height js-code  js-code--no-max-height" data-trim="data-trim" data-line-numbers="18" data-ln-start-from="">...
-import Loader, { TLoader, setLoaderMode } from 'shared/components/Loader';
-import Resilience from 'shared/components/Resilience';
-import Table, { setDisplay } from 'shared/components/Table';
-import { ENDPOINT, SERVICE_NAME, TABLE_HEADERS_PEOPLE, TITLE, TITLE_BAR } from './constants';
-...
-export type TPeople = TLayoutPage &amp;
-  Pick&lt;TReturnUsePeople, 'people' | 'anomaly' | 'refetch'&gt; &amp; {
-    loaderMode: TLoader['mode'];
-    headers?: typeof TABLE_HEADERS_PEOPLE;
-  };
-
-const People = ({ titleBar = TITLE_BAR, title = TITLE, people, headers = TABLE_HEADERS_PEOPLE, refetch, loaderMode, anomaly }: TPeople) =&gt; (
-  &lt;Layout propsTitle={{ title: titleBar, backHome: true }}&gt;
-    &lt;h2 className=&quot;af-title--content&quot;&gt;{title}&lt;/h2&gt;
-    &lt;Loader mode={loaderMode}&gt;
-      &lt;Resilience anomaly={anomaly} refetch={refetch as React.MouseEventHandler&lt;HTMLButtonElement&gt;}&gt;
-        &lt;Table title=&quot;Titre de mon tableau&quot; items={people} headers={headers} itemsType=&quot;membres&quot; /&gt;
-      &lt;/Resilience&gt;
-    &lt;/Loader&gt;
-  &lt;/Layout&gt;
-);</code>
-                <textarea class="sg-code-input">...
-import Loader, { TLoader, setLoaderMode } from 'shared/components/Loader';
-import Resilience from 'shared/components/Resilience';
-import Table, { setDisplay } from 'shared/components/Table';
-import { ENDPOINT, SERVICE_NAME, TABLE_HEADERS_PEOPLE, TITLE, TITLE_BAR } from './constants';
-...
-export type TPeople = TLayoutPage &amp;
-  Pick&lt;TReturnUsePeople, 'people' | 'anomaly' | 'refetch'&gt; &amp; {
-    loaderMode: TLoader['mode'];
-    headers?: typeof TABLE_HEADERS_PEOPLE;
-  };
-
-const People = ({ titleBar = TITLE_BAR, title = TITLE, people, headers = TABLE_HEADERS_PEOPLE, refetch, loaderMode, anomaly }: TPeople) =&gt; (
-  &lt;Layout propsTitle={{ title: titleBar, backHome: true }}&gt;
-    &lt;h2 className=&quot;af-title--content&quot;&gt;{title}&lt;/h2&gt;
-    &lt;Loader mode={loaderMode}&gt;
-      &lt;Resilience anomaly={anomaly} refetch={refetch as React.MouseEventHandler&lt;HTMLButtonElement&gt;}&gt;
-        &lt;Table title=&quot;Titre de mon tableau&quot; items={people} headers={headers} itemsType=&quot;membres&quot; /&gt;
-      &lt;/Resilience&gt;
-    &lt;/Loader&gt;
-  &lt;/Layout&gt;
-);</textarea></pre>
-            </div>
-          </section>
-          <section class="sg-exo1-coverage" id="exo1-coverage" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">            
-            <h2>Couverture de test</h2><span class="file">Lancer la commande suivante :</span>
-            <pre>                 <code class="language-javascript sg-code js-code" data-trim="data-trim" data-ln-start-from="">npm run cover</code>
-              <textarea class="sg-code-input">npm run cover</textarea></pre>
-            <div class="flex-column-center"><span class="file">Pour compléter nos tests, nous allons ajouter un peu de Tests Unitaires</span></div>
-          </section>
-          <section class="sg-exo1-unit-test" id="exo1-unit-test" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">           
-            <h2>Ajout de tests unitaires</h2><span class="file">src/pages/People/__tests__/People.test.tsx </span>
-            <div class="r-stack">
-              <pre class="fragment fade-in-then-out">                       
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 10px"><span class="sg-note__content">On importe waitFor et customRenderHook.</span></div>
-                </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">import { customRenderHook, waitFor } from 'shared/testsUtils';
-import { computeInfos, usePeople } from '../People';</code>
-                <textarea class="sg-code-input">import { customRenderHook, waitFor } from 'shared/testsUtils';
-import { computeInfos, usePeople } from '../People';</textarea>
-                <div class="sg-notes  sg-notes--right">
-                  <div class="sg-note" style="top: 10px"><span class="sg-note__content"><em>customRenderHook</em> permet de modifier les données renvoyée par React Query</span></div>
-                </div></pre>
-              <pre class="fragment fade-in-then-out">                         <code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">const peopleMock = [
-  {
-    _id: '99999',
-    firstname: 'Samuel',
-    lastname: 'Gomez',
-    birthDate: '1985-10-20T13:44:20.540000',
-    entity: 'AXA',
-  },
-];</code>
-                <textarea class="sg-code-input">const peopleMock = [
-  {
-    _id: '99999',
-    firstname: 'Samuel',
-    lastname: 'Gomez',
-    birthDate: '1985-10-20T13:44:20.540000',
-    entity: 'AXA',
-  },
-];</textarea><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">const expectedData = [
-  {
-    cols: {
-      birthDate: {
-        label: '20/10/1985',
-      },
-      firstname: {
-        label: 'Samuel',
-      },
-      lastname: {
-        label: 'Gomez',
-      },
-      entity: {
-        label: 'AXA',
-      },
-    },
-    key: '99999',
-  },
-];</code>
-                <textarea class="sg-code-input">const expectedData = [
-  {
-    cols: {
-      birthDate: {
-        label: '20/10/1985',
-      },
-      firstname: {
-        label: 'Samuel',
-      },
-      lastname: {
-        label: 'Gomez',
-      },
-      entity: {
-        label: 'AXA',
-      },
-    },
-    key: '99999',
-  },
-];</textarea><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">const expectedEmptyAnomaly = {
-  label: 'Info : Aucune donnée trouvée',
-  type: 'info',
-  iconName: 'exclamation-sign',
-};</code>
-                <textarea class="sg-code-input">const expectedEmptyAnomaly = {
-  label: 'Info : Aucune donnée trouvée',
-  type: 'info',
-  iconName: 'exclamation-sign',
-};</textarea></pre>
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 33.5px"><span class="sg-note__content">Cas avec des données</span></div>
-                </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="2-5" data-ln-start-from="">describe('computeInfos', () =&gt; {
-  it('Should computed people when computeInfos have been called with people', () =&gt; {
-    const computedPeople = computeInfos(peopleMock);
-    expect(computedPeople).toMatchObject(expectedData);
-  });
-
-  it('Should empty array when computeInfos have been called with empty people', () =&gt; {
-    const computedPeople = computeInfos([]);
-    expect(computedPeople).toEqual([]);
-  });
-});</code>
-                <textarea class="sg-code-input">describe('computeInfos', () =&gt; {
-  it('Should computed people when computeInfos have been called with people', () =&gt; {
-    const computedPeople = computeInfos(peopleMock);
-    expect(computedPeople).toMatchObject(expectedData);
-  });
-
-  it('Should empty array when computeInfos have been called with empty people', () =&gt; {
-    const computedPeople = computeInfos([]);
-    expect(computedPeople).toEqual([]);
-  });
-});</textarea></pre>
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 151px"><span class="sg-note__content">Cas données vides</span></div>
-                </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="7-10" data-ln-start-from="">describe('computeInfos', () =&gt; {
-  it('Should computed people when computeInfos have been called with people', () =&gt; {
-    const computedPeople = computeInfos(peopleMock);
-    expect(computedPeople).toMatchObject(expectedData);
-  });
-
-  it('Should empty array when computeInfos have been called with empty people', () =&gt; {
-    const computedPeople = computeInfos([]);
-    expect(computedPeople).toEqual([]);
-  });
-});</code>
-                <textarea class="sg-code-input">describe('computeInfos', () =&gt; {
-  it('Should computed people when computeInfos have been called with people', () =&gt; {
-    const computedPeople = computeInfos(peopleMock);
-    expect(computedPeople).toMatchObject(expectedData);
-  });
-
-  it('Should empty array when computeInfos have been called with empty people', () =&gt; {
-    const computedPeople = computeInfos([]);
-    expect(computedPeople).toEqual([]);
-  });
-});</textarea></pre>
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 80.5px"><span class="sg-note__content">Cas données vides</span></div>
-                </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="4" data-ln-start-from="">describe('usePeople', () =&gt; {
-  it.each`
-    queryData                       | people          | isLoading | anomaly
-    ${{ responseBody: [] }}         | ${[]}           | ${false}  | ${expectedEmptyAnomaly}
-    ${{ responseBody: peopleMock }} | ${expectedData} | ${false}  | ${null}
-  `(
-    'Should return isLoading: $isLoading, anomaly: $anomaly, people: $people when usePeople is rendered with queryData: $queryData',
-    async ({ queryData, anomaly, isLoading, people }) =&gt; {
-      const { result } = customRenderHook({ queryData })(() =&gt; usePeople(), {});
-
-      await waitFor(() =&gt;
-        expect(result.current).toMatchObject({
-          anomaly,
-          isLoading,
-          people,
-          refetch: result.current.refetch,
-        }),
-      );
-    },
-  );
-});</code>
-                <textarea class="sg-code-input">describe('usePeople', () =&gt; {
-  it.each`
-    queryData                       | people          | isLoading | anomaly
-    ${{ responseBody: [] }}         | ${[]}           | ${false}  | ${expectedEmptyAnomaly}
-    ${{ responseBody: peopleMock }} | ${expectedData} | ${false}  | ${null}
-  `(
-    'Should return isLoading: $isLoading, anomaly: $anomaly, people: $people when usePeople is rendered with queryData: $queryData',
-    async ({ queryData, anomaly, isLoading, people }) =&gt; {
-      const { result } = customRenderHook({ queryData })(() =&gt; usePeople(), {});
-
-      await waitFor(() =&gt;
-        expect(result.current).toMatchObject({
-          anomaly,
-          isLoading,
-          people,
-          refetch: result.current.refetch,
-        }),
-      );
-    },
-  );
-});</textarea></pre>
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 104px"><span class="sg-note__content">Cas avec des données</span></div>
-                </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="5" data-ln-start-from="">describe('usePeople', () =&gt; {
-  it.each`
-    queryData                       | people          | isLoading | anomaly
-    ${{ responseBody: [] }}         | ${[]}           | ${false}  | ${expectedEmptyAnomaly}
-    ${{ responseBody: peopleMock }} | ${expectedData} | ${false}  | ${null}
-  `(
-    'Should return isLoading: $isLoading, anomaly: $anomaly, people: $people when usePeople is rendered with queryData: $queryData',
-    async ({ queryData, anomaly, isLoading, people }) =&gt; {
-      const { result } = customRenderHook({ queryData })(() =&gt; usePeople(), {});
-
-      await waitFor(() =&gt;
-        expect(result.current).toMatchObject({
-          anomaly,
-          isLoading,
-          people,
-          refetch: result.current.refetch,
-        }),
-      );
-    },
-  );
-});</code>
-                <textarea class="sg-code-input">describe('usePeople', () =&gt; {
-  it.each`
-    queryData                       | people          | isLoading | anomaly
-    ${{ responseBody: [] }}         | ${[]}           | ${false}  | ${expectedEmptyAnomaly}
-    ${{ responseBody: peopleMock }} | ${expectedData} | ${false}  | ${null}
-  `(
-    'Should return isLoading: $isLoading, anomaly: $anomaly, people: $people when usePeople is rendered with queryData: $queryData',
-    async ({ queryData, anomaly, isLoading, people }) =&gt; {
-      const { result } = customRenderHook({ queryData })(() =&gt; usePeople(), {});
-
-      await waitFor(() =&gt;
-        expect(result.current).toMatchObject({
-          anomaly,
-          isLoading,
-          people,
-          refetch: result.current.refetch,
-        }),
-      );
-    },
-  );
-});</textarea></pre>
-              <pre class="code-wrapper--notes fragment fade-in-then-out"> 
-                <div class="sg-notes">
-                  <div class="sg-note" style="top: 198px"><span class="sg-note__content">On rend notre hook en passant le mock que doit renvoyer React Query</span></div>
-                </div><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="9" data-ln-start-from="">describe('usePeople', () =&gt; {
-  it.each`
-    queryData                       | people          | isLoading | anomaly
-    ${{ responseBody: [] }}         | ${[]}           | ${false}  | ${expectedEmptyAnomaly}
-    ${{ responseBody: peopleMock }} | ${expectedData} | ${false}  | ${null}
-  `(
-    'Should return isLoading: $isLoading, anomaly: $anomaly, people: $people when usePeople is rendered with queryData: $queryData',
-    async ({ queryData, anomaly, isLoading, people }) =&gt; {
-      const { result } = customRenderHook({ queryData })(() =&gt; usePeople(), {});
-
-      await waitFor(() =&gt;
-        expect(result.current).toMatchObject({
-          anomaly,
-          isLoading,
-          people,
-          refetch: result.current.refetch,
-        }),
-      );
-    },
-  );
-});</code>
-                <textarea class="sg-code-input">describe('usePeople', () =&gt; {
-  it.each`
-    queryData                       | people          | isLoading | anomaly
-    ${{ responseBody: [] }}         | ${[]}           | ${false}  | ${expectedEmptyAnomaly}
-    ${{ responseBody: peopleMock }} | ${expectedData} | ${false}  | ${null}
-  `(
-    'Should return isLoading: $isLoading, anomaly: $anomaly, people: $people when usePeople is rendered with queryData: $queryData',
-    async ({ queryData, anomaly, isLoading, people }) =&gt; {
-      const { result } = customRenderHook({ queryData })(() =&gt; usePeople(), {});
-
-      await waitFor(() =&gt;
-        expect(result.current).toMatchObject({
-          anomaly,
-          isLoading,
-          people,
-          refetch: result.current.refetch,
-        }),
-      );
-    },
-  );
-});</textarea></pre>
-              <pre class="fragment fade-in-then-out"> <code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">describe('usePeople', () =&gt; {
-  it.each`
-    queryData                       | people          | isLoading | anomaly
-    ${{ responseBody: [] }}         | ${[]}           | ${false}  | ${expectedEmptyAnomaly}
-    ${{ responseBody: peopleMock }} | ${expectedData} | ${false}  | ${null}
-  `(
-    'Should return isLoading: $isLoading, anomaly: $anomaly, people: $people when usePeople is rendered with queryData: $queryData',
-    async ({ queryData, anomaly, isLoading, people }) =&gt; {
-      const { result } = customRenderHook({ queryData })(() =&gt; usePeople(), {});
-
-      await waitFor(() =&gt;
-        expect(result.current).toMatchObject({
-          anomaly,
-          isLoading,
-          people,
-          refetch: result.current.refetch,
-        }),
-      );
-    },
-  );
-});</code>
-                <textarea class="sg-code-input">describe('usePeople', () =&gt; {
-  it.each`
-    queryData                       | people          | isLoading | anomaly
-    ${{ responseBody: [] }}         | ${[]}           | ${false}  | ${expectedEmptyAnomaly}
-    ${{ responseBody: peopleMock }} | ${expectedData} | ${false}  | ${null}
-  `(
-    'Should return isLoading: $isLoading, anomaly: $anomaly, people: $people when usePeople is rendered with queryData: $queryData',
-    async ({ queryData, anomaly, isLoading, people }) =&gt; {
-      const { result } = customRenderHook({ queryData })(() =&gt; usePeople(), {});
-
-      await waitFor(() =&gt;
-        expect(result.current).toMatchObject({
-          anomaly,
-          isLoading,
-          people,
-          refetch: result.current.refetch,
-        }),
-      );
-    },
-  );
-});</textarea></pre>
-            </div>
-          </section>
-          <section class="sg-exo1-solution" id="exo1-solution" compatibility="compatibility" data-background="" data-background-transition="fade" data-auto-animate="data-auto-animate">           
-            <h2>Solution</h2><span class="file">Dispo sur la branche feature/dojo sur <a href="https://github.com/samuel-gomez/react-starter-vitejs/commit/72286e1dfe310057817db6abe7221479a3cd3f89" target="blank">Github</a></span>
+          <section class="sg-display-double" id="display-double" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Display Inside / Outside</h2>
+            <p>Ce n'est pas une nouveauté mais c'est assez peu utilisé, il est possible de définir deux valeurs pour la propriété display.</p>
+            <p><display-outside> et <display-inside></p>
           </section>
         </section>
-        <!-- include ./slides/has/index.pug-->
-        <!-- include ./slides/animation-timeline/index.pug-->
-        <!-- include ./slides/anchor/index.pug-->
-        <!-- include ./slides/focus/index.pug-->
-        <!-- include ./slides/popover-api/index.pug-->
-        <!-- include ./slides/promises/index.pug-->
-        <!-- include ./slides/text-wrap/index.pug-->
-        <!-- include ./slides/dialog/index.pug-->
-        <!-- include ./slides/@scope/index.pug-->
+        <section class="sg-focus" id="focus" compatibility="compatibility" data-background="" data-background-transition="fade">
+          <section class="sg-gestion-du-focus" id="gestion-du-focus" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h1>Gestion du focus</h1>
+            <p>Lorsque l'on conçoit des applications web, il est important de prendre en compte la navigation au clavier, tant pour <strong>l'accessibilité </strong>que pour <strong>l'expérience utilisateur.</strong></p>
+          </section>
+          <section class="sg-definir-le-parcours" id="definir-le-parcours" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Définir le parcours</h2>
+            <p>il est donc important de définir un parcours logique pour la navigation au clavier. Cela fait partie des points importants à prendre compte lors de la conception UX d'une application web.</p>
+          </section>
+          <section class="sg-elements-focusable" id="elements-focusable" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Éléments focusables</h2>
+            <p>Voici la liste des éléments qui sont focusables par défaut :</p>
+            <ul>
+              <li>a</li>
+              <li>area</li>
+              <li>button</li>
+              <li>details</li>
+              <li>input</li>
+              <li>select</li>
+              <li>textarea</li>
+              <li>[tabindex]</li>
+              <li>[contentEditable=true]</li>
+              <li>iframe</li>
+              <li>...</li>
+            </ul>
+            <p>Voici une liste plus exhaustive d'éléments focusables : <a href="https://allyjs.io/data-tables/focusable.html">allyjs.io</a></p>
+          </section>
+          <section class="sg-focus-classique" id="focus-classique" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>:focus</h2>
+            <p>Tout le monde connait la pseudo-class
+              <pre><code>:focus</code></pre>qui permet de cibler un élément qui a le focus.
+            </p>
+            <p>il est possible de personnaliser le style avec la propriété outline et outline-offset
+              <pre><code>:focus {
+      outline: 2px solid blue;
+      outline-offset: 5px;
+}</code></pre>
+            </p>
+          </section>
+          <section class="sg-focus-visible" id="focus-visible" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>:focus-visible</h2>
+            <p>La pseudo-class
+              <pre><code>:focus-visible</code></pre>permet de cibler un élément qui a le focus et qui est visible.
+            </p>
+            <p>Pour plus d'informations, vous pouvez consulter la documentation <a href="https://developer.mozilla.org/fr/docs/Web/CSS/:focus-visible">:focus-visible</a></p>
+          </section>
+          <section class="sg-focus-visible-demo" id="focus-visible-demo" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Démo : :focus-visible</h2>
+            <iframe style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css :focus-visible" src="https://codepen.io/gsam59/embed/QWRKyNe?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+          </section>
+          <section class="sg-focus-within" id="focus-within" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>:focus-within</h2>
+            <p>Si on souhaite cibler un élément parent qui contient un élément qui a le focus, nous pourrions utiliser le 
+              <pre><code> fieldset:has(input:focus) {
+      border: 2px solid blue;
+}</code></pre>
+            </p>
+            <p>On peut faire la même chose avec la pseudo-class
+              <pre><code>:focus-within</code></pre>elle s'applique à tous les éléments descendants en focus y compris ceux du Shadow DOM.
+            </p>
+            <p>Pour plus d'informations, vous pouvez consulter la documentation <a href="https://developer.mozilla.org/fr/docs/Web/CSS/:focus-within">:focus-within</a></p>
+          </section>
+          <section class="sg-focus-within-demo" id="focus-within-demo" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Démo : :focus-within</h2>
+            <iframe style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css :focus-visible" src="https://codepen.io/gsam59/embed/MWLqoJW?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+          </section>
+          <section class="sg-focus-within-visible" id="focus-within-visible" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>:has et :focus-visible</h2>
+            <p>L'inconvenient du :focus-within est qu'il ne prend pas en compte la visibilité de l'élément. Pour cela, on peut utiliser le :has()
+              <pre><code> fieldset:has(:focus-visible) {
+      border: 2px solid blue;
+}</code></pre>
+            </p>
+            <p>De cette manière, l'élément parent ne sera ciblé que si un des éléments enfant est visible.</p>
+          </section>
+        </section>
+        <section class="sg-dialog" id="dialog" compatibility="compatibility" data-background="" data-background-transition="fade">
+          <section class="sg-preface" id="preface" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h1>Dialog </h1>
+            <p>new modal component</p>
+          </section>
+        </section>
+        <section class="sg-popover-api" id="popover-api" compatibility="compatibility" data-background="" data-background-transition="fade">
+          <section class="sg-popover-api" id="popover-api" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h1>Popover API</h1>
+            <p>Les popovers sont des éléments qui permettent d'afficher des informations contextuelles. Ils sont souvent utilisés pour afficher des informations supplémentaires.</p>
+            <p>Cette nouvelle API permet de créer des popovers sans avoir à utiliser Javascript</p>
+          </section>
+          <section class="sg-popover-api-modaux-non-modaux" id="popover-api-modaux-non-modaux" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Les éléments modaux et non-modaux </h2>
+            <p>
+               Les éléments modaux sont des éléments qui <strong>bloquent l'interaction </strong>avec le reste de la page. <br>Les éléments non-modaux sont des éléments qui <strong>permettent de continuer à interagir </strong>avec le reste de la page.</p>
+            <p>Les popovers sont des éléments non-modaux, si on souhaite créer des éléments modaux, l'élément <a href="https://developer.mozilla.org/fr/docs/Web/HTML/Element/dialog">dialog </a> est plus adapté.</p>
+          </section>
+          <section class="sg-popover-api-syntaxe" id="popover-api-syntaxe" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Popover API :  syntaxe</h2>
+            <p>La syntaxe est assez simple. Il suffit d'ajouter quelques attributs sur l'élément actionnable et sur l'élément à afficher.</p>
+            <pre> <code class="language-html"><button popovertarget="alert-success" popovertargetaction="toggle">Fire alert success</button>
+<div id="alert-success" popover role="alert">Success : You win !</div></code></pre>
+            <div class="sg-alert  sg-alert--info" role="alert">
+              <svg class="sg-svg" id="info-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Zm-10 5.75c.41 0 .75-.34.75-.75v-6a.75.75 0 0 0-1.5 0v6c0 .41.34.75.75.75ZM12 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z" clip-rule="evenodd"></path>
+              </svg><span class="sg-alert__content">Pour gérer l'apparition et la disparition du popover, le navigateur bascule entre "block" et "none" de la propriété <strong>display.</strong><br>Pour animer l'apparition et la disparition, il est possible d'utiliser la règle<strong>@starting-style.</strong></span>
+            </div>
+          </section>
+          <section class="sg-popover-api-attribut" id="popover-api-attribut" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Popover API :  les attributs</h2>
+            <p>Les attributs sont les suivants :</p>
+            <ul>
+              <li> <a href="https://developer.mozilla.org/fr/docs/Web/HTML/Element/button#popovertarget">popovertarget </a> : l'identifiant de l'élément à afficher</li>
+              <li> <a href="https://developer.mozilla.org/fr/docs/Web/HTML/Element/button#popovertargetaction">popovertargetaction</a> : l'action à effectuer sur l'élément à afficher (toggle, show, hide)</li>
+              <li> <a href="https://developer.mozilla.org/fr/docs/Web/HTML/Global_attributes/popover">popover  </a> : l'élément à afficher (manual ou auto)</li>
+            </ul>
+          </section>
+          <section class="sg-popover-api-demo-notification" id="popover-api-demo-notification" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Démo : Notification</h2>
+            <iframe style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css popover notification" src="https://codepen.io/gsam59/embed/MWdbBZL?default-tab=html,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+          </section>
+          <section class="sg-popover-api-pseudo-class-element" id="popover-api-pseudo-class-element" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Pseudo-classe et pseudo-element</h2>
+            <p>Il est possible de personnaliser le style des popovers en fonction de leur état.</p>
+            <p>l'état d'ouverture est géré par la pseudo-class
+              <pre><code class="language-css">[popover]:popover-open {
+      background-color: white;
+}</code></pre>
+            </p>
+            <p>Comme pour les dialog, on peut personnaliser le fond avec le pseudo-element
+              <pre><code class="language-css">[popover]::backdrop {
+      background-color: rgba(0, 0, 0, 0.5);
+}</code></pre>
+            </p>
+          </section>
+          <section class="sg-popover-api-demo-notification-javascript" id="popover-api-demo-notification-javascript" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Démo : Slider menu</h2>
+            <iframe style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css popover notification" src="https://codepen.io/gsam59/embed/wvbgEGm?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+          </section>
+          <section class="sg-popover-api-javascript" id="popover-api-javascript" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Avec Javascript</h2>
+            <p>L'API Popover dispose également de quelques méthodes Javascript pour manipuler les popovers.</p>
+            <ul>
+              <li> <a href="https://developer.mozilla.org/fr/docs/Web/API/HTMLElement/hidePopover">hidePopover()</a></li>
+              <li> <a href="https://developer.mozilla.org/fr/docs/Web/API/HTMLElement/showPopover">showPopover()</a></li>
+              <li> <a href="https://developer.mozilla.org/fr/docs/Web/API/HTMLElement/togglePopover">togglePopover()</a></li>
+            </ul>
+          </section>
+          <section class="sg-popover-api-demo-notification-demo" id="popover-api-demo-notification-demo" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Démo : Notification avec Javascript</h2>
+            <iframe style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css popover notification" src="https://codepen.io/gsam59/embed/BaeRoBB?default-tab=js,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+          </section>
+          <section class="sg-popover-api-links" id="popover-api-links" compatibility="compatibility" data-background="" data-background-transition="fade"><a href="https://open-ui.org/components/popover.research.explainer/">Open UI</a>
+          </section>
+        </section>
+        <section class="sg-anchor" id="anchor" compatibility="compatibility" data-background="" data-background-transition="fade">
+          <section class="sg-anchor-positioning" id="anchor-positioning" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h1>Anchor Positioning</h1><a href="https://groups.google.com/a/chromium.org/g/blink-dev/c/jGTYNuidPRs/m/-jB4agJ7AAAJ?pli=1">veille</a><a href="https://caniuse.com/css-anchor-positioning">caniuse</a><a href="https://codepen.io/gsam59/pen/PoVyLea">codepen </a>
+          </section>
+        </section>
+        <section class="sg-animation-timeline" id="animation-timeline" compatibility="compatibility" data-background="" data-background-transition="fade">
+          <section class="sg-preface" id="preface" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h1>Animation TimeLine</h1>
+          </section>
+        </section>
+        <section class="sg-text-wrap" id="text-wrap" compatibility="compatibility" data-background="" data-background-transition="fade">
+          <section class="sg-preface" id="preface" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h1>Text wrap </h1>
+            <p>Text wrap is a CSS property that allows text to wrap around an image or other element.</p>
+            <p>pretty or balance</p>
+          </section>
+        </section>
+        <section class="sg-scope" id="scope" compatibility="compatibility" data-background="" data-background-transition="fade">
+          <section class="sg-preface" id="preface" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h1>@scope</h1>
+          </section>
+        </section>
       </div>
     </div>
     <script src="dist/reveal.js"></script>

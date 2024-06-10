@@ -1,3 +1,44 @@
+-const { data: clampData } = require('./pug/slides/clamp/data.js');
 +Section({name :'clamp'})
-      +Section({ name :'preface' })
+      +Section({ name :'clamp',  compatibility:"css-math-functions" })
             h1 Clamp
+            p Clamp fait partie des 
+                  a(href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions/Using_CSS_math_functions") fonctions mathématiques CSS,
+                  | elle permet de définir une valeur comprise entre deux bornes avec une valeur préférée.
+            p On peut l'utiliser pour rendre une taille de police responsive ou pour définir des bornes pour d'autres propriétés CSS.
+
+      +Section({ name :'clamp-syntaxe' })
+            h2 Syntaxe
+            p La fonction clamp() prend trois paramètres :  
+                  strong une valeur minimale, 
+                  strong une valeur préférée 
+                  strong et une valeur maximale.
+            p La valeur préférée est la valeur qui sera utilisée si elle est comprise entre les deux bornes.
+            p La fonction 
+                  a(href="https://developer.mozilla.org/fr/docs/Web/CSS/clamp?trk=public_post_comment-text") clamp() 
+                  |  est une fonction CSS native qui est supportée par tous les navigateurs modernes.
+            
+
+      +Section({ name :'clamp-typography' })
+            h2 Typographie responsive
+            p Un cas d'usage très courant de la fonction clamp() est la définition de tailles de police responsive.
+            p Auparavant, on utilisait les media queries pour définir des tailles de police en fonction de la taille de l'écran.
+            pre                  
+                  +Code({ content : clampData[0].code, langage: 'css' })
+
+      +Section({ name :'clamp-simulateur' })
+            h2 Simulateur
+            p Pour mieux comprendre le fonctionnement de la fonction clamp(), vous pouvez utiliser le 
+                  a(href="https://modern-fluid-typography.vercel.app/" target="blank") simulateur 
+                  |  ci-dessous.
+
+            iframe(style="width: 100%;color: white; font-weight: bold;min-height: 55svh;" title="clamp() simulator" src="https://modern-fluid-typography.vercel.app/" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
+
+      +Section({ name :'clamp-typography-demo' })
+            h2 Démo : Typographie responsive  
+            iframe(style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css clamp typography" src="https://codepen.io/gsam59/embed/MWdoEwx?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
+
+      +Section({ name :'clamp-container-demo' })
+            h2 Démo : Container responsive
+            p Un autre cas d'usage de la fonction clamp() est la définition de largeurs de conteneurs responsives.
+            iframe(style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css clamp container" src="https://codepen.io/gsam59/embed/WNBOemV?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")

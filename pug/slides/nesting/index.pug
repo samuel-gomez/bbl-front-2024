@@ -1,9 +1,75 @@
+-const { data: nestingData } = require('./pug/slides/nesting/data.js');
+
 +Section({name :'nesting-css'})
-      +Section({ name :'nesting-css' })
+      +Section({ name :'nesting-css',  compatibility:"css-nesting" })
             h1 Nesting CSS
-            p La spécificité des sélecteurs CSS permet de définir des styles en fonction de l'arborescence du DOM.
-            p Cependant, cette spécificité peut rendre le code difficile à maintenir.
-            p Le nesting CSS permet de définir des styles en fonction de l'arborescence du DOM sans augmenter la spécificité des sélecteurs.
-            p Cela permet de rendre le code plus lisible et plus facile à maintenir.
-            a(href="https://developer.mozilla.org/fr/docs/Web/CSS/Descendant_combinateur") mdn
-            a(href="https://lightningcss.dev/playground/index.html#%7B%22minify%22%3Afalse%2C%22customMedia%22%3Atrue%2C%22cssModules%22%3Afalse%2C%22analyzeDependencies%22%3Afalse%2C%22targets%22%3A%7B%22chrome%22%3A6225920%2C%22firefox%22%3A8192000%2C%22edge%22%3A8126464%7D%2C%22include%22%3A0%2C%22exclude%22%3A0%2C%22source%22%3A%22%40custom-media%20--modern%20(color)%2C%20(hover)%3B%5Cn%5Cn.foo%20%7B%5Cn%20%20background%3A%20yellow%3B%5Cn%5Cn%20%20-webkit-border-radius%3A%202px%3B%5Cn%20%20-moz-border-radius%3A%202px%3B%5Cn%20%20border-radius%3A%202px%3B%5Cn%5Cn%20%20-webkit-transition%3A%20background%20200ms%3B%5Cn%20%20-moz-transition%3A%20background%20200ms%3B%5Cn%20%20transition%3A%20background%20200ms%3B%5Cn%5Cn%20%20.be%20%7B%5Cn%20%20%20%20text-align%3A%20center%3B%5Cn%20%20%7D%5Cn%5Cn%20%20%2F*%20%E2%9D%8C%20DONT%20DO%20THIS%20%E2%9D%8C%20*%2F%5Cn%20%20%5Cn%20%20%26__small%20%7B%5Cn%20%20%20%20font-size%3A%200.5rem%3B%5Cn%20%20%7D%5Cn%20%20%5Cn%20%20%2F*%20%E2%9D%8C%20DONT%20DO%20THIS%20%E2%9D%8C%20*%2F%5Cn%5Cn%5Cn%20%20%5Cn%20%20%3E%20p%20%7B%5Cn%20%20%20%20color%3A%20hotpink%3B%5Cn%20%20%7D%5Cn%5Cn%20%20%26%3Ahover%20%7B%5Cn%20%20%20%20background%3A%20orange%3B%5Cn%20%20%7D%5Cn%5Cn%20%20%26.bar%20%7B%5Cn%20%20%20%20color%3A%20green%3B%5Cn%20%20%7D%5Cn%7D%5Cn%5Cn%40media%20(--modern)%20and%20(width%20%3E%201024px)%20%7B%5Cn%20%20.a%20%7B%5Cn%20%20%20%20color%3A%20green%3B%5Cn%20%20%7D%5Cn%7D%22%2C%22visitorEnabled%22%3Afalse%2C%22visitor%22%3A%22%7B%5Cn%20%20Color(color)%20%7B%5Cn%20%20%20%20if%20(color.type%20%3D%3D%3D%20'rgb')%20%7B%5Cn%20%20%20%20%20%20color.g%20%3D%200%3B%5Cn%20%20%20%20%20%20return%20color%3B%5Cn%20%20%20%20%7D%5Cn%20%20%7D%5Cn%7D%22%2C%22unusedSymbols%22%3A%5B%5D%2C%22version%22%3A%22local%22%7D") Playground
+            p Le nesting CSS est technique d'imbrication des sélecteurs CSS pour éviter la répétition de code.
+            p Elle était déjà disponible avec les préprocesseurs CSS comme Sass, Less ou Stylus.
+
+      +Section({ name :'nesting-css-syntaxe' })
+            h2 Nesting parent - enfant
+            p Pour imbriquer des sélecteurs CSS, on peut utiliser le sélecteur d'imbrication 
+                  strong  '&' 
+            .flex.flex-center.mw-80                                        
+                  pre
+                        +Code({ content : nestingData[0].code, langage: 'css' })
+                  pre
+                        +Code({ content : nestingData[1].code, langage: 'css' })
+            +Alert({ modifier: 'info' })
+                  |  Si l'imbrication ne concerne pas une pseudo-classe ou un pseudo-élément, le sélecteur d'imbrication  
+                  strong &               
+                  | n'est pas obligatoire.
+
+
+      +Section({ name :'nesting-css-combinateur' })
+            h2 Nesting et combinateurs
+            p On peut imbriquer des sélecteurs CSS avec des combinateurs : 
+                  br
+                  strong  '+' 
+                  |  ou le sélecteur enfant direct
+                  strong  '>'
+                  | ou autre combinateur
+            .flex.flex-center.mw-80                                        
+                  pre
+                        +Code({ content : nestingData[2].code, langage: 'css' })
+                  pre
+                        +Code({ content : nestingData[3].code, langage: 'css' })
+
+      +Section({ name :'nesting-css-pseudo' })
+            h2 Pseudo-class ou pseudo-element
+            .flex.flex-center.mw-80                                        
+                  pre
+                        +Code({ content : nestingData[4].code, langage: 'css' })
+                  pre
+                        +Code({ content : nestingData[5].code, langage: 'css' })
+
+            +Alert({ modifier: 'info' })
+                  |  Pour les pseudo-classes ou pseudo-elements le sélecteur d'imbrication  
+                  strong &               
+                  | est obligatoire.
+
+      +Section({ name :'nesting-css-ancestor' })
+            h2 Scoper sur un ancêtre
+            .flex.flex-center.mw-80                                        
+                  pre
+                        +Code({ content : nestingData[6].code, langage: 'css' })
+                  pre
+                        +Code({ content : nestingData[7].code, langage: 'css' })
+
+            
+
+      +Section({ name :'nesting-css-vs-sass' })
+            h1 Nesting CSS vs Sass
+            p Le fonctionnement du nesting CSS est similaire à celui de Sass mais la 
+                  strong concaténation 
+                  | de nom n'est pas possible.
+            .flex.flex-center.mw-80                                        
+                  pre
+                        +Code({ content : nestingData[8].code, langage: 'css' })
+                  pre
+                        +Code({ content : nestingData[9].code, langage: 'css' })
+
+      +Section({ name :'nesting-css-playground' })
+            h2 Playground
+            iframe(style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css nesting playground" src="https://lightningcss.dev/playground/#%7B%22minify%22%3Afalse%2C%22customMedia%22%3Atrue%2C%22cssModules%22%3Afalse%2C%22analyzeDependencies%22%3Afalse%2C%22targets%22%3A%7B%22chrome%22%3A6225920%7D%2C%22include%22%3A0%2C%22exclude%22%3A0%2C%22source%22%3A%22.parent%20%7B%5Cn%20%20background%3A%20red%3B%5Cn%20%20%5Cn%20%20%26%20.child1%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%7D%5Cn%20%20%5Cn%20%20.child2%20%7B%5Cn%20%20%20%20background%3A%20green%3B%5Cn%20%20%7D%5Cn%20%20%5Cn%20%20%3E%20.directchild%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%7D%5Cn%20%20%5Cn%20%20%2B%20.sibling%20%7B%5Cn%20%20%20%20background%3A%20green%3B%5Cn%20%20%7D%5Cn%20%20%5Cn%7D%5Cn%5Cn%5Cn.parent-pseudo%20%7B%5Cn%20%20background%3A%20red%3B%5Cn%20%20%26%3Ahover%2C%5Cn%20%20%26%3Afocus%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%7D%5Cn%20%20%26%3Ais(p%2C%20em%2C%20i)%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%7D%5Cn%20%20%26%3A%3Aafter%2C%5Cn%20%20%26%3A%3Abefore%20%7B%5Cn%20%20%20%20content%3A%20%5C%22%E2%9C%85%EF%B8%8F%5C%22%3B%5Cn%20%20%7D%5Cn%20%20%3A%3Aafter%20%7B%5Cn%20%20%20%20content%3A%20%5C%22%E2%9D%8C%EF%B8%8F%5C%22%3B%5Cn%20%20%7D%5Cn%7D%5Cn%5Cn.component%20%7B%5Cn%20%20background%3A%20red%3B%5Cn%20%20.ancestor%20%26%20%7B%5Cn%20%20%20%20background%3A%20orange%3B%5Cn%20%20%7D%5Cn%7D%5Cn%5Cn%2F*%20%E2%9D%8C%EF%B8%8F%20*%2F%5Cn.block%7B%5Cn%20%20background%3A%20green%3B%5Cn%20%20%26__element%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%20%20%20%26--modifier%7B%5Cn%20%20%20%20%20%20%20background%3A%20red%3B%5Cn%20%20%20%20%20%7D%5Cn%20%20%7D%5Cn%7D%5Cn%5Cn%2F*%20%E2%9C%85%EF%B8%8F%20eventuellement%20*%2F%5Cn%5Cn.block%20%7B%5Cn%20%20background%3A%20green%3B%5Cn%20%20%26.__element%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%20%20%26.--modifier%20%7B%5Cn%20%20%20%20%20%20background%3A%20red%3B%5Cn%20%20%20%20%7D%5Cn%20%20%7D%5Cn%7D%5Cn%22%2C%22visitorEnabled%22%3Afalse%2C%22visitor%22%3A%22%7B%5Cn%20%20Color(color)%20%7B%5Cn%20%20%20%20if%20(color.type%20%3D%3D%3D%20'rgb')%20%7B%5Cn%20%20%20%20%20%20color.g%20%3D%200%3B%5Cn%20%20%20%20%20%20return%20color%3B%5Cn%20%20%20%20%7D%5Cn%20%20%7D%5Cn%7D%22%2C%22unusedSymbols%22%3A%5B%5D%2C%22version%22%3A%22local%22%7D" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
+      

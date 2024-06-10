@@ -1,3 +1,91 @@
 +Section({name :'popover-api'})
-      +Section({ name :'preface' })
+      +Section({ name :'popover-api' })
             h1 Popover API
+            p Les popovers sont des éléments qui permettent d'afficher des informations contextuelles. Ils sont souvent utilisés pour afficher des informations supplémentaires.
+            p Cette nouvelle API permet de créer des popovers sans avoir à utiliser Javascript
+      
+      +Section({ name :'popover-api-modaux-non-modaux' })
+            h2 Les éléments modaux et non-modaux 
+            p 
+                  | Les éléments modaux sont des éléments qui 
+                  strong bloquent l'interaction 
+                  | avec le reste de la page. 
+                  br 
+                  | Les éléments non-modaux sont des éléments qui 
+                  strong permettent de continuer à interagir 
+                  | avec le reste de la page.
+            p Les popovers sont des éléments non-modaux, si on souhaite créer des éléments modaux, l'élément 
+                  a(href="https://developer.mozilla.org/fr/docs/Web/HTML/Element/dialog") dialog 
+                  |  est plus adapté.
+
+      +Section({ name :'popover-api-syntaxe' })
+      
+            h2 Popover API :  syntaxe
+            p La syntaxe est assez simple. Il suffit d'ajouter quelques attributs sur l'élément actionnable et sur l'élément à afficher.
+            pre 
+                  code(class="language-html")
+                        | <button popovertarget="alert-success" popovertargetaction="toggle">Fire alert success</button>
+                        | <div id="alert-success" popover role="alert">Success : You win !</div>
+            +Alert({ modifier: 'info' })
+                  | Pour gérer l'apparition et la disparition du popover, le navigateur bascule entre "block" et "none" de la propriété 
+                  strong display.
+                  br                
+                  | Pour animer l'apparition et la disparition, il est possible d'utiliser la règle
+                  strong @starting-style.
+      
+      +Section({ name :'popover-api-attribut' })
+            h2 Popover API :  les attributs
+            p Les attributs sont les suivants :
+            ul
+                  li 
+                        a(href="https://developer.mozilla.org/fr/docs/Web/HTML/Element/button#popovertarget") popovertarget 
+                        |  : l'identifiant de l'élément à afficher
+                  li 
+                        a(href="https://developer.mozilla.org/fr/docs/Web/HTML/Element/button#popovertargetaction") popovertargetaction
+                        |  : l'action à effectuer sur l'élément à afficher (toggle, show, hide)
+                  li 
+                        a(href="https://developer.mozilla.org/fr/docs/Web/HTML/Global_attributes/popover") popover  
+                        |  : l'élément à afficher (manual ou auto)
+
+      +Section({ name :'popover-api-demo-notification' })
+            h2 Démo : Notification
+            iframe(style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css popover notification" src="https://codepen.io/gsam59/embed/MWdbBZL?default-tab=html,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
+
+      +Section({ name :'popover-api-pseudo-class-element' })
+            h2 Pseudo-classe et pseudo-element
+            p Il est possible de personnaliser le style des popovers en fonction de leur état.
+            p l'état d'ouverture est géré par la pseudo-class
+                  pre
+                        code(class="language-css")
+                              | [popover]:popover-open {
+                              |       background-color: white;
+                              | }
+            p Comme pour les dialog, on peut personnaliser le fond avec le pseudo-element
+                  pre
+                        code(class="language-css")
+                              | [popover]::backdrop {
+                              |       background-color: rgba(0, 0, 0, 0.5);
+                              | }
+
+      +Section({ name :'popover-api-demo-notification-javascript' })
+            h2 Démo : Slider menu
+            iframe(style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css popover notification" src="https://codepen.io/gsam59/embed/wvbgEGm?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
+
+
+      +Section({ name :'popover-api-javascript' })
+            h2 Avec Javascript
+            p L'API Popover dispose également de quelques méthodes Javascript pour manipuler les popovers.
+            ul
+                  li 
+                        a(href="https://developer.mozilla.org/fr/docs/Web/API/HTMLElement/hidePopover") hidePopover()
+                  li 
+                        a(href="https://developer.mozilla.org/fr/docs/Web/API/HTMLElement/showPopover") showPopover()
+                  li 
+                        a(href="https://developer.mozilla.org/fr/docs/Web/API/HTMLElement/togglePopover") togglePopover()
+
+      +Section({ name :'popover-api-demo-notification-demo' })
+            h2 Démo : Notification avec Javascript
+            iframe(style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css popover notification" src="https://codepen.io/gsam59/embed/BaeRoBB?default-tab=js,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
+
+      +Section({ name :'popover-api-links' })
+            a(href="https://open-ui.org/components/popover.research.explainer/") Open UI

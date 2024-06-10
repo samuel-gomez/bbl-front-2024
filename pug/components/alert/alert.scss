@@ -1,6 +1,7 @@
 $name: "alert";
 
 .#{$prefix}-#{$name} {
+  --border-color: var(--r-dark-text-color);
   background: white;
   font-size: 1.3rem;
   display: flex;
@@ -12,55 +13,40 @@ $name: "alert";
   margin: 2rem auto;
   width: fit-content;
   box-shadow: 0 15px 15px 0 rgba(0, 0, 0, 0.5);
-  border: var(--r-dark-text-color) solid 2px;
+  border: var(--border-color) solid 2px;
   font-weight: 300;
   .#{$prefix}-svg {
     width: 30px;
+    fill: var(--border-color);
   }
   em {
-    fill: var(--r-dark-text-color);
+    color: var(--border-color);
     font-weight: 300;
   }
+
+  strong {
+    .reveal & {
+      color: var(--border-color);
+    }
+  }
+
   &--warning {
-    border: var(--sg-warning-color) solid 2px;
+    --border-color: var(--sg-warning-color);
     background: var(--sg-warning-color-light);
-    .#{$prefix}-svg {
-      fill: var(--sg-warning-color);
-    }
-    em {
-      color: var(--sg-warning-color);
-    }
   }
   &--error {
-    border: var(--sg-error-color) solid 2px;
+    --border-color: var(--sg-error-color);
     background: var(--sg-error-color-light);
-    .#{$prefix}-svg {
-      fill: var(--sg-error-color);
-    }
-    em {
-      color: var(--sg-error-color);
-    }
   }
   &--success {
-    border: var(--sg-success-color) solid 2px;
+    --border-color: var(--sg-success-color);
     background: var(--sg-success-color-light);
-    .#{$prefix}-svg {
-      fill: var(--sg-success-color);
-    }
-    em {
-      color: var(--sg-success-color);
-    }
   }
   &--info {
-    border: var(--sg-info-color) solid 2px;
+    --border-color: var(--sg-info-color);
     background: var(--sg-info-color-light);
-    .#{$prefix}-svg {
-      fill: var(--sg-info-color);
-    }
-    em {
-      color: var(--sg-info-color);
-    }
   }
+
   &:not(:has(svg)) {
     font-style: italic;
     align-items: center;

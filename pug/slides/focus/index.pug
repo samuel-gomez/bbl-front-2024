@@ -1,4 +1,86 @@
 +Section({name :'focus'})
-      +Section({ name :'preface' })
-            h1 Focus
-            p Focus-within, Focus-visible 
+      
+      +Section({ name :'gestion-du-focus' })
+            h1 Gestion du focus
+            p Lorsque l'on conçoit des applications web, il est important de prendre en compte la navigation au clavier, tant pour 
+                  strong l'accessibilité 
+                  | que pour 
+                  strong l'expérience utilisateur.
+      
+      +Section({ name :'definir-le-parcours' })
+            h2 Définir le parcours
+            p il est donc important de définir un parcours logique pour la navigation au clavier. Cela fait partie des points importants à prendre compte lors de la conception UX d'une application web.
+      
+      +Section({ name :'elements-focusable' })
+            h2 Éléments focusables
+            p Voici la liste des éléments qui sont focusables par défaut :
+            ul
+                  li a
+                  li area
+                  li button
+                  li details
+                  li input
+                  li select
+                  li textarea
+                  li [tabindex]
+                  li [contentEditable=true]
+                  li iframe
+                  li ...
+            p Voici une liste plus exhaustive d'éléments focusables : 
+                  a(href="https://allyjs.io/data-tables/focusable.html") allyjs.io
+
+      +Section({ name :'focus-classique' })
+            h2 :focus
+            p Tout le monde connait la pseudo-class
+                  pre
+                        code :focus
+                  | qui permet de cibler un élément qui a le focus.
+            p il est possible de personnaliser le style avec la propriété outline et outline-offset
+                  pre
+                        code
+                              | :focus {
+                              |       outline: 2px solid blue;
+                              |       outline-offset: 5px;
+                              | }
+
+      +Section({ name :'focus-visible' })
+            h2 :focus-visible
+            p La pseudo-class
+                  pre
+                        code :focus-visible
+                  | permet de cibler un élément qui a le focus et qui est visible.
+            p Pour plus d'informations, vous pouvez consulter la documentation 
+                  a(href="https://developer.mozilla.org/fr/docs/Web/CSS/:focus-visible") :focus-visible
+
+      +Section({ name :'focus-visible-demo' })
+            h2 Démo : :focus-visible
+            iframe(style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css :focus-visible" src="https://codepen.io/gsam59/embed/QWRKyNe?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
+      
+      +Section({ name :'focus-within' })
+            h2 :focus-within
+            p Si on souhaite cibler un élément parent qui contient un élément qui a le focus, nous pourrions utiliser le 
+                  pre
+                        code 
+                              | fieldset:has(input:focus) {
+                              |       border: 2px solid blue;
+                              | }
+            p On peut faire la même chose avec la pseudo-class
+                  pre
+                        code :focus-within
+                  | elle s'applique à tous les éléments descendants en focus y compris ceux du Shadow DOM.
+            p Pour plus d'informations, vous pouvez consulter la documentation 
+                  a(href="https://developer.mozilla.org/fr/docs/Web/CSS/:focus-within") :focus-within
+            
+      +Section({ name :'focus-within-demo' })
+            h2 Démo : :focus-within
+            iframe(style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css :focus-visible" src="https://codepen.io/gsam59/embed/MWLqoJW?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
+
+      +Section({ name :'focus-within-visible' })
+            h2 :has et :focus-visible
+            p L'inconvenient du :focus-within est qu'il ne prend pas en compte la visibilité de l'élément. Pour cela, on peut utiliser le :has()
+                  pre
+                        code 
+                              | fieldset:has(:focus-visible) {
+                              |       border: 2px solid blue;
+                              | }
+            p De cette manière, l'élément parent ne sera ciblé que si un des éléments enfant est visible.

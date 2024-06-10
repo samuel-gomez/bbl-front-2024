@@ -1,5 +1,68 @@
+-const { data: displayData } = require('./pug/slides/display/data.js');
 +Section({name :'display'})
-      +Section({ name :'preface' })
+      +Section({ name :'display' })
             h1 Display
-            p double affichage
-            p display content
+            p La propriété display permet de contrôler la manière dont un élément est affiché sur la page.
+            p Des ajouts récents ont permis de nouvelles valeurs pour cette propriété.
+
+      +Section({ name :'display-contents-problem' })
+            p Il arrive parfois que l'on ait besoin d'appliquer un style sur les enfants indirects.
+            p Plutot que "aplatir notre arbre" en utilisant des sélecteurs plus spécifiques, il est possible d'utiliser la valeur display: contents; pour ignorer l'élément parent.
+            p Prenons un exemple avec un élément de type flex.
+            pre
+                  code
+                        | <header>
+                        |       <img src="logo.svg" alt="Logo" />
+                        |       <form>
+                        |             <label for="search">Search</label>
+                        |             <input type="search" placeholder="Search" />
+                        |       </form>
+                        | </header>
+            pre
+                  +Notes({ notes: displayData[1].notes[0], fragment: false })
+                  code 
+                        | header {
+                        |       display: flex;
+                        | }
+                        | input {
+                        |       flex-grow: 1;
+                        | }
+      +Section({ name :'display-contents-demo' })
+            h2 Démo : display: contents
+            iframe(style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css :focus-visible" src="https://codepen.io/gsam59/embed/pomNEzB?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
+      
+      +Section({ name :'display-contents-links' })
+            h2 Quelques ressources
+            ul
+                  li 
+                        a(href="https://adrianroselli.com/2018/05/display-contents-is-not-a-css-reset.html") Adrian Roselli
+                  li 
+                        a(href="https://hidde.blog/more-accessible-markup-with-display-contents/") Hidde de Vries
+                  li 
+                        a(href="https://bitsofco.de/how-display-contents-works/") bitsofco.de
+                  li
+                        a(href="https://www.mayank.co/blog/use-cases-for-display-contents/") Mayank Patel
+      
+      +Section({ name :'display-contents-solution' })
+            h2 Display: contents
+            p Si on applique un display: contents; sur le form, celui-ci ne créé plus de boite (il est en quelque sorte ignoré)
+            p Les enfants directs du form vont donc être affichés comme s'ils étaient des enfants directs du header
+            pre   
+                  code(class="language-css", data-line-numbers="4-6", data-trim, data-line-start="4")
+                        | header {
+                        |       display: flex;
+                        | }
+                        | form {
+                        |       display: contents;
+                        | }
+                        | input {
+                        |       flex-grow: 1;
+                        | }
+            +Alert({ modifier: 'warning' })
+                  | Attention, à l'heure actuelle, l'élément est supprimé de l'arbre d'accessibilité et donc non visible par les lecteurs d'écran.
+                  | il faut donc éviter de l'utiliser pour des éléments dont la sémantique est importante.
+      
+      +Section({ name :'display-double' })
+            h2 Display Inside / Outside
+            p Ce n'est pas une nouveauté mais c'est assez peu utilisé, il est possible de définir deux valeurs pour la propriété display.
+            p <display-outside> et <display-inside>

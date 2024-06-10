@@ -144,6 +144,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
 .reveal strong,
 .reveal b {
   font-weight: bold;
+  color: cyan;
 }
 
 .reveal em {
