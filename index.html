@@ -277,10 +277,9 @@
         </section>
         <section class="sg-custom-properties" id="custom-properties" compatibility="compatibility" data-background="" data-background-transition="fade">
           <section class="sg-custom-properties" id="custom-properties" compatibility="compatibility" data-background="" data-background-transition="fade">
-            <h1>Custom properties (CSS Variables)</h1>
+            <h1>CSS Variables</h1>
             <p>Les <a href="https://developer.mozilla.org/fr/docs/Web/CSS/Using_CSS_custom_properties">variables CSS </a> permettent de stocker des valeurs pour les réutiliser dans un fichier CSS.</p>
-            <p>Tout comme les variables en Scss, les variables CSS permettent de simplifier le code et de le rendre plus lisible.</p>
-            <p>Elles permettent également de mieux gérer les tokens dans un Design System sans avoir à utiliser de préprocesseur CSS.</p>
+            <p>Les variables CSS permettent de simplifier le code et de le rendre plus lisible notamment pour un Design System.</p>
             <button onclick="document.querySelector('#compatibility-custom-properties').showModal()">Compatibilités</button>
             <dialog class="sg-modal  sg-modal--compatibility-custom-properties" id="compatibility-custom-properties" onclick="this.close()">
               <div class="dialog-inner" onclick="event.stopPropagation();">
@@ -310,7 +309,7 @@
             <h2>Utilisation des variables CSS</h2>
             <div class="r-stack">
               <div class="fragment fade-in-then-out">
-                <p>Pour utiliser une variable CSS, il suffit de l'appeler avec la fonction var() en lui passant le nom de la variable en paramètre.</p>
+                <p>Pour utiliser une variable CSS, il suffit de l'appeler avec la fonction <strong>var() </strong>en lui passant le nom de la variable en paramètre.</p>
                 <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="6" data-ln-start-from="">:root {
   --main-bg-color: hsla(0, 100%, 50%, 0.5);
 }
@@ -330,8 +329,8 @@
                 <p>Les variables CSS peuvent être utilisées à peu près partout.</p>
                 <ul>
                   <li>La plupart des valeurs de propriétés CSS</li>
-                  <li>Les fonctions CSS (calc(), min(), max(), clamp(), etc.)</li>
-                  <li>les media queries (abordé dans le slide sur les @media)</li>
+                  <li>Les fonctions math CSS (calc(), min(), max(), clamp(), etc.)</li>
+                  <li>les media queries</li>
                   <li>les animations et transitions</li>
                 </ul>
               </div>
@@ -735,6 +734,273 @@ element.style.setProperty(&quot;--ma-variable&quot;, varJS + 4);</textarea></pre
           <section class="sg-custom-properties-reading" id="custom-properties-reading" compatibility="compatibility" data-background="" data-background-transition="fade"><a href="https://www.lambdatest.com/blog/guide-to-css-variables-with-examples/">Guide to CSS Variables with Examples</a>
           </section>
         </section>
+        <section class="sg-nesting-css" id="nesting-css" compatibility="compatibility" data-background="" data-background-transition="fade">
+          <section class="sg-nesting-css" id="nesting-css" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h1>Nesting CSS</h1>
+            <p>Le nesting CSS est technique d'imbrication des sélecteurs CSS pour éviter la répétition de code.</p>
+            <p>Elle était déjà disponible avec les préprocesseurs CSS comme Sass, Less ou Stylus.</p>
+            <button onclick="document.querySelector('#compatibility-nesting-css').showModal()">Compatibilités</button>
+            <dialog class="sg-modal  sg-modal--compatibility-nesting-css" id="compatibility-nesting-css" onclick="this.close()">
+              <div class="dialog-inner" onclick="event.stopPropagation();">
+                <form>
+                  <button class="icon close" autofocus="autofocus" formmethod="dialog">❌</button>
+                  <h2>Compatibilités</h2>
+                  <div class="loading">
+                    <iframe src="https://caniuse.com/css-nesting" title="Compatibilités" frameborder="0" allowfullscreen="true" loading="lazy"></iframe>
+                  </div>
+                </form>
+              </div>
+            </dialog>
+          </section>
+          <section class="sg-nesting-css-syntaxe" id="nesting-css-syntaxe" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Nesting parent - enfant</h2>
+            <p>Pour imbriquer des sélecteurs CSS, on peut utiliser le sélecteur d'imbrication <strong> '&' </strong></p>
+            <div class="flex flex-center mw-80">                                       
+              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.parent {
+  /* parent styles */
+  &amp; .child1 {
+    /* child1 styles */
+  }
+  .child2 {
+    /* child2 styles */
+  }
+  &amp;.second-class {
+    /* second-class styles */
+  }
+}</code>
+                <textarea class="sg-code-input">.parent {
+  /* parent styles */
+  &amp; .child1 {
+    /* child1 styles */
+  }
+  .child2 {
+    /* child2 styles */
+  }
+  &amp;.second-class {
+    /* second-class styles */
+  }
+}</textarea></pre>
+              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">
+.parent .child1{
+  /* child1 styles */
+}
+.parent .child2 {
+  /* child2 styles */
+}
+.parent.second-class {
+  /* second-class styles */
+}
+</code>
+                <textarea class="sg-code-input">
+.parent .child1{
+  /* child1 styles */
+}
+.parent .child2 {
+  /* child2 styles */
+}
+.parent.second-class {
+  /* second-class styles */
+}
+</textarea></pre>
+            </div>
+            <div class="sg-alert  sg-alert--info" role="alert">
+              <svg class="sg-svg" id="info-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Zm-10 5.75c.41 0 .75-.34.75-.75v-6a.75.75 0 0 0-1.5 0v6c0 .41.34.75.75.75ZM12 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z" clip-rule="evenodd"></path>
+              </svg><span class="sg-alert__content"> Si l'imbrication ne concerne pas une pseudo-classe ou un pseudo-élément, le sélecteur d'imbrication  <strong>&               </strong>n'est pas obligatoire.</span>
+            </div>
+          </section>
+          <section class="sg-nesting-css-combinateur" id="nesting-css-combinateur" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Nesting et combinateurs</h2>
+            <p>On peut imbriquer des sélecteurs CSS avec des combinateurs : <br><strong> '+' </strong> ou le sélecteur enfant direct<strong> '>'</strong>ou autre combinateur</p>
+            <div class="flex flex-center mw-80">                                       
+              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.parent {
+  /* parent styles */
+  &gt; .directchild {
+    /* directchild styles */
+  }
+  + .sibling {
+    /* sibling styles */
+  }
+}</code>
+                <textarea class="sg-code-input">.parent {
+  /* parent styles */
+  &gt; .directchild {
+    /* directchild styles */
+  }
+  + .sibling {
+    /* sibling styles */
+  }
+}</textarea></pre>
+              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">
+.parent &gt; .directchild {
+  /* directchild styles */
+}
+.parent + .sibling {
+  /* sibling styles */
+}
+</code>
+                <textarea class="sg-code-input">
+.parent &gt; .directchild {
+  /* directchild styles */
+}
+.parent + .sibling {
+  /* sibling styles */
+}
+</textarea></pre>
+            </div>
+          </section>
+          <section class="sg-nesting-css-pseudo" id="nesting-css-pseudo" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Pseudo-class ou pseudo-element</h2>
+            <div class="flex flex-center mw-80">                                       
+              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.parent-pseudo {
+  background: red;  
+  &amp;:hover, &amp;:focus {
+    background: blue;
+  }  
+  &amp;:is(p, em, i) {
+    background: blue;
+  }
+  &amp;::after, &amp;::before {
+    content: &quot;✅️&quot;;
+  }
+  ::after { 
+    content: &quot;❌️&quot;;
+  }  
+}</code>
+                <textarea class="sg-code-input">.parent-pseudo {
+  background: red;  
+  &amp;:hover, &amp;:focus {
+    background: blue;
+  }  
+  &amp;:is(p, em, i) {
+    background: blue;
+  }
+  &amp;::after, &amp;::before {
+    content: &quot;✅️&quot;;
+  }
+  ::after { 
+    content: &quot;❌️&quot;;
+  }  
+}</textarea></pre>
+              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.parent-pseudo {
+  background: red;
+}
+.parent-pseudo:hover, .parent-pseudo:focus, .parent-pseudo:is(p, em, i) {
+  background: #00f;
+}
+.parent-pseudo:after, .parent-pseudo:before {
+  content: &quot;✅️&quot;;
+}
+.parent-pseudo :after {
+  content: &quot;❌️&quot;;
+}</code>
+                <textarea class="sg-code-input">.parent-pseudo {
+  background: red;
+}
+.parent-pseudo:hover, .parent-pseudo:focus, .parent-pseudo:is(p, em, i) {
+  background: #00f;
+}
+.parent-pseudo:after, .parent-pseudo:before {
+  content: &quot;✅️&quot;;
+}
+.parent-pseudo :after {
+  content: &quot;❌️&quot;;
+}</textarea></pre>
+            </div>
+            <div class="sg-alert  sg-alert--info" role="alert">
+              <svg class="sg-svg" id="info-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Zm-10 5.75c.41 0 .75-.34.75-.75v-6a.75.75 0 0 0-1.5 0v6c0 .41.34.75.75.75ZM12 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z" clip-rule="evenodd"></path>
+              </svg><span class="sg-alert__content"> Pour les pseudo-classes ou pseudo-elements le sélecteur d'imbrication  <strong>&               </strong>est obligatoire.</span>
+            </div>
+          </section>
+          <section class="sg-nesting-css-ancestor" id="nesting-css-ancestor" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Scoper sur un ancêtre</h2>
+            <div class="flex flex-center mw-80">                                       
+              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.component {
+  background: red;
+  .ancestor &amp; {
+    background: orange;
+  }
+}</code>
+                <textarea class="sg-code-input">.component {
+  background: red;
+  .ancestor &amp; {
+    background: orange;
+  }
+}</textarea></pre>
+              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.component {
+  background: red;
+}
+
+.ancestor .component {
+  background: orange;
+}</code>
+                <textarea class="sg-code-input">.component {
+  background: red;
+}
+
+.ancestor .component {
+  background: orange;
+}</textarea></pre>
+            </div>
+          </section>
+          <section class="sg-nesting-css-vs-sass" id="nesting-css-vs-sass" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Nesting CSS vs Sass</h2>
+            <p>Le fonctionnement du nesting CSS est similaire à celui de Sass mais la <strong>concaténation </strong>de nom n'est pas possible.</p>
+            <div class="flex flex-center mw-80">                                       
+              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">/* ❌️ */
+.block{
+  background: green;
+  &amp;__element {
+    background: blue;
+      &amp;--modifier{
+        background: red;
+      }
+  }
+}</code>
+                <textarea class="sg-code-input">/* ❌️ */
+.block{
+  background: green;
+  &amp;__element {
+    background: blue;
+      &amp;--modifier{
+        background: red;
+      }
+  }
+}</textarea></pre>
+              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">
+/* ❌️ */
+.block {
+  background: green;
+}
+
+__element.block {
+  background: #00f;
+}
+
+--modifier:is(__element.block) {
+  background: red;
+}</code>
+                <textarea class="sg-code-input">
+/* ❌️ */
+.block {
+  background: green;
+}
+
+__element.block {
+  background: #00f;
+}
+
+--modifier:is(__element.block) {
+  background: red;
+}</textarea></pre>
+            </div>
+          </section>
+          <section class="sg-nesting-css-playground" id="nesting-css-playground" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Playground</h2>
+            <iframe style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css nesting playground" src="https://lightningcss.dev/playground/#%7B%22minify%22%3Afalse%2C%22customMedia%22%3Atrue%2C%22cssModules%22%3Afalse%2C%22analyzeDependencies%22%3Afalse%2C%22targets%22%3A%7B%22chrome%22%3A6225920%7D%2C%22include%22%3A0%2C%22exclude%22%3A0%2C%22source%22%3A%22.parent%20%7B%5Cn%20%20background%3A%20red%3B%5Cn%20%20%5Cn%20%20%26%20.child1%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%7D%5Cn%20%20%5Cn%20%20.child2%20%7B%5Cn%20%20%20%20background%3A%20green%3B%5Cn%20%20%7D%5Cn%20%20%5Cn%20%20%3E%20.directchild%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%7D%5Cn%20%20%5Cn%20%20%2B%20.sibling%20%7B%5Cn%20%20%20%20background%3A%20green%3B%5Cn%20%20%7D%5Cn%20%20%5Cn%7D%5Cn%5Cn%5Cn.parent-pseudo%20%7B%5Cn%20%20background%3A%20red%3B%5Cn%20%20%26%3Ahover%2C%5Cn%20%20%26%3Afocus%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%7D%5Cn%20%20%26%3Ais(p%2C%20em%2C%20i)%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%7D%5Cn%20%20%26%3A%3Aafter%2C%5Cn%20%20%26%3A%3Abefore%20%7B%5Cn%20%20%20%20content%3A%20%5C%22%E2%9C%85%EF%B8%8F%5C%22%3B%5Cn%20%20%7D%5Cn%20%20%3A%3Aafter%20%7B%5Cn%20%20%20%20content%3A%20%5C%22%E2%9D%8C%EF%B8%8F%5C%22%3B%5Cn%20%20%7D%5Cn%7D%5Cn%5Cn.component%20%7B%5Cn%20%20background%3A%20red%3B%5Cn%20%20.ancestor%20%26%20%7B%5Cn%20%20%20%20background%3A%20orange%3B%5Cn%20%20%7D%5Cn%7D%5Cn%5Cn%2F*%20%E2%9D%8C%EF%B8%8F%20*%2F%5Cn.block%7B%5Cn%20%20background%3A%20green%3B%5Cn%20%20%26__element%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%20%20%20%26--modifier%7B%5Cn%20%20%20%20%20%20%20background%3A%20red%3B%5Cn%20%20%20%20%20%7D%5Cn%20%20%7D%5Cn%7D%5Cn%5Cn%2F*%20%E2%9C%85%EF%B8%8F%20eventuellement%20*%2F%5Cn%5Cn.block%20%7B%5Cn%20%20background%3A%20green%3B%5Cn%20%20%26.__element%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%20%20%26.--modifier%20%7B%5Cn%20%20%20%20%20%20background%3A%20red%3B%5Cn%20%20%20%20%7D%5Cn%20%20%7D%5Cn%7D%5Cn%22%2C%22visitorEnabled%22%3Afalse%2C%22visitor%22%3A%22%7B%5Cn%20%20Color(color)%20%7B%5Cn%20%20%20%20if%20(color.type%20%3D%3D%3D%20'rgb')%20%7B%5Cn%20%20%20%20%20%20color.g%20%3D%200%3B%5Cn%20%20%20%20%20%20return%20color%3B%5Cn%20%20%20%20%7D%5Cn%20%20%7D%5Cn%7D%22%2C%22unusedSymbols%22%3A%5B%5D%2C%22version%22%3A%22local%22%7D" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+          </section>
+        </section>
         <section class="sg-pseudo-class-has" id="pseudo-class-has" compatibility="compatibility" data-background="" data-background-transition="fade">
           <section class="sg-pseudo-class-has" id="pseudo-class-has" compatibility="compatibility" data-background="" data-background-transition="fade">
             <h1>Pseudo-class :has()</h1>
@@ -991,327 +1257,54 @@ form:has(&gt; :checked){
           <section class="sg-sources" id="sources" compatibility="compatibility" data-background="" data-background-transition="fade"><a href="https://webkit.org/blog/13096/css-has-pseudo-class/">Webkit blog</a>
           </section>
         </section>
-        <section class="sg-nesting-css" id="nesting-css" compatibility="compatibility" data-background="" data-background-transition="fade">
-          <section class="sg-nesting-css" id="nesting-css" compatibility="compatibility" data-background="" data-background-transition="fade">
-            <h1>Nesting CSS</h1>
-            <p>Le nesting CSS est technique d'imbrication des sélecteurs CSS pour éviter la répétition de code.</p>
-            <p>Elle était déjà disponible avec les préprocesseurs CSS comme Sass, Less ou Stylus.</p>
-            <button onclick="document.querySelector('#compatibility-nesting-css').showModal()">Compatibilités</button>
-            <dialog class="sg-modal  sg-modal--compatibility-nesting-css" id="compatibility-nesting-css" onclick="this.close()">
-              <div class="dialog-inner" onclick="event.stopPropagation();">
-                <form>
-                  <button class="icon close" autofocus="autofocus" formmethod="dialog">❌</button>
-                  <h2>Compatibilités</h2>
-                  <div class="loading">
-                    <iframe src="https://caniuse.com/css-nesting" title="Compatibilités" frameborder="0" allowfullscreen="true" loading="lazy"></iframe>
-                  </div>
-                </form>
-              </div>
-            </dialog>
+        <section class="sg-container" id="container" compatibility="compatibility" data-background="" data-background-transition="fade">
+          <section class="sg-container-queries" id="container-queries" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h1>Container queries</h1>
+            <p>Les containers permettent de définir des styles en fonction de la taille du conteneur parent plutôt que de le faire avec les medias queries et la taille de l'écran.</p><img class="sg-img " src="././assets/images/container-queries.jpg" alt="container queries" loading="lazy"/>
+            <p>Source image : <a href="https://ishadeed.com">ishadeed.com</a></p>
           </section>
-          <section class="sg-nesting-css-syntaxe" id="nesting-css-syntaxe" compatibility="compatibility" data-background="" data-background-transition="fade">
-            <h2>Nesting parent - enfant</h2>
-            <p>Pour imbriquer des sélecteurs CSS, on peut utiliser le sélecteur d'imbrication <strong> '&' </strong></p>
-            <div class="flex flex-center mw-80">                                       
-              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.parent {
-  /* parent styles */
-  &amp; .child1 {
-    /* child1 styles */
-  }
-  .child2 {
-    /* child2 styles */
-  }
-  &amp;.second-class {
-    /* second-class styles */
-  }
-}</code>
-                <textarea class="sg-code-input">.parent {
-  /* parent styles */
-  &amp; .child1 {
-    /* child1 styles */
-  }
-  .child2 {
-    /* child2 styles */
-  }
-  &amp;.second-class {
-    /* second-class styles */
-  }
-}</textarea></pre>
-              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">
-.parent .child1{
-  /* child1 styles */
-}
-.parent .child2 {
-  /* child2 styles */
-}
-.parent.second-class {
-  /* second-class styles */
-}
-</code>
-                <textarea class="sg-code-input">
-.parent .child1{
-  /* child1 styles */
-}
-.parent .child2 {
-  /* child2 styles */
-}
-.parent.second-class {
-  /* second-class styles */
-}
-</textarea></pre>
-            </div>
-            <div class="sg-alert  sg-alert--info" role="alert">
-              <svg class="sg-svg" id="info-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Zm-10 5.75c.41 0 .75-.34.75-.75v-6a.75.75 0 0 0-1.5 0v6c0 .41.34.75.75.75ZM12 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z" clip-rule="evenodd"></path>
-              </svg><span class="sg-alert__content"> Si l'imbrication ne concerne pas une pseudo-classe ou un pseudo-élément, le sélecteur d'imbrication  <strong>&               </strong>n'est pas obligatoire.</span>
-            </div>
-          </section>
-          <section class="sg-nesting-css-combinateur" id="nesting-css-combinateur" compatibility="compatibility" data-background="" data-background-transition="fade">
-            <h2>Nesting et combinateurs</h2>
-            <p>On peut imbriquer des sélecteurs CSS avec des combinateurs : <br><strong> '+' </strong> ou le sélecteur enfant direct<strong> '>'</strong>ou autre combinateur</p>
-            <div class="flex flex-center mw-80">                                       
-              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.parent {
-  /* parent styles */
-  &gt; .directchild {
-    /* directchild styles */
-  }
-  + .sibling {
-    /* sibling styles */
-  }
-}</code>
-                <textarea class="sg-code-input">.parent {
-  /* parent styles */
-  &gt; .directchild {
-    /* directchild styles */
-  }
-  + .sibling {
-    /* sibling styles */
-  }
-}</textarea></pre>
-              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">
-.parent &gt; .directchild {
-  /* directchild styles */
-}
-.parent + .sibling {
-  /* sibling styles */
-}
-</code>
-                <textarea class="sg-code-input">
-.parent &gt; .directchild {
-  /* directchild styles */
-}
-.parent + .sibling {
-  /* sibling styles */
-}
-</textarea></pre>
-            </div>
-          </section>
-          <section class="sg-nesting-css-pseudo" id="nesting-css-pseudo" compatibility="compatibility" data-background="" data-background-transition="fade">
-            <h2>Pseudo-class ou pseudo-element</h2>
-            <div class="flex flex-center mw-80">                                       
-              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.parent-pseudo {
-  background: red;  
-  &amp;:hover, &amp;:focus {
-    background: blue;
-  }  
-  &amp;:is(p, em, i) {
-    background: blue;
-  }
-  &amp;::after, &amp;::before {
-    content: &quot;✅️&quot;;
-  }
-  ::after { 
-    content: &quot;❌️&quot;;
-  }  
-}</code>
-                <textarea class="sg-code-input">.parent-pseudo {
-  background: red;  
-  &amp;:hover, &amp;:focus {
-    background: blue;
-  }  
-  &amp;:is(p, em, i) {
-    background: blue;
-  }
-  &amp;::after, &amp;::before {
-    content: &quot;✅️&quot;;
-  }
-  ::after { 
-    content: &quot;❌️&quot;;
-  }  
-}</textarea></pre>
-              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.parent-pseudo {
-  background: red;
-}
-.parent-pseudo:hover, .parent-pseudo:focus, .parent-pseudo:is(p, em, i) {
-  background: #00f;
-}
-.parent-pseudo:after, .parent-pseudo:before {
-  content: &quot;✅️&quot;;
-}
-.parent-pseudo :after {
-  content: &quot;❌️&quot;;
-}</code>
-                <textarea class="sg-code-input">.parent-pseudo {
-  background: red;
-}
-.parent-pseudo:hover, .parent-pseudo:focus, .parent-pseudo:is(p, em, i) {
-  background: #00f;
-}
-.parent-pseudo:after, .parent-pseudo:before {
-  content: &quot;✅️&quot;;
-}
-.parent-pseudo :after {
-  content: &quot;❌️&quot;;
-}</textarea></pre>
-            </div>
-            <div class="sg-alert  sg-alert--info" role="alert">
-              <svg class="sg-svg" id="info-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Zm-10 5.75c.41 0 .75-.34.75-.75v-6a.75.75 0 0 0-1.5 0v6c0 .41.34.75.75.75ZM12 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z" clip-rule="evenodd"></path>
-              </svg><span class="sg-alert__content"> Pour les pseudo-classes ou pseudo-elements le sélecteur d'imbrication  <strong>&               </strong>est obligatoire.</span>
-            </div>
-          </section>
-          <section class="sg-nesting-css-ancestor" id="nesting-css-ancestor" compatibility="compatibility" data-background="" data-background-transition="fade">
-            <h2>Scoper sur un ancêtre</h2>
-            <div class="flex flex-center mw-80">                                       
-              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.component {
-  background: red;
-  .ancestor &amp; {
-    background: orange;
-  }
-}</code>
-                <textarea class="sg-code-input">.component {
-  background: red;
-  .ancestor &amp; {
-    background: orange;
-  }
-}</textarea></pre>
-              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.component {
-  background: red;
-}
-
-.ancestor .component {
-  background: orange;
-}</code>
-                <textarea class="sg-code-input">.component {
-  background: red;
-}
-
-.ancestor .component {
-  background: orange;
-}</textarea></pre>
-            </div>
-          </section>
-          <section class="sg-nesting-css-vs-sass" id="nesting-css-vs-sass" compatibility="compatibility" data-background="" data-background-transition="fade">
-            <h1>Nesting CSS vs Sass</h1>
-            <p>Le fonctionnement du nesting CSS est similaire à celui de Sass mais la <strong>concaténation </strong>de nom n'est pas possible.</p>
-            <div class="flex flex-center mw-80">                                       
-              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">/* ❌️ */
-.block{
-  background: green;
-  &amp;__element {
-    background: blue;
-      &amp;--modifier{
-        background: red;
+          <section class="sg-container-queries-syntaxe" id="container-queries-syntaxe" compatibility="compatibility" data-background="" data-background-transition="fade">     
+            <h2>Container queries : syntaxe</h2>
+            <p>Il faut d'abord définir le container-type avec la règle
+              <pre><code class="language-css">.container {
+    container-type: inline-size;
+}</code></pre>
+            </p>
+            <p>Ensuite, il est possible de définir des règles en fonction de la taille du container avec la règle
+              <pre><code class="language-css">.card {
+      /* style par défaut */
+      @container (10em <= width <= 20em) {
+            /* style pour un container de 300px de large */
       }
-  }
-}
-
-/* ✅️ eventuellement */
-
-.block {
-  background: green;
-  &amp;.__element {
-    background: blue;
-    &amp;.--modifier {
-      background: red;
-    }
-  }
-}</code>
-                <textarea class="sg-code-input">/* ❌️ */
-.block{
-  background: green;
-  &amp;__element {
-    background: blue;
-      &amp;--modifier{
-        background: red;
-      }
-  }
-}
-
-/* ✅️ eventuellement */
-
-.block {
-  background: green;
-  &amp;.__element {
-    background: blue;
-    &amp;.--modifier {
-      background: red;
-    }
-  }
-}</textarea></pre>
-              <pre><code class="language-javascript sg-code js-code" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">
-/* ❌️ */
-.block {
-  background: green;
-}
-
-__element.block {
-  background: #00f;
-}
-
---modifier:is(__element.block) {
-  background: red;
-}
-
-/* ✅️ eventuellement */
-.block {
-  background: green;
-}
-
-.block.__element {
-  background: #00f;
-}
-
-.block.__element.--modifier {
-  background: red;
-}</code>
-                <textarea class="sg-code-input">
-/* ❌️ */
-.block {
-  background: green;
-}
-
-__element.block {
-  background: #00f;
-}
-
---modifier:is(__element.block) {
-  background: red;
-}
-
-/* ✅️ eventuellement */
-.block {
-  background: green;
-}
-
-.block.__element {
-  background: #00f;
-}
-
-.block.__element.--modifier {
-  background: red;
-}</textarea></pre>
-            </div>
+}</code></pre>
+            </p>
           </section>
-          <section class="sg-nesting-css-playground" id="nesting-css-playground" compatibility="compatibility" data-background="" data-background-transition="fade">
-            <h2>Playground</h2>
-            <iframe style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css nesting playground" src="https://lightningcss.dev/playground/#%7B%22minify%22%3Afalse%2C%22customMedia%22%3Atrue%2C%22cssModules%22%3Afalse%2C%22analyzeDependencies%22%3Afalse%2C%22targets%22%3A%7B%22chrome%22%3A6225920%7D%2C%22include%22%3A0%2C%22exclude%22%3A0%2C%22source%22%3A%22.parent%20%7B%5Cn%20%20background%3A%20red%3B%5Cn%20%20%5Cn%20%20%26%20.child1%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%7D%5Cn%20%20%5Cn%20%20.child2%20%7B%5Cn%20%20%20%20background%3A%20green%3B%5Cn%20%20%7D%5Cn%20%20%5Cn%20%20%3E%20.directchild%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%7D%5Cn%20%20%5Cn%20%20%2B%20.sibling%20%7B%5Cn%20%20%20%20background%3A%20green%3B%5Cn%20%20%7D%5Cn%20%20%5Cn%7D%5Cn%5Cn%5Cn.parent-pseudo%20%7B%5Cn%20%20background%3A%20red%3B%5Cn%20%20%26%3Ahover%2C%5Cn%20%20%26%3Afocus%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%7D%5Cn%20%20%26%3Ais(p%2C%20em%2C%20i)%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%7D%5Cn%20%20%26%3A%3Aafter%2C%5Cn%20%20%26%3A%3Abefore%20%7B%5Cn%20%20%20%20content%3A%20%5C%22%E2%9C%85%EF%B8%8F%5C%22%3B%5Cn%20%20%7D%5Cn%20%20%3A%3Aafter%20%7B%5Cn%20%20%20%20content%3A%20%5C%22%E2%9D%8C%EF%B8%8F%5C%22%3B%5Cn%20%20%7D%5Cn%7D%5Cn%5Cn.component%20%7B%5Cn%20%20background%3A%20red%3B%5Cn%20%20.ancestor%20%26%20%7B%5Cn%20%20%20%20background%3A%20orange%3B%5Cn%20%20%7D%5Cn%7D%5Cn%5Cn%2F*%20%E2%9D%8C%EF%B8%8F%20*%2F%5Cn.block%7B%5Cn%20%20background%3A%20green%3B%5Cn%20%20%26__element%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%20%20%20%26--modifier%7B%5Cn%20%20%20%20%20%20%20background%3A%20red%3B%5Cn%20%20%20%20%20%7D%5Cn%20%20%7D%5Cn%7D%5Cn%5Cn%2F*%20%E2%9C%85%EF%B8%8F%20eventuellement%20*%2F%5Cn%5Cn.block%20%7B%5Cn%20%20background%3A%20green%3B%5Cn%20%20%26.__element%20%7B%5Cn%20%20%20%20background%3A%20blue%3B%5Cn%20%20%20%20%26.--modifier%20%7B%5Cn%20%20%20%20%20%20background%3A%20red%3B%5Cn%20%20%20%20%7D%5Cn%20%20%7D%5Cn%7D%5Cn%22%2C%22visitorEnabled%22%3Afalse%2C%22visitor%22%3A%22%7B%5Cn%20%20Color(color)%20%7B%5Cn%20%20%20%20if%20(color.type%20%3D%3D%3D%20'rgb')%20%7B%5Cn%20%20%20%20%20%20color.g%20%3D%200%3B%5Cn%20%20%20%20%20%20return%20color%3B%5Cn%20%20%20%20%7D%5Cn%20%20%7D%5Cn%7D%22%2C%22unusedSymbols%22%3A%5B%5D%2C%22version%22%3A%22local%22%7D" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+          <section class="sg-container-queries-name" id="container-queries-name" compatibility="compatibility" data-background="" data-background-transition="fade">     
+            <h2>Container queries : le nommage</h2>
+            <p>On peut fournir une liste de noms 
+              <pre><code class="language-css">.container {
+    container-name: mobile tablet;
+}</code></pre>
+            </p>
+            <p>On peut ensuite préciser le nom du container dans les règles
+              <pre><code class="language-css">.card {
+      /* style par défaut */
+      @container mobile (320px < width <= 640px) {
+            
+      }
+      @container tablet (640px < width <= 768) {
+            
+      }
+}</code></pre>
+            </p>
+          </section>
+          <section class="sg-container-links" id="container-links" compatibility="compatibility" data-background="" data-background-transition="fade"><a href="https://ishadeed.com/article/css-container-style-queries">ishadeed.com</a>
           </section>
         </section>
         <section class="sg-clamp" id="clamp" compatibility="compatibility" data-background="" data-background-transition="fade">
           <section class="sg-clamp" id="clamp" compatibility="compatibility" data-background="" data-background-transition="fade">
             <h1>Clamp</h1>
-            <p>Clamp fait partie des <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions/Using_CSS_math_functions">fonctions mathématiques CSS,</a>elle permet de définir une valeur comprise entre deux bornes avec une valeur préférée.</p>
+            <p>Clamp fait partie des <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions/Using_CSS_math_functions">fonctions mathématiques CSS,</a> elle permet de définir une valeur comprise entre deux bornes avec une valeur préférée.</p>
             <p>On peut l'utiliser pour rendre une taille de police responsive ou pour définir des bornes pour d'autres propriétés CSS.</p>
             <button onclick="document.querySelector('#compatibility-clamp').showModal()">Compatibilités</button>
             <dialog class="sg-modal  sg-modal--compatibility-clamp" id="compatibility-clamp" onclick="this.close()">
@@ -1356,73 +1349,6 @@ __element.block {
             <h2>Démo : Container responsive</h2>
             <p>Un autre cas d'usage de la fonction clamp() est la définition de largeurs de conteneurs responsives.</p>
             <iframe style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css clamp container" src="https://codepen.io/gsam59/embed/WNBOemV?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
-          </section>
-        </section>
-        <section class="sg-display" id="display" compatibility="compatibility" data-background="" data-background-transition="fade">
-          <section class="sg-display" id="display" compatibility="compatibility" data-background="" data-background-transition="fade">
-            <h1>Display</h1>
-            <p>La propriété display permet de contrôler la manière dont un élément est affiché sur la page.</p>
-            <p>Des ajouts récents ont permis de nouvelles valeurs pour cette propriété.</p>
-          </section>
-          <section class="sg-display-contents-problem" id="display-contents-problem" compatibility="compatibility" data-background="" data-background-transition="fade">
-            <p>Il arrive parfois que l'on ait besoin d'appliquer un style sur les enfants indirects.</p>
-            <p>Plutot que "aplatir notre arbre" en utilisant des sélecteurs plus spécifiques, il est possible d'utiliser la valeur display: contents; pour ignorer l'élément parent.</p>
-            <p>Prenons un exemple avec un élément de type flex.</p>
-            <pre><code><header>
-      <img src="logo.svg" alt="Logo" />
-      <form>
-            <label for="search">Search</label>
-            <input type="search" placeholder="Search" />
-      </form>
-</header></code></pre>
-            <pre>
-              <div class="sg-notes">
-                <div class="sg-note" style="top: -13.5px"><span class="sg-note__content">Ce code ne peut pas fonctionner car input n'est pas un enfant direct de header</span></div>
-              </div><code> header {
-      display: flex;
-}
-input {
-      flex-grow: 1;
-}</code></pre>
-          </section>
-          <section class="sg-display-contents-demo" id="display-contents-demo" compatibility="compatibility" data-background="" data-background-transition="fade">
-            <h2>Démo : display: contents</h2>
-            <iframe style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css :focus-visible" src="https://codepen.io/gsam59/embed/pomNEzB?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
-          </section>
-          <section class="sg-display-contents-links" id="display-contents-links" compatibility="compatibility" data-background="" data-background-transition="fade">
-            <h2>Quelques ressources</h2>
-            <ul>
-              <li> <a href="https://adrianroselli.com/2018/05/display-contents-is-not-a-css-reset.html">Adrian Roselli</a></li>
-              <li> <a href="https://hidde.blog/more-accessible-markup-with-display-contents/">Hidde de Vries</a></li>
-              <li> <a href="https://bitsofco.de/how-display-contents-works/">bitsofco.de</a></li>
-              <li><a href="https://www.mayank.co/blog/use-cases-for-display-contents/">Mayank Patel</a></li>
-            </ul>
-          </section>
-          <section class="sg-display-contents-solution" id="display-contents-solution" compatibility="compatibility" data-background="" data-background-transition="fade">
-            <h2>Display: contents</h2>
-            <p>Si on applique un display: contents; sur le form, celui-ci ne créé plus de boite (il est en quelque sorte ignoré)</p>
-            <p>Les enfants directs du form vont donc être affichés comme s'ils étaient des enfants directs du header</p>
-            <pre>  <code class="language-css" data-line-numbers="4-6" data-trim data-line-start="4">header {
-      display: flex;
-}
-form {
-      display: contents;
-}
-input {
-      flex-grow: 1;
-}</code></pre>
-            <div class="sg-alert  sg-alert--warning" role="alert">
-              <svg class="sg-svg" id="info-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Zm-10 5.75c.41 0 .75-.34.75-.75v-6a.75.75 0 0 0-1.5 0v6c0 .41.34.75.75.75ZM12 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z" clip-rule="evenodd"></path>
-              </svg><span class="sg-alert__content">
-                Attention, à l'heure actuelle, l'élément est supprimé de l'arbre d'accessibilité et donc non visible par les lecteurs d'écran.
-                il faut donc éviter de l'utiliser pour des éléments dont la sémantique est importante.</span>
-            </div>
-          </section>
-          <section class="sg-display-double" id="display-double" compatibility="compatibility" data-background="" data-background-transition="fade">
-            <h2>Display Inside / Outside</h2>
-            <p>Ce n'est pas une nouveauté mais c'est assez peu utilisé, il est possible de définir deux valeurs pour la propriété display.</p>
-            <p><display-outside> et <display-inside></p>
           </section>
         </section>
         <section class="sg-focus" id="focus" compatibility="compatibility" data-background="" data-background-transition="fade">
@@ -1520,7 +1446,7 @@ input {
             <p>Les popovers sont des éléments non-modaux, si on souhaite créer des éléments modaux, l'élément <a href="https://developer.mozilla.org/fr/docs/Web/HTML/Element/dialog">dialog </a> est plus adapté.</p>
           </section>
           <section class="sg-popover-api-syntaxe" id="popover-api-syntaxe" compatibility="compatibility" data-background="" data-background-transition="fade">
-            <h2>Popover API :  syntaxe</h2>
+            <h2>Popover API : syntaxe</h2>
             <p>La syntaxe est assez simple. Il suffit d'ajouter quelques attributs sur l'élément actionnable et sur l'élément à afficher.</p>
             <pre> <code class="language-html"><button popovertarget="alert-success" popovertargetaction="toggle">Fire alert success</button>
 <div id="alert-success" popover role="alert">Success : You win !</div></code></pre>
@@ -1574,7 +1500,7 @@ input {
             <h2>Démo : Notification avec Javascript</h2>
             <iframe style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css popover notification" src="https://codepen.io/gsam59/embed/BaeRoBB?default-tab=js,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
           </section>
-          <section class="sg-popover-api-links" id="popover-api-links" compatibility="compatibility" data-background="" data-background-transition="fade"><a href="https://open-ui.org/components/popover.research.explainer/">Open UI</a>
+          <section class="sg-popover-api-links" id="popover-api-links" compatibility="compatibility" data-background="" data-background-transition="fade"><a href="https://open-ui.org/components/popover.research.explainer/">Open UI</a><a href="https://nerdy.dev/steal-this-popover-starter-kit/">Steal this popover starter kit</a>
           </section>
         </section>
         <section class="sg-anchor" id="anchor" compatibility="compatibility" data-background="" data-background-transition="fade">
@@ -1597,6 +1523,73 @@ input {
         <section class="sg-scope" id="scope" compatibility="compatibility" data-background="" data-background-transition="fade">
           <section class="sg-preface" id="preface" compatibility="compatibility" data-background="" data-background-transition="fade">
             <h1>@scope</h1>
+          </section>
+        </section>
+        <section class="sg-display" id="display" compatibility="compatibility" data-background="" data-background-transition="fade">
+          <section class="sg-display" id="display" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h1>Display</h1>
+            <p>La propriété display permet de contrôler la manière dont un élément est affiché sur la page.</p>
+            <p>Des ajouts récents ont permis de nouvelles valeurs pour cette propriété.</p>
+          </section>
+          <section class="sg-display-contents-problem" id="display-contents-problem" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <p>Il arrive parfois que l'on ait besoin d'appliquer un style sur les enfants indirects.</p>
+            <p>Plutot que "aplatir notre arbre" en utilisant des sélecteurs plus spécifiques, il est possible d'utiliser la valeur display: contents; pour ignorer l'élément parent.</p>
+            <p>Prenons un exemple avec un élément de type flex.</p>
+            <pre><code><header>
+      <img src="logo.svg" alt="Logo" />
+      <form>
+            <label for="search">Search</label>
+            <input type="search" placeholder="Search" />
+      </form>
+</header></code></pre>
+            <pre>
+              <div class="sg-notes">
+                <div class="sg-note" style="top: -13.5px"><span class="sg-note__content">Ce code ne peut pas fonctionner car input n'est pas un enfant direct de header</span></div>
+              </div><code> header {
+      display: flex;
+}
+input {
+      flex-grow: 1;
+}</code></pre>
+          </section>
+          <section class="sg-display-contents-demo" id="display-contents-demo" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Démo : display: contents</h2>
+            <iframe style="width: 100vw;color: white; font-weight: bold;min-height: 65svh;" scrolling="no" title="css :focus-visible" src="https://codepen.io/gsam59/embed/pomNEzB?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+          </section>
+          <section class="sg-display-contents-links" id="display-contents-links" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Quelques ressources</h2>
+            <ul>
+              <li> <a href="https://adrianroselli.com/2018/05/display-contents-is-not-a-css-reset.html">Adrian Roselli</a></li>
+              <li> <a href="https://hidde.blog/more-accessible-markup-with-display-contents/">Hidde de Vries</a></li>
+              <li> <a href="https://bitsofco.de/how-display-contents-works/">bitsofco.de</a></li>
+              <li><a href="https://www.mayank.co/blog/use-cases-for-display-contents/">Mayank Patel</a></li>
+            </ul>
+          </section>
+          <section class="sg-display-contents-solution" id="display-contents-solution" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Display: contents</h2>
+            <p>Si on applique un display: contents; sur le form, celui-ci ne créé plus de boite (il est en quelque sorte ignoré)</p>
+            <p>Les enfants directs du form vont donc être affichés comme s'ils étaient des enfants directs du header</p>
+            <pre>  <code class="language-css" data-line-numbers="4-6" data-trim data-line-start="4">header {
+      display: flex;
+}
+form {
+      display: contents;
+}
+input {
+      flex-grow: 1;
+}</code></pre>
+            <div class="sg-alert  sg-alert--warning" role="alert">
+              <svg class="sg-svg" id="info-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Zm-10 5.75c.41 0 .75-.34.75-.75v-6a.75.75 0 0 0-1.5 0v6c0 .41.34.75.75.75ZM12 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z" clip-rule="evenodd"></path>
+              </svg><span class="sg-alert__content">
+                Attention, à l'heure actuelle, l'élément est supprimé de l'arbre d'accessibilité et donc non visible par les lecteurs d'écran.
+                il faut donc éviter de l'utiliser pour des éléments dont la sémantique est importante.</span>
+            </div>
+          </section>
+          <section class="sg-display-double" id="display-double" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Display Inside / Outside</h2>
+            <p>Ce n'est pas une nouveauté mais c'est assez peu utilisé, il est possible de définir deux valeurs pour la propriété display.</p>
+            <p><display-outside> et <display-inside></p>
           </section>
         </section>
       </div>

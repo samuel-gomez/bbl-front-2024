@@ -1,0 +1,50 @@
++Section({name :'container'})
+      +Section({ name :'container-queries' })
+            h1 Container queries
+            p Les containers permettent de définir des styles en fonction de la taille du conteneur parent plutôt que de le faire avec les medias queries et la taille de l'écran.
+            +Img({img:'container-queries.jpg', alt:"container queries"})
+            p Source image : 
+                  a(href="https://ishadeed.com") ishadeed.com
+
+      +Section({ name :'container-queries-syntaxe' })      
+            h2 Container queries : syntaxe
+            p Il faut d'abord définir le container-type avec la règle
+                  pre
+                        code(class="language-css")
+                              | .container {
+                              |     container-type: inline-size;
+                              |}
+            p Ensuite, il est possible de définir des règles en fonction de la taille du container avec la règle
+                  pre
+                        code(class="language-css")
+                              | .card {
+                              |       /* style par défaut */
+                              |       @container (10em <= width <= 20em) {
+                              |             /* style pour un container de 300px de large */
+                              |       }
+                              | }
+            
+      +Section({ name :'container-queries-name' })      
+            h2 Container queries : le nommage
+            p On peut fournir une liste de noms 
+                  pre
+                        code(class="language-css")
+                              | .container {
+                              |     container-name: mobile tablet;
+                              |}
+            p On peut ensuite préciser le nom du container dans les règles
+                  pre
+                        code(class="language-css")
+                              | .card {
+                              |       /* style par défaut */
+                              |       @container mobile (320px < width <= 640px) {
+                              |             
+                              |       }
+                              |       @container tablet (640px < width <= 768) {
+                              |             
+                              |       }
+                              | }
+            
+     
+      +Section({ name :'container-links' })
+            a(href="https://ishadeed.com/article/css-container-style-queries") ishadeed.com

@@ -85,7 +85,8 @@ module.exports = {
     &::before {
       content: var(--emoji);
     }
-  }`,
+  }
+}`,
       notes: [],
     },
     {

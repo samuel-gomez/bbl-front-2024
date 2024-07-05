@@ -1,12 +1,11 @@
 -const { data: customPropertiesData } = require('./pug/slides/custom-properties/data.js');
 +Section({name :'custom-properties'})
       +Section({ name :'custom-properties', compatibility:"css-variables" })
-            h1 Custom properties (CSS Variables)
+            h1 CSS Variables
             p Les 
                   a(href="https://developer.mozilla.org/fr/docs/Web/CSS/Using_CSS_custom_properties") variables CSS 
                   |  permettent de stocker des valeurs pour les réutiliser dans un fichier CSS.
-            p Tout comme les variables en Scss, les variables CSS permettent de simplifier le code et de le rendre plus lisible.
-            p Elles permettent également de mieux gérer les tokens dans un Design System sans avoir à utiliser de préprocesseur CSS.
+            p Les variables CSS permettent de simplifier le code et de le rendre plus lisible notamment pour un Design System.
 
 
       +Section({ name :'custom-properties-declaration' })
@@ -21,15 +20,17 @@
             h2 Utilisation des variables CSS
             .r-stack
                   .fragment.fade-in-then-out
-                        p Pour utiliser une variable CSS, il suffit de l'appeler avec la fonction var() en lui passant le nom de la variable en paramètre.
+                        p Pour utiliser une variable CSS, il suffit de l'appeler avec la fonction 
+                              strong var() 
+                              | en lui passant le nom de la variable en paramètre.
                         pre
                               +Code({ content : customPropertiesData[1].code, langage: 'css',  dataLineNumbers: "6" })
                   .fragment.fade-in-then-out
                         p Les variables CSS peuvent être utilisées à peu près partout.
                         ul
                               li La plupart des valeurs de propriétés CSS
-                              li Les fonctions CSS (calc(), min(), max(), clamp(), etc.)
-                              li les media queries (abordé dans le slide sur les @media)
+                              li Les fonctions math CSS (calc(), min(), max(), clamp(), etc.)
+                              li les media queries
                               li les animations et transitions
                   
       +Section({ name :'custom-properties-default' })

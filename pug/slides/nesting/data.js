@@ -114,18 +114,6 @@ module.exports = {
         background: red;
       }
   }
-}
-
-/* ✅️ eventuellement */
-
-.block {
-  background: green;
-  &.__element {
-    background: blue;
-    &.--modifier {
-      background: red;
-    }
-  }
 }`,
       notes: [],
     },
@@ -141,19 +129,6 @@ __element.block {
 }
 
 --modifier:is(__element.block) {
-  background: red;
-}
-
-/* ✅️ eventuellement */
-.block {
-  background: green;
-}
-
-.block.__element {
-  background: #00f;
-}
-
-.block.__element.--modifier {
   background: red;
 }`,
       notes: [],
