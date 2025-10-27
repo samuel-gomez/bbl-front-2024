@@ -1,3 +1,53 @@
 +Section({name :'animation-timeline'})
-      +Section({ name :'preface' })
+      +Section({ name :'animation-timeline', compatibility: 'mdn-css_properties_animation-timeline' })
             h1 Animation TimeLine
+            p Parmi les nouveautés CSS récentes, on retrouve les animations de scroll. 
+                  br 
+                  | Ces animations permettent de créer des effets visuels lors du défilement de la page ou d’un élément parent. 
+                  br 
+                  | Et tout cela, sans avoir besoin de Javascript.
+
+      +Section({ name :'animation-timeline-rappel'})
+            h2 Rappel sur les animations 
+            p Pour créer des animations avec images-clés, on utilise la propriété 
+                  code animation
+                  | , on peut ainsi définir un nom, une durée, un délai, les répétitions, etc.
+            pre 
+                  code(class="language-css")
+                        |.animated {
+                        |      animation: fadeIn 1s ease-in-out 0.5s infinite alternate;
+                        |}
+            p On définit ensuite les images-clés avec la règle `@keyframes`
+            pre 
+                  code(class="language-css")
+                        |@keyframes fadeIn {
+                        |  0% {
+                        |    opacity: 0;
+                        |  }
+                        |  100% {
+                        |    opacity: 1;
+                        |  }
+                        |}
+      
+      +Section({ name :'timeline-progress'})
+            h2 Timeline de progression
+            p 
+                  strong 2 nouvelles timelines
+                  |  de progression basées sur le 
+                  strong scroll
+                  |  sont maintenant disponibles pour les animations.
+            ul
+                  li La timeline de progression de défilement
+                  li La timeline de progression d'affichage
+            p Pour cela, on va utiliser une nouvelle propriété : 
+                  strong `animation-timeline`
+                  |  que l'on utilisera principalement avec les fonctions 
+                  strong `scroll()` et `view()`. 
+
+      +Section({ name :'timeline-progress-scroll'})
+            h2 Timeline de progression de défilement 
+            p l'animation se déclenche lorsque l'utilisateur effectue un défilement dans le conteneur de défilement ciblé 
+            iframe(style="width: 100vw;color: white; font-weight: bold;min-height: 45svh;" scrolling="no" title="css :focus-visible" src="https://codepen.io/gsam59/embed/bGPeVMp?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true")
+            aside(class="notes")
+                  p Le conteneur de défilement : nearest (defaut), root, self 
+                  p L'axe : block (defaut), inline (writing mode), x, y

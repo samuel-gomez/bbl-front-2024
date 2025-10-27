@@ -638,7 +638,8 @@
     &amp;::before {
       content: var(--emoji);
     }
-  }</code>
+  }
+}</code>
                 <textarea class="sg-code-input">.alert {
   --state-color: white;
   --emoji: &quot;C'est ok 😀&quot;;
@@ -656,7 +657,8 @@
     &amp;::before {
       content: var(--emoji);
     }
-  }</textarea></pre>
+  }
+}</textarea></pre>
               <pre><code class="language-javascript sg-code  sg-code--dont" data-trim="data-trim" data-line-numbers="" data-ln-start-from="">.alert--success {
   --state-color: green;
   --emoji: &quot;Succès 😎&quot;;
@@ -1509,8 +1511,55 @@ form:has(&gt; :checked){
           </section>
         </section>
         <section class="sg-animation-timeline" id="animation-timeline" compatibility="compatibility" data-background="" data-background-transition="fade">
-          <section class="sg-preface" id="preface" compatibility="compatibility" data-background="" data-background-transition="fade">
+          <section class="sg-animation-timeline" id="animation-timeline" compatibility="compatibility" data-background="" data-background-transition="fade">
             <h1>Animation TimeLine</h1>
+            <p>Parmi les nouveautés CSS récentes, on retrouve les animations de scroll. <br>Ces animations permettent de créer des effets visuels lors du défilement de la page ou d’un élément parent. <br>Et tout cela, sans avoir besoin de Javascript.</p>
+            <button onclick="document.querySelector('#compatibility-animation-timeline').showModal()">Compatibilités</button>
+            <dialog class="sg-modal  sg-modal--compatibility-animation-timeline" id="compatibility-animation-timeline" onclick="this.close()">
+              <div class="dialog-inner" onclick="event.stopPropagation();">
+                <form>
+                  <button class="icon close" autofocus="autofocus" formmethod="dialog">❌</button>
+                  <h2>Compatibilités</h2>
+                  <div class="loading">
+                    <iframe src="https://caniuse.com/mdn-css_properties_animation-timeline" title="Compatibilités" frameborder="0" allowfullscreen="true" loading="lazy"></iframe>
+                  </div>
+                </form>
+              </div>
+            </dialog>
+          </section>
+          <section class="sg-animation-timeline-rappel" id="animation-timeline-rappel" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Rappel sur les animations </h2>
+            <p>Pour créer des animations avec images-clés, on utilise la propriété <code>animation</code>, on peut ainsi définir un nom, une durée, un délai, les répétitions, etc.</p>
+            <pre> <code class="language-css">.animated {
+     animation: fadeIn 1s ease-in-out 0.5s infinite alternate;
+}</code></pre>
+            <p>On définit ensuite les images-clés avec la règle `@keyframes`</p>
+            <pre> <code class="language-css">@keyframes fadeIn {
+ 0% {
+   opacity: 0;
+ }
+ 100% {
+   opacity: 1;
+ }
+}</code></pre>
+          </section>
+          <section class="sg-timeline-progress" id="timeline-progress" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Timeline de progression</h2>
+            <p> <strong>2 nouvelles timelines</strong> de progression basées sur le <strong>scroll</strong> sont maintenant disponibles pour les animations.</p>
+            <ul>
+              <li>La timeline de progression de défilement</li>
+              <li>La timeline de progression d'affichage</li>
+            </ul>
+            <p>Pour cela, on va utiliser une nouvelle propriété : <strong>`animation-timeline`</strong> que l'on utilisera principalement avec les fonctions <strong>`scroll()` et `view()`. </strong></p>
+          </section>
+          <section class="sg-timeline-progress-scroll" id="timeline-progress-scroll" compatibility="compatibility" data-background="" data-background-transition="fade">
+            <h2>Timeline de progression de défilement </h2>
+            <p>l'animation se déclenche lorsque l'utilisateur effectue un défilement dans le conteneur de défilement ciblé </p>
+            <iframe style="width: 100vw;color: white; font-weight: bold;min-height: 45svh;" scrolling="no" title="css :focus-visible" src="https://codepen.io/gsam59/embed/bGPeVMp?default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>
+            <aside class="notes">
+              <p>Le conteneur de défilement : nearest (defaut), root, self </p>
+              <p>L'axe : block (defaut), inline (writing mode), x, y </p>
+            </aside>
           </section>
         </section>
         <section class="sg-text-wrap" id="text-wrap" compatibility="compatibility" data-background="" data-background-transition="fade">
